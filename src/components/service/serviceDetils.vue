@@ -18,8 +18,13 @@
             e.images=response.data
             console.log(e.images)
           });
-        }
-
+        },
+        correlationQuery(e,informationType){
+          var resouce = e.$resource(VueResource.data.url+'/informationController/getJsonDate?informationType='+informationType);
+          resouce.query().then(function ( response ) {
+          e.correlation=response.data
+           }
+          )}
       }
     }
 </script>

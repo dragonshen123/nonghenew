@@ -59,7 +59,7 @@
           <ul class="butie pull-right " >
             <li v-for="site in policies" style="width: 150%">
               <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
-              <router-link :to="{path:'/Detail',query: {informationId: site.informationId}}">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>
+              <router-link :to="{path:'/Detail',query: {informationId: site.informationId,informationType:site.informationType}}">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>
             </li>
             <li><a href="">更多>></a></li>
           </ul>
