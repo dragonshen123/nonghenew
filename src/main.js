@@ -9,11 +9,19 @@ import '../static/bootstrap/js/bootstrap.js'
 import '../static/bootstrap/css/bootstrap.css'
 import common from './util/service/loginService'
 Vue.config.productionTip = false
+Vue.http.options.xhr = { withCredentials: true }
+Vue.http.options.emulateJSON = true
+Vue.http.interceptors.push((request, next) => {
+  request.credentials = true;
+
+  next();
+
+});
 Vue.use(Resource)
 Vue.use(common)
-
 Vue.prototype.common = common
-/* eslint-disable no-new */
+
+/* eslint-disable no-new  credientials*/
 new Vue({
   el: '#app',
   router,

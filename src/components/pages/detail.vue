@@ -27,20 +27,43 @@
          </div>
          <div style="margin-top: 20px;line-height: 35px">
           <!-- 详情文字-->
-           <span v-html="Infromation.informationCentent"></span>
+           <span v-html="infromation.informationCentent"></span>
          </div>
 
-         <div style="height: 10px;border-top: 1px ridge silver;border-bottom: 1px ridge silver"></div>
-       <div style="height: 50px;border: 1px ridge silver;"><h4 style="padding-top: 9px;padding-left: 13px">发表评论</h4></div>
+         <div style="height: 10px;border-top: 1px ridge silver;"></div>
+
        <div>
          <h4 style="width: 20%" class="pull-left">我想说两句</h4> <p class="pull-right" style="margin-top: 5px">已有 <a href="#">0</a>条评论</p>
-         <textarea type="text" class="form-control" style="height: 200px">  </textarea>
-         <p class="btn btn-default pull-right" style="margin-top: 2px">发表评论</p>
+         <textarea type="text" v-model="replyContentTmp" class="form-control" style="height: 200px" v-on:click="replyContent()">
+        safdasfsa fsf
+         </textarea>
+         <p class="btn btn-default pull-right" style="margin-top: 2px" v-on:click="submitReply()">发表评论</p>
        </div>
-         <div style="border-top: 1px ridge silver;border-bottom: 1px ridge silver;margin-top: 40px">
-         <h4 style="width: 20%" class="pull-left">近期评论</h4><h4 style="width: 7%" class="pull-right"><i class="glyphicon glyphicon-refresh" style="color: silver"></i>&nbsp;刷新</h4>
-         <div style="height: 400px;background-color: red">
+         <div style="margin-top: 40px">
 
+
+         <div style="height: 400px;">
+           <div  style="padding: 10px 10px;border-top: 1px ridge silver;border-bottom: 1px ridge silver;margin-top: 50px">
+             <h4>近期评论</h4>
+           </div>
+           <div class="pinglun">
+             <ul class="list-group">
+               <li class="list-group-item">
+
+                 <div class="media" v-for="item in comments">
+                   <a  class="media-left" style="width: 10%;height: 20%">
+                     <img v-bind:src="pathUrl+item.userPictureUri" alt="媒体对象" style="width: 70px;height: 70px;border-radius: 30px" >
+                   </a>
+                   <div class="media-body" style="/*padding-top: 1%;line-height: 30px;*/padding-left: 2%">
+                     <p class="media-heading"><h4><strong>{{item.userName}}</strong></h4><span>{{item.replyDate}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
+                     <p style="text-indent:2em">{{item.replyContent}}</p>
+                   </div>
+                 </div>
+
+
+               </li>
+             </ul>
+           </div>
          </div>
          </div>
        </div>
@@ -50,22 +73,12 @@
          </div>
          <div>
            <ul style="list-style: none;line-height: 45px;font-size: 16px">
-           <li v-for="item in correlation"><a href="#" >
-             {{item.informationTtile}} >></a>
+           <li v-for="item in correlation">
+            <!-- <router-link :to="{path:'/Detail',query: {informationId: item.informationId,informationType:item.informationType}}">
+               {{item.informationTtile}}</router-link>-->
+            <a v-bind:id="item.informationId" href="#" v-on:click="changeDateTmp($event.target)" >{{item.informationTtile}} >></a>
            </li>
-          <!-- <li><a href="#">新增农业经营主体倾斜政策  &nbsp;&nbsp;&nbsp;>></a>  </li>
-           <li><a href="#">农产品目标价格政策  &nbsp;&nbsp;&nbsp;>></a>        </li>
-           <li><a href="#">菜果茶标准化创建支持政策  &nbsp;&nbsp;&nbsp;>></a>  </li>
-           <li><a href="#">菜果茶标准化创建支持政策  &nbsp;&nbsp;&nbsp;>></a>  </li>
-           <li><a href="#">农业支持保护补贴政策  &nbsp;&nbsp;&nbsp;>></a>      </li>
-           <li><a href="#">农资综合补贴政策  &nbsp;&nbsp;&nbsp;>></a>          </li>
-           <li><a href="#">小麦、水稻最低收购价政策  &nbsp;&nbsp;&nbsp;>></a>  </li>
-           <li><a href="#">产粮(油)大县奖励政策  &nbsp;&nbsp;&nbsp;>></a>      </li>
-           <li><a href="#">耕地保护与质量提升补助政策  &nbsp;&nbsp;&nbsp;>></a> </li>
-           <li><a href="#">耕地保护与质量提升补助政策  &nbsp;&nbsp;&nbsp;>></a> </li>
-           <li><a href="#">设施农用地支持政策 &nbsp;&nbsp;&nbsp;>></a>          </li>
-           <li><a href="#">推进现代种业发展支持政策  &nbsp;&nbsp;&nbsp;>></a>   </li>
-           <li><a href="#">农产品追溯体系建设支持政策  &nbsp;&nbsp;&nbsp;>></a> </li>-->
+
            </ul>
          </div>
        </div>
@@ -84,16 +97,42 @@
       data:function(){
           return {
             //获取数据内容
-            Infromation:service.methods.queryDetils(this,this.$route.query.informationId),//获取文字详情
+            testVaue:"fasfas",
+            informationId:this.$route.query.informationId,
+            infromation:service.methods.queryDetils(this,this.$route.query.informationId),//获取文字详情
             images:service.methods.queryImages(this,this.$route.query.informationId),//获取图片列表
             pathUrl:VueResource.data.url,//获取路劲informationType
-            correlation :service.methods.correlationQuery(this,this.$route.query.informationType)//相关l兰
+            correlation :service.methods.correlationQuery(this,this.$route.query.informationType),//相关l兰
+            comments:service.methods.comment(this,this.$route.query.informationId),//回复
+            message:service.methods.checkUserLoin(this),
+            replyContentTmp:""
           }
       },
       methods:{
-          create(){
-            console.log(this.pathUrl)
+          changeDateTmp(e){
+          this.comments=service.methods.comment(this,e.id)
+          this.infromation=service.methods.queryDetils(this,e.id)
+          this.images=service.methods.queryImages(this,e.id)
+            this.informationId=e.id
+          },
+          //回复内容
+        replyContent(){
+          this.message=service.methods.checkUserLoin(this)
+            //查询是否登录过
+          if(this.message==0){
+
+            document.getElementById("submitData").click()
           }
+        },
+        //回复内容
+        submitReply(){
+            if(this.replyContentTmp==null||this.replyContentTmp==undefined||this.replyContentTmp.ength<5){
+              alert("内容长度大于5")
+              return
+            }
+          this.comments=service.methods.reply( this, this.informationId, this.replyContentTmp)
+
+        }
       }
        }
 </script>
@@ -105,6 +144,5 @@
  }
  .media img{
    height: 250x;
-   width: 350px;
  }
 </style>

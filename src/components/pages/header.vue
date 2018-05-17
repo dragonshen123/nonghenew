@@ -8,7 +8,7 @@
          </div>
          <div class="pull-right">
            <ul class="nav navbar-nav">
-             <li><a href="#" data-toggle="modal" data-target="#myModal" v-on:click="creatCode()">登录</a></li>
+             <li><a href="#" data-toggle="modal" id="submitData" data-target="#myModal" v-on:click="creatCode()">登录</a></li>
              <!-- 模态框（Modal） -->
              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                   aria-hidden="true">
@@ -18,7 +18,7 @@
                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                        &times;
                      </button>
-                     <h4 class="modal-title" id="myModalLabel" style="text-align: center">
+                     <h4 class="modal-title" id="myModalLabel" style="text-align: center" >
                        登录
                      </h4>
                    </div>
@@ -55,7 +55,7 @@
                          <div style="margin-top: 10px">
                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                            </button>
-                           <button type="button" class="btn btn-primary pull-right">
+                           <button type="button" class="btn btn-primary pull-right"  v-on:click="submitLogin()" >
                              登录
                            </button>
                          </div>
@@ -166,6 +166,9 @@
 </template>
 
 <script>
+  import Vue from 'vue'
+  import service from '@/components/service/serviceDetils.vue'
+  Vue.use(service)
     export default {
         name: "header",
       data: function () {
@@ -224,7 +227,8 @@
           if(this.checkCode.length==0){
             this.codedis='请输入验证码！'
           }else{
-            if ((this.checkCode)!==(this.checkPass)){
+            console.log(this.checkCode+":"+this.checkPass)
+            if ((this.checkCode.replace(" ","").trim().toLocaleLowerCase())==this.checkPass.trim().toLocaleLowerCase()){
               this.codedis='验证码不正确！'
               this.$options.methods.creatCode()
             }else{
@@ -244,6 +248,9 @@
           }
           this.checkCode = code;//把code值赋给验证码
           // console.log(this.checkCode)
+        },
+        submitLogin:function(){
+          service.methods.login(this,this.pass,this.name);
         }
       }
     }
