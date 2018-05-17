@@ -44,6 +44,7 @@
           }
         });
       },
+
       getImages(e) {
           var resouce2 = e.$resource('http://localhost:8080/informationController/getImages');
           resouce2.query().then(function (response) {
