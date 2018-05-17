@@ -58,7 +58,8 @@
           <h4 class="pull-left"><strong>政策指南：</strong></h4>
           <ul class="butie pull-right " >
             <li v-for="site in policies" style="width: 150%">
-              <a href="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></a>
+              <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
+              <router-link :to="{path:'/Detail',query: {informationId: site.informationId}}">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>
             </li>
             <li><a href="">更多>></a></li>
           </ul>
@@ -233,7 +234,7 @@
 
 <script>
   import Vue from 'vue'
-  import serviceTest from '@/components/service/serviceTest.vue'
+  import serviceTest from '@/components/service/serviceMid.vue'
   Vue.use(serviceTest)
     export default {
       name: "mid" ,

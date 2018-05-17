@@ -1,32 +1,18 @@
 <template>
-   <div class="container-fluid" style="margin-left:5%;margin-right:5% ">
+   <div class="container-fluid" style="margin-left:5%;margin-right:5% " id="detail">
      <div class="row">
        <div class="col col-md-9">
          <div id="myCarousel" class="carousel slide" style="height: 480px;overflow: hidden">
            <!-- 轮播（Carousel）指标 -->
            <ol class="carousel-indicators">
-             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-             <li data-target="#myCarousel" data-slide-to="1"></li>
-             <li data-target="#myCarousel" data-slide-to="2"></li>
-             <li data-target="#myCarousel" data-slide-to="3"></li>
+             <li data-target="#myCarousel" v-bind:data-slide-to="key"  v-for="(item, key) in images" ></li>
            </ol>
            <!-- 轮播（Carousel）项目 -->
            <div class="carousel-inner">
-             <div class="item active">
-               <img src="../../../static/images/m1.jpg" alt="First slide">
-               <div class="carousel-caption">标题 1</div>
-             </div>
-             <div class="item">
-               <img src="../../../static/images/m2.jpg" alt="Second slide">
-               <div class="carousel-caption">标题 2</div>
-             </div>
-             <div class="item">
-               <img src="../../../static/images/m3.jpg" alt="Third slide">
-               <div class="carousel-caption">标题 3</div>
-             </div>
-             <div class="item">
-               <img src="../../../static/images/m1.jpg" alt="Fourth slide">
-               <div class="carousel-caption">标题 4</div>
+             <div  v-bind:class="item.imageClass" v-for="(item, key) in images">
+              <img :src="pathUrl+item.imageUrl" v-bind:alt="item.flagStr">
+
+               <div class="carousel-caption"></div>
              </div>
            </div>
            <!-- 轮播（Carousel）导航 -->
@@ -40,24 +26,9 @@
            </a>
          </div>
          <div style="margin-top: 20px;line-height: 35px">
-         <p>现在已进入到了5月份!针对农民种地的补贴也在逐步下发中，财政直接打卡，有地就能申报!</p>
-         <h3>  <strong>承包多大规模土地能够申领到补贴?</strong></h3>
-           <p> 按照我们国家现行的农业政策来看，现阶段在农村小规模的承包土地是没有专项补贴的，但你是可以申报到土
-             地承包之后的经营权收益，按照谁来种地、谁来经营就补贴给谁的基本规则，粮食补贴的资金是完全可以进行申领的!
-           </p>
+           <span v-html="Infromation.informationCentent"></span>
          </div>
-         <div style="margin-top: 20px;line-height: 35px">
-           <h3>  <strong>  根据我国现行的规模化经营补贴政策来看，一般情况下承包耕地规模在100亩以上的，就可以享受政府每亩200元左右的补贴。 规模经营有哪些认定标准?</strong></h3>
-         <p style="margin-top: 50px"> 1、种植业:以商品化经营为主，规模要达到，一年一熟地区露地规模100亩及以上，一年二熟及以.上地区露地50亩及以上。</p>
-           <p>2、设施农业设施占地25亩及以上。 </p>
-         <p> 3、畜牧业、林业、渔业、农林牧渔服务业有各自的标准。</p>
-         </div>
-         <div style="margin-top: 20px;line-height: 35px">
-           <h3>  <strong> 三項补贴合-.打卡资金有所提升</strong></h3>
-           <p style="margin-top: 50px">  1、大家都知道财政部、农业农村部印发了《关于全面推开农业“项补贴“改革工作的通知》，将粮食直补、农作物良种补贴、表资综合补贴，现在叫做“农业支持保护补贴”。按照国家财政部.农业部的要求，6月30号之前要将粮补发放 到 在 民 中 耕地地大 补 财 是 接以“一 卡 通"的 方 式 s 现 到 t 户 手 中。</p>
-           <p> 2、据报道，从黑龙工省财政厅和多个市县财政局得到消息，目前，此项剂贴正在# 折下发中。请乡亲扩务必查看均的折子，看看这笔钱到账了没有?
-             关于耕地地力保护补贴的额度。各省不一样，有的省善易也不一样。拿黑龙I举例黑龙工省2018年的“3 項补贴”顿准是每亩补贴271.78元，比2017年稍高。</p>
-         </div>
+
          <div style="height: 10px;border-top: 1px ridge silver;border-bottom: 1px ridge silver"></div>
        <div style="height: 50px;border: 1px ridge silver;"><h4 style="padding-top: 9px;padding-left: 13px">发表评论</h4></div>
        <div>
@@ -76,7 +47,7 @@
          </div>
          <div>
            <ul style="list-style: none;line-height: 45px;font-size: 16px">
-           <li><a href="#">农机购置补贴政策  &nbsp;&nbsp;&nbsp;>></a>          </li>
+           <li><a href="#" v-on:click="create()">农机购置补贴政策  &nbsp;&nbsp;&nbsp;>></a>          </li>
            <li><a href="#">新增农业经营主体倾斜政策  &nbsp;&nbsp;&nbsp;>></a>  </li>
            <li><a href="#">农产品目标价格政策  &nbsp;&nbsp;&nbsp;>></a>        </li>
            <li><a href="#">菜果茶标准化创建支持政策  &nbsp;&nbsp;&nbsp;>></a>  </li>
@@ -160,9 +131,28 @@
 </template>
 
 <script>
+  import Vue from 'vue'
+  import service from '@/components/service/serviceDetils.vue'
+  Vue.use(service)
+  import VueResource from '@/components/resource/index.js'
+  Vue.use(VueResource)
     export default {
-        name: "detail"
-    }
+        name: "detail",
+      data:function(){
+          return {
+            //获取数据内容
+            Infromation:service.methods.queryDetils(this,this.$route.query.informationId),
+            images:service.methods.queryImages(this,this.$route.query.informationId),
+            pathUrl:VueResource.data.url
+          }
+      },
+      methods:{
+          create(){
+        // console.log(this.Infromation)
+            console.log(this.pathUrl)
+          }
+      }
+       }
 </script>
 
 <style scoped>
