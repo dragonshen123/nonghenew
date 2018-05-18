@@ -35,7 +35,7 @@
        <div>
          <h4 style="width: 20%" class="pull-left">我想说两句</h4> <p class="pull-right" style="margin-top: 5px">已有 <a href="#">0</a>条评论</p>
          <textarea type="text" v-model="replyContentTmp" class="form-control" style="height: 200px" v-on:click="replyContent()">
-        safdasfsa fsf
+
          </textarea>
          <p class="btn btn-default pull-right" style="margin-top: 2px" v-on:click="submitReply()">发表评论</p>
        </div>
