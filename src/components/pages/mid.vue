@@ -49,8 +49,8 @@
           <li><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></li>
         </ul>
       </div>
-      <div class="row col-md-12" style="border: 1px ridge silver;margin: 0 0;margin-top: 10px " >
-           <div class="col col-md-4 pull-left">
+      <div class="row col-md-12" style="border: 1px ridge silver;margin: 0 0;padding-left: 0;padding-right: 0" >
+           <div class="col col-md-4 pull-left" style="padding-left: 0">
            <img src="/static/img/nongji .945e536.jpg" class="img-responsive" style="height: 100%">
            </div>
           <div class="col col-md-5">
@@ -78,7 +78,7 @@
       </div>
       <div class="row col-md-12" style="padding-bottom:20px;margin-top: 20px;margin-left: 0;padding-left: 0;;margin-right: 0;padding-right: 0">
         <div class="col col-md-8 pull-left" style="padding-left:0;">
-          <div class="button-group-lg" style="padding-bottom: 0;border: 2px #1c7430;border:1px solid #a9a9a9;background-color: #449d44;border-left: 6px #9d9d9d;box-shadow:5px 2px 6px #000;">
+          <div class="button-group-lg" style="padding-bottom: 0;border: 2px #1c7430;border:1px solid #a9a9a9;background-color: #449d44;border-left: 6px #9d9d9d">
             <a  id="3" v-bind:class="[errorClass ,isActive1 ? activeClass :errorClass]" v-on:click="changeDate($event.target)" style="border: none;border-radius: 0;">实用农技</a>
             <a  id="6" v-bind:class="[errorClass ,isActive2 ? activeClass : errorClass]" v-on:click="changeDate($event.target)" style="border: none;border-radius: 0">合作社运营</a>
           </div>
@@ -86,7 +86,7 @@
             <!--<img src="../../../static/images/nongji.png" alt="" class="img-responsive">-->
           <!--</div>-->
           <div class="col" style="border: 1px outset silver;min-height: 375px">
-            <ul class="nongji" style="line-height: 35px;font-size: 16px;padding-left: 20px;">
+            <ul class="nongji" style="line-height: 35px;font-size: 16px;padding-left: 20px;padding-right: 20px;">
               <li  v-for="item2 in cooperation" style="margin-left: 20px">
               <a href="">{{item2.informationTtile}}<span class="pull-right">{{item2.informationDate}}</span></a>
               </li>
@@ -97,7 +97,7 @@
 
         <div class="col col-md-4 pull-right" style="margin-right: 0;padding-right: 0;border: 1px outset silver;padding-left: 0">
           <div class="col">
-          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0;background-color: #449d44;width: 100%;box-shadow:5px 2px 6px #000;">三农服务</span>
+          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0;background-color: #449d44;width: 100%">三农服务</span>
           <img src="../../../static/images/nongji .jpg" alt="" class="img-responsive" style="margin-top: 10px">
           <ul class="fuwu" >
             <li class="pull-left"><a href="#">农事指导&nbsp;<span class="glyphicon glyphicon-chevron-left"></span></a></li>
@@ -109,12 +109,14 @@
         </div>
         </div>
       </div>
-        <div class="row col-md-12">
+        <div class="row col-md-12" style="border: 1px ridge silver;margin-left: 0">
         <div class="col col-md-2" style="padding-left: 0">
+          <img src="../../../static/images/nonghe.jpg" alt="" class="img-responsive">
+          <img src="../../../static/images/nonghe.jpg" alt="" class="img-responsive">
           <img src="../../../static/images/nonghe.jpg" alt="" class="img-responsive">
         </div>
         <div class="col col-md-5">
-          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0">农合观点</span>
+          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0;background-color: #449d44;width: 100%;text-align: left">农合观点</span>
           <ul id="guandian">
           <li  v-for="item in viewpoint"><span class="glyphicon glyphicon-chevron-right"></span>
             &nbsp;<a href="">{{item.informationTtile}} </a></li>
@@ -122,17 +124,17 @@
           </ul>
         </div>
         <div class="col col-md-5" style="padding-right: 0">
-          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0">农合学院</span>
+          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0;background-color: #449d44;width: 100%;text-align: left">农合学院</span>
           <ul id="xueyuan">
             <li  v-for="item in collage"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;<a href="">
               {{item.informationTtile}} </a>
-              <i class="pull-right">{{item.informationDate}}</i>
+              <span class="pull-right">{{item.informationDate}}</span>
             </li>
             <li><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;<a href="">更多>> </a></li>
           </ul>
         </div>
       </div>
-        <div style="height: 10px;background-color: #449d44" class="row"></div>
+      <div class="row" style="margin-top:20px;"><img src="../../../static/images/nav.jpg" alt="" class="img-responsive" style="border: 1px ridge #449d44"></div>
         <div class="row" style="margin-top: 20px;height: 100px" id="img">
           <div class="col col-md-3" >
             <img src="../../../static/images/nongc.jpg" class="img-responsive" alt="">
@@ -325,6 +327,10 @@
     background: #449d44;
     color: #f8f8f8;
     border-radius: 10px;
+  }
+  .row{
+    margin-left: 0;
+    margin-right: 0;
   }
   #kuaixunshow{
     border: 1px solid silver;
