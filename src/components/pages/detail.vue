@@ -33,7 +33,8 @@
          <div style="height: 10px;border-top: 1px ridge silver;"></div>
 
        <div>
-         <h4 style="width: 20%" class="pull-left">我想说两句</h4> <p class="pull-right" style="margin-top: 5px">已有 <a href="#">{{commentsCountTotal}}</a>条评论</p>
+         <h4 style="width: 20%" class="pull-left">我想说两句</h4>   评论23234条
+         <p class="pull-right" style="margin-top: 5px">已有 <a href="#">{{commentsCountTotal}}</a>条评论</p>
          <textarea type="text" v-model="replyContentTmp" class="form-control" style="height: 200px" v-on:click="replyContent()">
 
          </textarea>
