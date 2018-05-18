@@ -1,5 +1,5 @@
 <template>
- <div class="container-fluid">
+ <div class="container-fluid" style="margin-bottom: 50px">
    <div class="row" >
      <nav class="navbar" role="navigation" style="background-color:#169f14 ">
        <div class="container">
