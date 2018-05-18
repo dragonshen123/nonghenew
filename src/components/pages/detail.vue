@@ -71,7 +71,7 @@
                              commentsCurrentPage:1,
                              commentsPageTotal:0,
                              commentsCountTotal:0,-->
-                            分页大小： {{commentsPageSize}}/1页</a></li>
+                            分页大小： {{commentsPageSize}}/1页 </a></li>
                          <li class=" next"><a
                            v-bind:id="commentsPageTotal">尾页</a>
                          </li>
