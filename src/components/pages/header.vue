@@ -9,10 +9,10 @@
          <div class="pull-right">
            <ul class="nav navbar-nav">
              <li v-if="userName!==''" style="margin-right: 20px"><h4>欢迎您！{{userName}}</h4></li>
-             <li v-if="userName!==''" class="welcome"><img src="../../../static/images/play.png" alt="" class="img-circle img-responsive">
+             <li v-if="userName!==''" class="welcome"><img src="../../../static/images/user.jpg" alt="" class="img-circle img-responsive">
              <ul class="welcome-option">
                <li><a href="">修改密码</a></li>
-               <li><a href="">退出登录</a></li>
+               <li><a style="cursor: pointer" v-on:click="loginOut()">退出登录</a></li>
              </ul>
              </li>
              <li  v-if="userName==''"><a href="#" data-toggle="modal" id="submitData" data-target="#myModal" v-on:click="creatCode()">登录</a></li>
@@ -259,6 +259,9 @@
         },
         submitLogin:function(){
           service.methods.login(this,this.pass,this.name);
+        },
+        loginOut:function () {
+                this.userName=''
         }
       }
     }

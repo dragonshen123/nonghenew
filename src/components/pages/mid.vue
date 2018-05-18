@@ -1,7 +1,7 @@
 <template>
     <div id="mid" class="container">
       <div class="row">
-        <div id="myCarousel" class="carousel slide" style="height: 480px;overflow: hidden">
+        <div id="myCarousel" class="carousel slide" style="height: 450px;overflow: hidden">
           <!-- 轮播（Carousel）指标 -->
           <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -124,7 +124,7 @@
           </ul>
         </div>
         <div class="col col-md-5" style="padding-right: 0">
-          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0;background-color: #449d44;width: 100%;text-align: left">农合学院</span>
+          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0;background-color: #449d44;width: 100%;text-align: left;margin-right: -30px">农合学院</span>
           <ul id="xueyuan">
             <li  v-for="item in collage"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;<a href="">
               {{item.informationTtile}} </a>
@@ -134,8 +134,7 @@
           </ul>
         </div>
       </div>
-      <div class="row" style="margin-top:20px;"><img src="../../../static/images/nav.jpg" alt="" class="img-responsive" style="border: 1px ridge #449d44"></div>
-        <div class="row" style="margin-top: 20px;height: 100px" id="img">
+        <div class="row col-md-12" style="clear:both;margin-top: 20px;height: 100px" id="img">
           <div class="col col-md-3" >
             <img src="../../../static/images/nongc.jpg" class="img-responsive" alt="">
           </div>

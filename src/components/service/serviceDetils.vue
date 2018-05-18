@@ -64,6 +64,7 @@
           var resouce = e.$resource(VueResource.data.url+'/sysUserControler/login?userName='+userName+'&userPassword='+userPassword);
           resouce.query().then(function ( response ) {
             alert( response.data.message)
+            console.log(response.data)
             }
           )
         }
