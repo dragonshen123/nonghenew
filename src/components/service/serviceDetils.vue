@@ -26,10 +26,14 @@
            }
           )
          },
-        comment(e,informationId){
-          var resouce = e.$resource(VueResource.data.url+'/informationController/getReply?informationId='+informationId);
+        comment(e,informationId,pageSzie,currentPage){
+          var resouce = e.$resource(VueResource.data.url+'/informationController/getReply?informationId='+informationId+"&pageSzie="+pageSzie+"&currentPage="+currentPage);
           resouce.query().then(function ( response ) {
-              e.comments=response.data
+              e.comments=response.data.result
+            e.commentsPageSize=response.data.pageSize
+              e. commentsCurrentPage=response.data.curPage
+              e.commentsPageTotal=response.data.totalPage
+              e.commentsCountTotal=response.data.totalCount
             }
           )
         },
@@ -37,17 +41,21 @@
           var resouce = e.$resource(VueResource.data.url+'/informationController/checkUserLoin');
            resouce.query().then(function ( response ) {
            e.message=response.data
-             console.log( response.data)
-             console.log( e.message)
+             if(e.message==0){
+               document.getElementById("submitData").click()
+             }
             }
           )
         },
         //回复内容
-        reply(e,informationId,replyContentTmp){
-          var resouce = e.$resource(VueResource.data.url+'/informationController/reply?informationId='+informationId+'&replyContent='+replyContentTmp);
+        reply(e,informationId,replyContentTmp,pageSzie,currentPage){
+          var resouce = e.$resource(VueResource.data.url+'/informationController/reply?informationId='+informationId+'&replyContent='+replyContentTmp+"&pageSzie="+pageSzie+"&currentPage="+currentPage);
           resouce.query().then(function ( response ) {
-             e.comments=response.data
-
+            e.comments=response.data.result
+            e.commentsPageSize=response.data.pageSize
+            e. commentsCurrentPage=response.data.curPage
+            e.commentsPageTotal=response.data.totalPage
+            e.commentsCountTotal=response.data.totalCount
             }
           )
         },
