@@ -1,5 +1,5 @@
 <template>
-    <div id="mid" class="container-fluid" style="margin-left:5%;margin-right:5% ">
+    <div id="mid" class="container">
       <div class="row">
         <div id="myCarousel" class="carousel slide" style="height: 480px;overflow: hidden">
           <!-- 轮播（Carousel）指标 -->
@@ -49,7 +49,7 @@
           <li><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></li>
         </ul>
       </div>
-      <div class="row col-md-12" >
+      <div class="row col-md-12" style="border: 1px ridge silver;margin: 0 0;margin-top: 10px " >
            <div class="col col-md-4 pull-left">
            <img src="/static/img/nongji .945e536.jpg" class="img-responsive" style="height: 100%">
            </div>
@@ -76,17 +76,17 @@
           </ul>
         </div>
       </div>
-      <div class="row col-md-12" style="padding-bottom:20px;margin-top: 20px">
-        <div class="col col-md-8" style="padding-left:0">
-          <div class="button-group-lg" style="padding-bottom: 0;border: 2px #1c7430;/*border:1px solid #a9a9a9;*//*background-color: #449d44*/">
-            <a  id="3" v-bind:class="[errorClass ,isActive1 ? activeClass :errorClass]" v-on:click="changeDate($event.target)" style="border: none;border-radius: 0">实用农技</a>
+      <div class="row col-md-12" style="padding-bottom:20px;margin-top: 20px;margin-left: 0;padding-left: 0;;margin-right: 0;padding-right: 0">
+        <div class="col col-md-8 pull-left" style="padding-left:0;">
+          <div class="button-group-lg" style="padding-bottom: 0;border: 2px #1c7430;border:1px solid #a9a9a9;background-color: #449d44;border-left: 6px #9d9d9d;box-shadow:5px 2px 6px #000;">
+            <a  id="3" v-bind:class="[errorClass ,isActive1 ? activeClass :errorClass]" v-on:click="changeDate($event.target)" style="border: none;border-radius: 0;">实用农技</a>
             <a  id="6" v-bind:class="[errorClass ,isActive2 ? activeClass : errorClass]" v-on:click="changeDate($event.target)" style="border: none;border-radius: 0">合作社运营</a>
           </div>
           <!--<div class="col col-md-4" style="padding-left: 0">-->
             <!--<img src="../../../static/images/nongji.png" alt="" class="img-responsive">-->
           <!--</div>-->
-          <div class="col">
-            <ul class="nongji" style="line-height: 35px;font-size: 16px;padding-left: 20px">
+          <div class="col" style="border: 1px outset silver;min-height: 375px">
+            <ul class="nongji" style="line-height: 35px;font-size: 16px;padding-left: 20px;">
               <li  v-for="item2 in cooperation" style="margin-left: 20px">
               <a href="">{{item2.informationTtile}}<span class="pull-right">{{item2.informationDate}}</span></a>
               </li>
@@ -95,10 +95,11 @@
           </div>
         </div>
 
-        <div class="col col-md-4" style="margin-right: 0">
-          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0">三农服务</span>
-          <img src="../../../static/images/nongji .jpg" alt="" class="img-responsive">
-          <ul class="fuwu">
+        <div class="col col-md-4 pull-right" style="margin-right: 0;padding-right: 0;border: 1px outset silver;padding-left: 0">
+          <div class="col">
+          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0;background-color: #449d44;width: 100%;box-shadow:5px 2px 6px #000;">三农服务</span>
+          <img src="../../../static/images/nongji .jpg" alt="" class="img-responsive" style="margin-top: 10px">
+          <ul class="fuwu" >
             <li class="pull-left"><a href="#">农事指导&nbsp;<span class="glyphicon glyphicon-chevron-left"></span></a></li>
             <li><a href="#">农业保险&nbsp;<span class="glyphicon glyphicon-chevron-left"></span></a></li>
             <li><a href="#">实用技术&nbsp;<span class="glyphicon glyphicon-chevron-left"></span></a></li>
@@ -106,11 +107,9 @@
             <li><a href="#">培训就业&nbsp;<span class="glyphicon glyphicon-chevron-left"></span></a></li>
           </ul>
         </div>
+        </div>
       </div>
-      <div class="containrt-fluid">
-        <div class="row" style="height: 100px;background-image: url('../../../static/images/nongyec.png');background-size:100%"></div>
-        <div style="height: 2px;width: 100%"></div>
-        <div class="row">
+        <div class="row col-md-12">
         <div class="col col-md-2" style="padding-left: 0">
           <img src="../../../static/images/nonghe.jpg" alt="" class="img-responsive">
         </div>
@@ -225,7 +224,6 @@
             <img id="play3" src="../../../static/images/play.png" class="img-responsive" alt="" style="z-index: 1;position: absolute; top: 50%; left: 50%; margin-left: -50px; margin-top: -50px; ">
           </div>
         </div>
-      </div>
       <div class="row" style="margin: 0 0;padding: 0 0;height: 10px;background-color: #449d44"></div>
     </div>
 </template>

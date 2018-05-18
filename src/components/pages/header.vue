@@ -8,7 +8,14 @@
          </div>
          <div class="pull-right">
            <ul class="nav navbar-nav">
-             <li><a href="#" data-toggle="modal" id="submitData" data-target="#myModal" v-on:click="creatCode()">登录</a></li>
+             <li v-if="userName!==''" style="margin-right: 20px"><h4>欢迎您！{{userName}}</h4></li>
+             <li v-if="userName!==''" class="welcome"><img src="../../../static/images/play.png" alt="" class="img-circle img-responsive">
+             <ul class="welcome-option">
+               <li><a href="">修改密码</a></li>
+               <li><a href="">退出登录</a></li>
+             </ul>
+             </li>
+             <li  v-if="userName==''"><a href="#" data-toggle="modal" id="submitData" data-target="#myModal" v-on:click="creatCode()">登录</a></li>
              <!-- 模态框（Modal） -->
              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                   aria-hidden="true">
@@ -65,7 +72,7 @@
                  </div><!-- /.modal-content -->
                </div><!-- /.modal -->
              </div>
-             <li><a href="#" data-toggle="modal" data-target="#mymodal-data" v-on:click="creatCode()">注册</a></li>
+             <li  v-if="userName==''"><a href="#" data-toggle="modal" data-target="#mymodal-data" v-on:click="creatCode()">注册</a></li>
              <div class="modal" id="mymodal-data" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                <div class="modal-dialog">
                  <div class="modal-content">
@@ -183,7 +190,8 @@
           namedis:'',
           menu:'',
           apass:'',
-          apassdis:''
+          apassdis:'',
+          userName:'admin'
         }
       },
       methods: {
@@ -342,5 +350,35 @@
    border: 1px  #1cba9d;
     border-radius: 5px;
     background-color: #238129;
+  }
+  .welcome-option{
+    list-style: none;
+   display: none;
+    z-index: 9999;
+    position: absolute;
+    background-color: rgba(22,159,20,0.8);
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    padding: 12px 16px;
+    margin-left: -50px;
+  }
+  .welcome-option li{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .welcome-option li a:hover{
+    background-color: #169f14;
+    border-radius: 10px;
+    padding: 8px 8px;
+  }
+  .welcome img{
+    height: 50px;
+    width: 50px;
+    z-index: 0;
+    position: relative;
+  }
+  .welcome:hover .welcome-option{
+    display: block;
   }
 </style>
