@@ -39,38 +39,36 @@
           </a>
         </div>
       </div>
-      <div class="row"  style="background-color:#169f14;height: 50px;margin-top: 10px;">
+      <div class="row"  style="background-color:#169f14;height: 50px;">
         <h3 class="col col-md-2" v-on:click="makeActive()" >政策补贴</h3>
         <ul class="pull-right">
           <li ><a href="#">农机购置补贴政策 </a>|</li>
           <li><a href="#">设施农用地支持政策</a> |</li>
           <li><a href="#">种植业结构调整政策</a> |</li>
           <li><a href="#">畜牧良种补贴政策</a> |</li>
-          <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+          <li><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></li>
         </ul>
       </div>
-      <div class="row" >
-        <div class="col col-md-9" >
-           <div class="col-md-3 pull-left">
+      <div class="row col-md-12" >
+           <div class="col col-md-4 pull-left">
            <img src="/static/img/nongji .945e536.jpg" class="img-responsive" style="height: 100%">
            </div>
-          <div class="pull-left col-md-6">
+          <div class="col col-md-5">
           <h4 class="pull-left"><strong>政策指南：</strong></h4>
           <ul class="butie pull-right " >
-            <li v-for="site in policies" style="width: 150%">
+            <li v-for="(site,index) in policies" style="width: 100%" v-if="index<7">
               <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
               <router-link :to="{path:'/Detail',query: {informationId: site.informationId,informationType:site.informationType}}">
-                {{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>
+               <span class="pull-left"> {{site.informationTtile}}</span><span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>
             </li>
             <li><a href="">更多>></a></li>
           </ul>
           </div>
-        </div>
 
         <div class="col col-md-3" >
           <h4><strong>搜索热点：</strong></h4>
           <ul class="redian" >
-            <li  v-for="item in topics">
+            <li  v-for="(item,index) in topics" v-if="index<8">
               <a href="#">{{item.informationTtile}}
               </a>
             </li>
@@ -78,12 +76,11 @@
           </ul>
         </div>
       </div>
-      <!--<hr class="hr" style=" height:3px;border:none;border-top:5px ridge   #1c7430;margin-left: 0" />-->
-      <div class="row" style="padding-bottom:20px;margin-top: 10px;border-top:1px solid #a9a9a9;border-bottom:1px solid #a9a9a9; ">
+      <div class="row col-md-12" style="padding-bottom:20px;margin-top: 20px">
         <div class="col col-md-8" style="padding-left:0">
           <div class="button-group-lg" style="padding-bottom: 0;border: 2px #1c7430;/*border:1px solid #a9a9a9;*//*background-color: #449d44*/">
-            <a  id="3" v-bind:class="[errorClass ,isActive1 ? activeClass :errorClass]" v-on:click="changeDate($event.target)">实用农技</a>
-            <a  id="6" v-bind:class="[errorClass ,isActive2 ? activeClass : errorClass]" v-on:click="changeDate($event.target)">合作社运营</a>
+            <a  id="3" v-bind:class="[errorClass ,isActive1 ? activeClass :errorClass]" v-on:click="changeDate($event.target)" style="border: none;border-radius: 0">实用农技</a>
+            <a  id="6" v-bind:class="[errorClass ,isActive2 ? activeClass : errorClass]" v-on:click="changeDate($event.target)" style="border: none;border-radius: 0">合作社运营</a>
           </div>
           <!--<div class="col col-md-4" style="padding-left: 0">-->
             <!--<img src="../../../static/images/nongji.png" alt="" class="img-responsive">-->
@@ -99,7 +96,7 @@
         </div>
 
         <div class="col col-md-4" style="margin-right: 0">
-          <span class="btn btn-success btn-lg" style="/*width: 100%;background-color:#449d44*/ ">三农服务</span>
+          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0">三农服务</span>
           <img src="../../../static/images/nongji .jpg" alt="" class="img-responsive">
           <ul class="fuwu">
             <li class="pull-left"><a href="#">农事指导&nbsp;<span class="glyphicon glyphicon-chevron-left"></span></a></li>
@@ -118,7 +115,7 @@
           <img src="../../../static/images/nonghe.jpg" alt="" class="img-responsive">
         </div>
         <div class="col col-md-5">
-          <span class="btn btn-success btn-lg" style="/*width: 100%;*/background-color: #449d44">农合观点</span>
+          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0">农合观点</span>
           <ul id="guandian">
           <li  v-for="item in viewpoint"><span class="glyphicon glyphicon-chevron-right"></span>
             &nbsp;<a href="">{{item.informationTtile}} </a></li>
@@ -126,7 +123,7 @@
           </ul>
         </div>
         <div class="col col-md-5" style="padding-right: 0">
-          <span class="btn btn-success btn-lg" style="/*width: 100%*/;background-color: #449d44">农合学院</span>
+          <span class="btn btn-success btn-lg" style="border: none;border-radius: 0">农合学院</span>
           <ul id="xueyuan">
             <li  v-for="item in collage"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;<a href="">
               {{item.informationTtile}} </a>
@@ -347,7 +344,6 @@
  .pull-right li{
     float: left;
     color: #f8f8f8;
-    font-size: 18px;
     margin-right: 20px;
     padding-top: 10px;
   }
@@ -367,10 +363,10 @@
   .butie{
    padding-left: 10px;
   }
-  .butie li{
-    margin-top: 6px;
-    margin-bottom: 6px;
-  }
+  /*.butie li{*/
+    /*margin-top: 6px;*/
+    /*margin-bottom: 6px;*/
+  /*}*/
   .butie li a{
     color: black;
   }
@@ -419,7 +415,7 @@
   }
   #xueyuan a{
     line-height: 35px;
-    font-size: 16px;
+    /*font-size: 16px; */
     margin-top: 20px;
     color: black;
   }
