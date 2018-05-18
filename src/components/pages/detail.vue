@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
    <div class="container-fluid" style="margin-left:5%;margin-right:5% " id="detail">
      <div class="row">
        <div class="col col-md-9">
@@ -33,7 +33,8 @@
          <div style="height: 10px;border-top: 1px ridge silver;"></div>
 
        <div>
-         <h4 style="width: 20%" class="pull-left">我想说两句</h4> <p class="pull-right" style="margin-top: 5px">已有 <a href="#">0</a>条评论</p>
+         <h4 style="width: 20%" class="pull-left">我想说两句</h4>   评论23234条
+         <p class="pull-right" style="margin-top: 5px">已有 <a href="#">{{commentsCountTotal}}</a>条评论</p>
          <textarea type="text" v-model="replyContentTmp" class="form-control" style="height: 200px" v-on:click="replyContent()">
 
          </textarea>
@@ -58,9 +59,41 @@
                      <p class="media-heading"><h4><strong>{{item.userName}}</strong></h4><span>{{item.replyDate}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span></span></p>
                      <p style="text-indent:2em">{{item.replyContent}}</p>
                    </div>
+
                  </div>
+                 <div class="container" style="width: 100%;margin-bottom: -100px">
+                   <div class="row clearfix" style="width: 100%">
+                     <div class="col-md-12 column">
+                       <ul class="pager">
+                         <li class="previous">
+                           <a>
+                            <!-- commentsPageSize:10,
+                             commentsCurrentPage:1,
+                             commentsPageTotal:0,
+                             commentsCountTotal:0,-->
+                            分页大小： {{commentsPageSize}}/1页</a></li>
+                         <li class=" next"><a
+                           v-bind:id="commentsPageTotal">尾页</a>
+                         </li>
+                         <li class=" next"><a
+                           v-bind:id="commentsCurrentPage+1">下一页</a>
+                         </li>
 
+               <li class=" next"><a
+                 >{{commentsCurrentPage}}/{{commentsPageTotal}}</a>
+               </li>
+           <li  class="next"><a
+             v-bind:id="commentsCurrentPage-1">上一页</a>
+           </li>
+         <li class="next">
+           <a
+             v-bind:id="1">首页</a>
+         </li>
 
+         </ul>
+       </div>
+     </div>
+   </div>
                </li>
              </ul>
            </div>
@@ -103,14 +136,18 @@
             images:service.methods.queryImages(this,this.$route.query.informationId),//获取图片列表
             pathUrl:VueResource.data.url,//获取路劲informationType
             correlation :service.methods.correlationQuery(this,this.$route.query.informationType),//相关l兰
-            comments:service.methods.comment(this,this.$route.query.informationId),//回复
+            comments:service.methods.comment(this,this.$route.query.informationId,4,1),//回复
+            commentsPageSize:10,
+            commentsCurrentPage:1,
+            commentsPageTotal:0,
+            commentsCountTotal:0,
             message:service.methods.checkUserLoin(this),
             replyContentTmp:""
           }
       },
       methods:{
           changeDateTmp(e){
-          this.comments=service.methods.comment(this,e.id)
+          this.comments=service.methods.comment(this,e.id,this.commentsPageSize,this.commentsCurrentPage)
           this.infromation=service.methods.queryDetils(this,e.id)
           this.images=service.methods.queryImages(this,e.id)
             this.informationId=e.id
@@ -119,10 +156,6 @@
         replyContent(){
           this.message=service.methods.checkUserLoin(this)
             //查询是否登录过
-          if(this.message==0){
-
-            document.getElementById("submitData").click()
-          }
         },
         //回复内容
         submitReply(){
@@ -130,7 +163,7 @@
               alert("内容长度大于5")
               return
             }
-          this.comments=service.methods.reply( this, this.informationId, this.replyContentTmp)
+          this.comments=service.methods.reply( this, this.informationId, this.replyContentTmp,this.commentsPageSize,this.commentsCurrentPage)
 
         }
       }
