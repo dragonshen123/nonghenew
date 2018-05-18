@@ -39,7 +39,7 @@
           </a>
         </div>
       </div>
-      <div class="row"  style="background-color:#169f14;height: 50px;">
+      <div class="row col-md-12"  style="background-color:#169f14;height: 50px;">
         <h3 class="col col-md-2" v-on:click="makeActive()" >政策补贴</h3>
         <ul class="pull-right">
           <li ><a href="#">农机购置补贴政策 </a>|</li>
@@ -149,8 +149,8 @@
           </div>
           <!--<Show></Show>-->
         </div>
-        <div class="row" style="margin-top: 20px">
-          <div class="col col-md-5" style="padding-left: 0">
+        <div class="row col-md-12" style="margin-top: 20px;padding-left: 0;padding-right: 0">
+          <div class="col col-md-5" style="padding-left: 0;border: 1px ridge silver">
             <h3 style="background-color: #449d44;color: white;padding: 10px 10px"><hr class="hr pull-left" style="width: 15%;border-top:3px solid #eee;margin-left: 2%;margin-right: 2%;margin-top: 10px"><span style="float: left">社会化服务</span><hr class="hr pull-left" style="width: 25%;border-top:3px solid #eee;margin-left: 2%;margin-right: 2%;margin-top: 10px">更多&nbsp;></h3>
             <div  class="col col-md-5" id="shehuihua">
               <p  v-for="item in service"><a href="#">{{item.informationTtile}}</a></p>
@@ -177,7 +177,7 @@
               </ul>
             </div>
           </div>
-          <div class="col col-md-7" style="padding-right: 0">
+          <div class="col col-md-7" style="padding-right: 0;border: 1px ridge silver">
             <h3 style="background-color: #449d44;color: white;padding: 10px 10px"><hr class="hr pull-left" style="width: 20%;border-top:3px solid #eee;margin-left: 2%;margin-right: 2%;margin-top: 10px"><span style="float: left">农业快讯</span><hr class="hr pull-left" style="width: 40%;border-top:3px solid #eee;margin-left: 2%;margin-right: 2%;margin-top: 10px">更多&nbsp;></h3>
             <div class="col col-md-6" id="shehuihua">
               <p  v-for="item in news"><a href="#">{{item.informationTtile}}</a></p>
@@ -206,8 +206,8 @@
             </div>
           </div>
         </div>
-        <div class="row" style="margin: 0 0;padding: 0 0;height: 10px;background-color: #449d44"></div>
-        <div class="row">
+        <div class="row col-md-12" style="margin: 0 0;padding: 0 0;height: 10px;background-color: #449d44"></div>
+        <div class="row col-md-12">
           <div class="col col-md-3">
             <img src="../../../static/images/nongc.jpg" class="img-responsive" alt="" style="z-index: 0">
             <img id="play" src="../../../static/images/play.png" class="img-responsive" alt="" style="z-index: 1;position: absolute; top: 50%; left: 50%; margin-left: -50px; margin-top: -50px; ">
@@ -225,7 +225,7 @@
             <img id="play3" src="../../../static/images/play.png" class="img-responsive" alt="" style="z-index: 1;position: absolute; top: 50%; left: 50%; margin-left: -50px; margin-top: -50px; ">
           </div>
         </div>
-      <div class="row" style="margin: 0 0;padding: 0 0;height: 10px;background-color: #449d44"></div>
+      <div class="row col-md-12" style="margin: 0 0;padding: 0 0;height: 10px;background-color: #449d44"></div>
     </div>
 </template>
 
