@@ -109,7 +109,8 @@
         </div>
         </div>
       </div>
-        <div class="row col-md-12" style="border: 1px ridge silver;margin-left: 0">
+      <div class="row" style="margin-top:20px;"><img src="../../../static/images/nav.jpg" alt="" class="img-responsive" style="border: 1px ridge #449d44"></div>
+      <div class="row col-md-12" style="border: 1px ridge silver;margin-left: 0">
         <div class="col col-md-2" style="padding-left: 0">
           <img src="../../../static/images/nonghe.jpg" alt="" class="img-responsive">
           <img src="../../../static/images/nonghe.jpg" alt="" class="img-responsive">
@@ -134,7 +135,6 @@
           </ul>
         </div>
       </div>
-      <div class="row" style="margin-top:20px;"><img src="../../../static/images/nav.jpg" alt="" class="img-responsive" style="border: 1px ridge #449d44"></div>
         <div class="row" style="margin-top: 20px;height: 100px" id="img">
           <div class="col col-md-3" >
             <img src="../../../static/images/nongc.jpg" class="img-responsive" alt="">
