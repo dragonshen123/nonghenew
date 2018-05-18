@@ -134,7 +134,8 @@
           </ul>
         </div>
       </div>
-        <div class="row col-md-12" style="clear:both;margin-top: 20px;height: 100px" id="img">
+      <div class="row col-md-12" style="padding-left: 0;padding-right: 0;margin-top: 5px"><img src="../../../static/images/nav.jpg" alt="" class="img-responsive" style="border: 3px ridge #449d44"></div>
+      <div class="row col-md-12" style="clear:both;margin-top: 20px;height: 100px" id="img">
           <div class="col col-md-3" >
             <img src="../../../static/images/nongc.jpg" class="img-responsive" alt="">
           </div>
@@ -150,16 +151,16 @@
           <!--<Show></Show>-->
         </div>
         <div class="row col-md-12" style="margin-top: 20px;padding-left: 0;padding-right: 0">
-          <div class="col col-md-5" style="padding-left: 0;border: 1px ridge silver">
+          <div class="col col-md-6" style="padding-left: 0;padding-right:20px;border: 1px ridge silver;min-height: 450px">
             <h3 style="background-color: #449d44;color: white;padding: 10px 10px"><hr class="hr pull-left" style="width: 15%;border-top:3px solid #eee;margin-left: 2%;margin-right: 2%;margin-top: 10px"><span style="float: left">社会化服务</span><hr class="hr pull-left" style="width: 25%;border-top:3px solid #eee;margin-left: 2%;margin-right: 2%;margin-top: 10px">更多&nbsp;></h3>
-            <div  class="col col-md-5" id="shehuihua">
-              <p  v-for="item in service"><a href="#">{{item.informationTtile}}</a></p>
-              <p><a href="#">更多>> </a></p>
+            <div  class="col col-md-6" id="shehuihua">
+              <p  v-for="(item,index) in service" class="list-group-item" v-if="index<7"><a href="#">{{item.informationTtile}}</a></p>
+              <p class="list-group-item"><a href="#">更多>> </a></p>
 
             </div>
-            <div class="col col-md-7" style="padding-left: 0;padding-right: 0;">
-             <h4 style="color: #f8f8f8;background-color: #72e0e0;padding-top: 5px;padding-bottom: 5px">中农新型农业社会化服务社服务体系</h4>
-              <img src="../../../static/images/shehui.jpg" class="img-responsive" id="tixi" alt="" style="z-index: 0">
+            <div class="col col-md-6" style="padding-left: 0;padding-right: 0;">
+             <h5 style="color: #f8f8f8;background-color: #72e0e0;padding-top: 5px;padding-bottom: 5px">中农新型农业社会化服务社服务体系</h5>
+              <img src="../../../static/images/shehui.jpg" class="img-responsive" id="tixi" alt="" style="z-index: 0;padding-right: 0">
               <ul  style="z-index: 100" hidden="hidden" id="tixishow">
                 <li>农资直供: 为社员提供肥料、种子、农药、农机、农膜等农用物资的直接供应，减少中间环节，节本增效。
 
@@ -177,16 +178,16 @@
               </ul>
             </div>
           </div>
-          <div class="col col-md-7" style="padding-right: 0;border: 1px ridge silver">
+          <div class="col col-md-6" style="padding-right: 0;border: 1px ridge silver;min-height: 450px">
             <h3 style="background-color: #449d44;color: white;padding: 10px 10px"><hr class="hr pull-left" style="width: 20%;border-top:3px solid #eee;margin-left: 2%;margin-right: 2%;margin-top: 10px"><span style="float: left">农业快讯</span><hr class="hr pull-left" style="width: 40%;border-top:3px solid #eee;margin-left: 2%;margin-right: 2%;margin-top: 10px">更多&nbsp;></h3>
             <div class="col col-md-6" id="shehuihua">
-              <p  v-for="item in news"><a href="#">{{item.informationTtile}}</a></p>
+              <p  v-for="item in news" class="list-group-item"><a href="#">{{item.informationTtile}}</a></p>
 
-              <p><a href="#">更多>> </a></p>
+              <p class="list-group-item"><a href="#">更多>> </a></p>
 
             </div>
             <div class="col col-md-6" style="padding-left: 0;padding-right: 0;">
-              <h4 style="color: #f8f8f8;background-color: #72e0e0;padding-top: 5px;padding-bottom: 5px">中农新型农业社会化服务社服务体系</h4>
+              <h5 style="color: #f8f8f8;background-color: #72e0e0;padding-top: 5px;padding-bottom: 5px">中农新型农业社会化服务社服务体系</h5>
               <img id="kuaixun" src="../../../static/images/shehui.jpg" class="img-responsive" alt="">
               <ul style="z-index: 100" hidden="hidden" id="kuaixunshow">
                 <li>农资直供: 为社员提供肥料、种子、农药、农机、农膜等农用物资的直接供应，减少中间环节，节本增效。
@@ -206,7 +207,7 @@
             </div>
           </div>
         </div>
-        <div class="row col-md-12" style="margin: 0 0;padding: 0 0;height: 10px;background-color: #449d44"></div>
+        <div class="row col-md-12" style="margin: 0 0;padding: 0 0;height: 10px;background-color: #449d44;margin-top: 15px"></div>
         <div class="row col-md-12">
           <div class="col col-md-3">
             <img src="../../../static/images/nongc.jpg" class="img-responsive" alt="" style="z-index: 0">
@@ -298,6 +299,17 @@
   }
   #play:hover{
     transform: scale(1.4);
+  }
+  .list-group-item:hover{
+    -webkit-animation: myItem 2s;
+  }
+  @-webkit-keyframes myItem {
+     from{
+     } to{
+              background-color: #449d44;
+              background-size: 100%;
+    border-radius: 5px;
+            }
   }
   #play1{
     cursor: pointer;
@@ -406,13 +418,9 @@
     /*padding: 10px 10px;*/
     /*color: #f8f8f8;*/
   /*}*/
-  #zhishi{
-    line-height: 35px;
-    font-size: 18px;
-  }
   #guandian a{
     line-height: 35px;
-    font-size: 18px;
+    /*font-size: 18px;*/
     margin-top: 20px;
     color: black;
   }
