@@ -170,8 +170,8 @@
          <div class="col col-md-2" style="margin-top: 20px">
            <span style="/*margin-right: 30px;*/ float: top">
                <div class="input-group">
-                           <input type="text" class="form-control" PLACEHOLDER="请输入搜索内容">
-               <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                           <input type="text" class="form-control" PLACEHOLDER="请输入搜索内容" v-model="selectValue">
+                 <router-link :to="{path:'/moreDetils',query: {selectValue:selectValue}}" class="input-group-addon"><i class="glyphicon glyphicon-search"></i></router-link>
                  </div>
              </span>
          </div>
@@ -200,7 +200,8 @@
           menu:'',
           apass:'',
           apassdis:'',
-          userName:'admin'
+          userName:'admin',
+          selectValue:''//搜索关键词
         }
       },
       methods: {
@@ -268,7 +269,8 @@
         },
         submitLogin:function(){
           service.methods.login(this,this.pass,this.name);
-        }
+        },
+
       }
     }
 </script>

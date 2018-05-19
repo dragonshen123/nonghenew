@@ -70,15 +70,22 @@
           commentsCurrentPage:1,
           commentsPageTotal:0,
           informationType:this.$route.query.informationType,
-          commentsCountTotal:0
+          commentsCountTotal:0,
+          selectValue:this.$route.query.selectValue
         }
       },
       created() {
-        this.lists = service.methods.queryPage(this, this.commentsPageSize, this.commentsCurrentPage, this.informationType)
+        if(this.informationType==undefined){
+          this.informationType=-1
+        }
+        this.lists = service.methods.queryPage(this, this.commentsPageSize, this.commentsCurrentPage, this.informationType,this.selectValue)
       },
       methods: {
         pageQuery(e){
-        this.lists= service.methods.queryPage(this,this.commentsPageSize,e.id,this.informationType)
+          if(this.informationType==undefined){
+            this.informationType=-1
+          }
+        this.lists= service.methods.queryPage(this,this.commentsPageSize,e.id,this.informationType,this.selectValue)
     },
        /* watch:{
           'informationType':{
