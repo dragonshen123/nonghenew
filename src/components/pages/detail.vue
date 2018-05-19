@@ -33,12 +33,27 @@
          <div style="height: 10px;border-top: 1px ridge silver;"></div>
 
        <div>
-         <h4 style="width: 20%" class="pull-left">我想说两句</h4>   评论23234条
+         <h4 style="width: 20%" class="pull-left">我想说两句</h4>
+         <h4 style="width: 20%" class="pull-left">好评：{{infromation.informationGoods}}</h4>
+         <h4 style="width: 20%" class="pull-left">差评：{{infromation.informationNotGoods}}</h4>
          <p class="pull-right" style="margin-top: 5px">已有 <a href="#">{{commentsCountTotal}}</a>条评论</p>
          <textarea type="text" v-model="replyContentTmp" class="form-control" style="height: 200px" v-on:click="replyContent()">
 
          </textarea>
-         <p class="btn btn-default pull-right" style="margin-top: 2px" v-on:click="submitReply()">发表评论</p>
+         <div class="pull-right">
+
+           <label class="radio-inline">
+             <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="1" checked> 好评
+           </label>
+           <label class="radio-inline">
+             <input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="0"> 差评
+           </label>
+           <label class="radio-inline">
+             <p class="btn btn-default " style="margin-top: 2px" v-on:click="submitReply()">发表评论</p>
+           </label>
+         </div>
+
+
        </div>
          <div style="margin-top: 40px">
 
@@ -67,26 +82,23 @@
                        <ul class="pager">
                          <li class="previous">
                            <a>
-                            <!-- commentsPageSize:10,
-                             commentsCurrentPage:1,
-                             commentsPageTotal:0,
-                             commentsCountTotal:0,-->
+
                             分页大小： {{commentsPageSize}}/1页</a></li>
-                         <li class=" next"><a
+                         <li class=" next"><a v-on:click="queryPage($event.target)"
                            v-bind:id="commentsPageTotal">尾页</a>
                          </li>
-                         <li class=" next"><a
+                         <li class=" next"><a  v-on:click="queryPage($event.target)"
                            v-bind:id="commentsCurrentPage+1">下一页</a>
                          </li>
 
                <li class=" next"><a
                  >{{commentsCurrentPage}}/{{commentsPageTotal}}</a>
                </li>
-           <li  class="next"><a
+           <li  class="next"><a  v-on:click="queryPage($event.target)"
              v-bind:id="commentsCurrentPage-1">上一页</a>
            </li>
          <li class="next">
-           <a
+           <a   v-on:click="queryPage($event.target)"
              v-bind:id="1">首页</a>
          </li>
 
@@ -159,12 +171,26 @@
         },
         //回复内容
         submitReply(){
-            if(this.replyContentTmp==null||this.replyContentTmp==undefined||this.replyContentTmp.ength<5){
+            if(this.replyContentTmp==null||this.replyContentTmp==undefined||this.replyContentTmp.length<5){
               alert("内容长度大于5")
-              return
-            }
-          this.comments=service.methods.reply( this, this.informationId, this.replyContentTmp,this.commentsPageSize,this.commentsCurrentPage)
+              return null
+            }else{
+              var radio=document.getElementsByName("optionsRadiosinline");
+              var selectvalue=null;   //  selectvalue为radio中选中的值
+              for(var i=0;i<radio.length;i++){
+                if(radio[i].checked==true) {
+                  selectvalue=radio[i].value;
+                  break;
+                }
 
+              }
+              this.comments=service.methods.reply( this, this.informationId, this.replyContentTmp,this.commentsPageSize,this.commentsCurrentPage,selectvalue)
+            }
+
+        },
+        //分页
+        queryPage(e){
+          this.comments=service.methods.comment( this, this.informationId,this.commentsPageSize,e.id)
         }
       }
        }

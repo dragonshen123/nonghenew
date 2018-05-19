@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <router-view/>
-    <Footer></Footer>
+    <Footers></Footers>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 export default {
   name: 'App',
   components: {
-    Footer: require('@/components/pages/footer').default,
+    Footers: require('@/components/pages/footers').default,
     Header: require('@/components/pages/header').default
   }
 }
@@ -18,6 +18,6 @@ export default {
 
 <style>
 #app {
-  font-family: 'Microsoft YaHei';
+  font-family: '微软雅黑';
 }
 </style>
