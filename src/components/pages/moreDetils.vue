@@ -1,12 +1,12 @@
 <template>
-    <div class="container-fluid" style="margin-left:5%;margin-right:5% " id="moreDetils">
+    <div class="container" id="moreDetils">
       <div class="row">
         <ul class="breadcrumb" style="margin-left: 50px">
           <li>
             <a href="/">首页</a> <span class="divider">></span>
           </li>
           <li>
-            <a href="/#">政策补贴</a> <span class="divider">></span>
+            <a href="/#">{{menuName}}</a> <span class="divider">></span>
           </li>
         </ul>
       </div>
@@ -15,7 +15,7 @@
             <li class="list-group-item" >
           <div class="media">
             <a  class="media-left">
-              <img  alt="媒体对象" class="media-object" v-bind:src="pathUrl+item.informationImage">
+              <img  alt="媒体对象" class="media-object " v-bind:src="pathUrl+item.informationImage">
             </a>
             <div class="media-body" style="padding-top: 1%;line-height: 30px;padding-left: 2%">
               <h3 class="media-heading">{{item.informationTtile}}</h3>
@@ -70,7 +70,8 @@
           commentsCurrentPage:1,
           commentsPageTotal:0,
           informationType:this.$route.query.informationType,
-          commentsCountTotal:0
+          commentsCountTotal:0,
+          menuName:''
         }
       },
       watch:{
@@ -78,9 +79,11 @@
            this.informationType = e.query.informationType
           console.log(e.query.informationType)
           this.lists = service.methods.queryPage(this, this.commentsPageSize, this.commentsCurrentPage, this.informationType)
+          this.menuName = this.$route.query.menuName
         }
       },
       created() {
+        this.menuName = this.$route.query.menuName
         this.lists = service.methods.queryPage(this, this.commentsPageSize, this.commentsCurrentPage, this.informationType)
       },
       methods: {

@@ -1,8 +1,8 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
-   <div class="container-fluid" style="margin-left:5%;margin-right:5% " id="detail">
+   <div class="container"  id="detail">
      <div class="row">
        <div class="col col-md-9">
-         <div id="myCarousel" class="carousel slide" style="height: 480px;overflow: hidden">
+         <div id="myCarousel" class="carousel slide" style="height: 480px;width:100%;overflow: hidden">
            <!-- 轮播（Carousel）指标 -->
            <ol class="carousel-indicators">
              <li data-target="#myCarousel" v-bind:data-slide-to="key"  v-for="(item, key) in images" ></li>
@@ -202,6 +202,11 @@
    color: black;
  }
  .media img{
-   height: 250x;
+   height: 250px;
  }
+  .carousel-inner img{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
 </style>

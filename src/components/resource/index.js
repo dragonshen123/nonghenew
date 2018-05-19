@@ -12,8 +12,8 @@ VueResource.actions = {
   delete: {method: 'DELETE'}
 }
 
-export default({
-  data :{
-     url:"http://localhost:8080"
+export default ({
+  data: {
+    url: "http://192.168.0.112:8080"
   }
 });

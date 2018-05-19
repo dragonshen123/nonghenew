@@ -46,7 +46,7 @@
       },
 
       getImages(e) {
-          var resouce2 = e.$resource('http://localhost:8080/informationController/getImages');
+          var resouce2 = e.$resource('http://192.168.0.112:8080/informationController/getImages');
           resouce2.query().then(function (response) {
             e.images
           });

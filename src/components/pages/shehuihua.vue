@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" style="margin-left:5%;margin-right:5% ">
+  <div class="container">
     <div class="row">
       <ul class="breadcrumb" style="margin-left: 50px">
         <li>
