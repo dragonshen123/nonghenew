@@ -135,20 +135,17 @@
         </div>
       </div>
       <div class="row col-md-12" style="padding-left: 0;padding-right: 0;margin-top: 5px"><img src="../../../static/images/nav.jpg" alt="" class="img-responsive" style="border: 3px ridge #449d44"></div>
-      <div class="row col-md-12" style="clear:both;margin-top: 20px;height: 100px" id="img">
-          <div class="col col-md-3" >
-            <img src="../../../static/images/nongc.jpg" class="img-responsive" alt="">
-          </div>
-          <div class="col col-md-3">
-            <img src="../../../static/images/nongji.png" class="img-responsive" alt="">
-          </div>
-          <div class="col col-md-3">
-            <img src="../../../static/images/t1.jpg" class="img-responsive" alt="">
-          </div>
-          <div class="col col-md-3">
-            <img src="../../../static/images/640.jpg" class="img-responsive" alt="">
-          </div>
-          <!--<Show></Show>-->
+      <div class="row col-md-12" id="box" style="padding-left: 0;padding-right: 0;">
+        <ul style="padding-left: 0;padding-right: 0" id="ul">
+          <li><img src="../../../static/images/nongc.jpg" class="img-responsive" alt=""></li>
+          <li><img src="../../../static/images/nongji.png" class="img-responsive" alt=""></li>
+          <li><img src="../../../static/images/t1.jpg" class="img-responsive" alt=""></li>
+          <li><img src="../../../static/images/640.jpg" class="img-responsive" alt=""></li>
+          <li><img src="../../../static/images/nongc.jpg" class="img-responsive" alt=""></li>
+          <li><img src="../../../static/images/nongji.png" class="img-responsive" alt=""></li>
+          <li><img src="../../../static/images/nongc.jpg" class="img-responsive" alt=""></li>
+          <li><img src="../../../static/images/nongji.png" class="img-responsive" alt=""></li>
+        </ul>
         </div>
         <div class="row col-md-12" style="margin-top: 20px;padding-left: 0;padding-right: 0">
           <div class="col col-md-6" style="padding-left: 0;padding-right:20px;border: 1px ridge silver;min-height: 450px">
@@ -209,7 +206,8 @@
         </div>
         <div class="row col-md-12" style="margin: 0 0;padding: 0 0;height: 10px;background-color: #449d44;margin-top: 15px"></div>
         <div class="row col-md-12">
-          <div class="col col-md-3">
+          <div class="col col-md-3" >
+            <ul></ul>
             <img src="../../../static/images/nongc.jpg" class="img-responsive" alt="" style="z-index: 0">
             <img id="play" src="../../../static/images/play.png" class="img-responsive" alt="" style="z-index: 1;position: absolute; top: 50%; left: 50%; margin-left: -50px; margin-top: -50px; ">
           </div>
@@ -281,10 +279,74 @@
        }
       }
     };
+ $(document).ready(function(){
+    var oDiv = document.getElementById('box');
+    var oUl = document.getElementById('ul');
+    var speed = 2;//初始化速度
 
+    oUl.innerHTML += oUl.innerHTML;//图片内容*2-----参考图（2）
+    var oLi= document.getElementById('ul').getElementsByTagName('li');
+    oUl.style.width = oLi.length*300+'px';//设置ul的宽度使图片可以放下
+
+    // var oBtn1 = document.getElementById('btn1');
+    // var oBtn2 = document.getElementById('btn2');
+
+
+    function move(){
+      if(oUl.offsetLeft<-(oUl.offsetWidth/2)){//向左滚动，当靠左的图4移出边框时
+        oUl.style.left = 0;
+      }
+
+      if(oUl.offsetLeft > 0){//向右滚动，当靠右的图1移出边框时
+        oUl.style.left = -(oUl.offsetWidth/2)+'px';
+      }
+
+      oUl.style.left = oUl.offsetLeft + speed + 'px';
+    }
+
+    // oBtn1.addEventListener('click',function(){
+    //   speed = -2;
+    // },false);
+    // oBtn2.addEventListener('click',function(){
+    //   speed = 2;
+    //},false);
+
+     timer = setInterval(move,30);//全局变量 ，保存返回的定时器
+
+    oDiv.addEventListener('mouseout', function () {
+      var timer = setInterval(move,30);
+    },false);
+    oDiv.addEventListener('mousemove', function () {
+      clearInterval(timer);//鼠标移入清除定时器
+    },false);
+  })
 </script>
 
 <style scoped>
+  #box{
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+  }
+  #box ul{
+    width: 1200px;
+    height: 100%;
+    position: absolute;
+  left: 0;
+  top: 0;
+    overflow: hidden;
+  }
+  #ul li{
+    width: 300px;
+    height:150px;
+    float: left;
+    list-style: none;
+  }
+  /*#box ul li img{*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*vertical-align: top;*/
+  /*}*/
   .pull-right{
    list-style: none;
    margin-right: 2px;
