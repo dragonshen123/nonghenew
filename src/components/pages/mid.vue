@@ -61,7 +61,7 @@
               <router-link :to="{path:'/Detail',query: {informationId: site.informationId,informationType:site.informationType}}">
                <span class="pull-left"> {{site.informationTtile}}</span><span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>
             </li>
-            <li><a href="">更多>></a></li>
+            <li><a href=""  class="pull-left">更多>></a></li>
           </ul>
           </div>
 
