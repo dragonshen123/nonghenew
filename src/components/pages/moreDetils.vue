@@ -73,19 +73,25 @@
           commentsCountTotal:0
         }
       },
+      watch:{
+        "$route": function (e) {
+           this.informationType = e.query.informationType
+          console.log(e.query.informationType)
+          this.lists = service.methods.queryPage(this, this.commentsPageSize, this.commentsCurrentPage, this.informationType)
+        }
+      },
       created() {
         this.lists = service.methods.queryPage(this, this.commentsPageSize, this.commentsCurrentPage, this.informationType)
       },
       methods: {
         pageQuery(e){
         this.lists= service.methods.queryPage(this,this.commentsPageSize,e.id,this.informationType)
+          console.log(this.informationType)
     },
-       /* watch:{
-          'informationType':{
-            handler:'created',//调用方法
-            immediate:true,//进入立即执行一次
-          }
-        },*/
+       fetchData(){
+        // informationType:this.$route.query.informationType
+        // this.lists= service.methods.queryPage(this,this.commentsPageSize,e.id,this.informationType)
+       }
   }
 
     }
