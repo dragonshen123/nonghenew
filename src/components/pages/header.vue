@@ -148,14 +148,23 @@
            <img src="static/images/logo.png" class="img-responsive" alt=""></a></div>
          <div class="col col-md-8 col-xs-8 col-lg-8" style="margin-top: 20px">
            <div class="button-group" style="padding-left: 0;display: inline">
-             <span style="margin-right: 5px;"> <router-link to="/"><a  class="btn btn-success" >首页</a></router-link> </span>
-             <span style="margin-right: 5px;">  <router-link to="/butie"><a class="btn btn-success" >政策补贴</a></router-link> </span>
-             <span style="margin-right: 5px;"><a href="/hezuoshe" class="btn btn-success" >合作社运营</a> </span>
-             <span style="margin-right: 5px;"><a href="/nongji" class="btn btn-success" >实用农技</a> </span>
-             <span style="margin-right: 5px;"><a href="/guandian" class="btn btn-success" >农合观点</a> </span>
-             <span style="margin-right: 5px;"><a href="/xueyuan" class="btn btn-success" >农合学院</a> </span>
-             <span style="margin-right: 5px;"><a href="/shehuihua" class="btn btn-success" >社会化服务</a> </span>
-             <span style="margin-right: 5px;"><a href="/kuaixun" class="btn btn-success" >农业快讯</a> </span>
+             <span style="margin-right: 5px;">
+               <router-link to="/"><a  class="btn btn-success" >首页</a></router-link> </span>
+             <!--1 社会化服务 2 政策补贴 3 使用农技4 农业跨讯5农合学院6合作社运营7农合观点-->
+             <span style="margin-right: 5px;">
+               <router-link :to="{path:'/moreDetils',query: {informationType: 2}}"><a class="btn btn-success" >政策补贴</a></router-link> </span>
+             <span style="margin-right: 5px;">
+               <router-link :to="{path:'/moreDetils',query: {informationType: 6}}"><a class="btn btn-success" >合作社运营</a></router-link> </span>
+             <span style="margin-right: 5px;">
+              <router-link :to="{path:'/moreDetils',query: {informationType: 3}}"><a class="btn btn-success" >实用农技</a></router-link> </span>
+             <span style="margin-right: 5px;">
+               <router-link :to="{path:'/moreDetils',query: {informationType: 7}}"><a class="btn btn-success" >农合观点</a></router-link> </span>
+             <span style="margin-right: 5px;">
+               <router-link :to="{path:'/moreDetils',query: {informationType: 5}}"><a class="btn btn-success" >农合学院</a></router-link> </span>
+             <span style="margin-right: 5px;">
+               <router-link :to="{path:'/moreDetils',query: {informationType: 1}}"><a class="btn btn-success" >社会化服务</a></router-link> </span>
+             <span style="margin-right: 5px;">
+               <router-link :to="{path:'/moreDetils',query: {informationType: 4}}"><a class="btn btn-success" >农业快讯</a></router-link> </span>
            </div>
          </div>
          <div class="col col-md-2" style="margin-top: 20px">
