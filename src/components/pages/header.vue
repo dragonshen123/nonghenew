@@ -9,10 +9,10 @@
          <div class="pull-right">
            <ul class="nav navbar-nav">
              <li v-if="userName!==''" style="margin-right: 20px"><h4>欢迎您！{{userName}}</h4></li>
-             <li v-if="userName!==''" class="welcome"><img src="../../../static/images/user.jpg" alt="" class="img-circle img-responsive">
+             <li v-if="userName!==''" class="welcome"><img src="../../../static/images/play.png" alt="" class="img-circle img-responsive">
              <ul class="welcome-option">
                <li><a href="">修改密码</a></li>
-               <li style="cursor: pointer"><a  v-on:click="loginOUt">退出登录</a></li>
+               <li><a href="">退出登录</a></li>
              </ul>
              </li>
              <li  v-if="userName==''"><a href="#" data-toggle="modal" id="submitData" data-target="#myModal" v-on:click="creatCode()">登录</a></li>
@@ -152,26 +152,26 @@
                <router-link to="/"><a  class="btn btn-success" >首页</a></router-link> </span>
              <!--1 社会化服务 2 政策补贴 3 使用农技4 农业跨讯5农合学院6合作社运营7农合观点-->
              <span style="margin-right: 5px;">
-               <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}"><a class="btn btn-success" >政策补贴</a></router-link> </span>
+               <router-link :to="{path:'/moreDetils',query: {informationType: 2}}"><a class="btn btn-success" >政策补贴</a></router-link> </span>
              <span style="margin-right: 5px;">
-               <router-link :to="{path:'/moreDetils',query: {informationType: 6,menuName:'合作社运营'}}"><a class="btn btn-success" >合作社运营</a></router-link> </span>
+               <router-link :to="{path:'/moreDetils',query: {informationType: 6}}"><a class="btn btn-success" >合作社运营</a></router-link> </span>
              <span style="margin-right: 5px;">
-              <router-link :to="{path:'/moreDetils',query: {informationType: 3,menuName:'实用农技'}}"><a class="btn btn-success" >实用农技</a></router-link> </span>
+              <router-link :to="{path:'/moreDetils',query: {informationType: 3}}"><a class="btn btn-success" >实用农技</a></router-link> </span>
              <span style="margin-right: 5px;">
-               <router-link :to="{path:'/moreDetils',query: {informationType: 7,menuName:'农合观点'}}"><a class="btn btn-success" >农合观点</a></router-link> </span>
+               <router-link :to="{path:'/moreDetils',query: {informationType: 7}}"><a class="btn btn-success" >农合观点</a></router-link> </span>
              <span style="margin-right: 5px;">
-               <router-link :to="{path:'/moreDetils',query: {informationType: 5,menuName:'农合学院'}}"><a class="btn btn-success" >农合学院</a></router-link> </span>
+               <router-link :to="{path:'/moreDetils',query: {informationType: 5}}"><a class="btn btn-success" >农合学院</a></router-link> </span>
              <span style="margin-right: 5px;">
-               <router-link :to="{path:'/moreDetils',query: {informationType: 1,menuName:'社会化服务'}}"><a class="btn btn-success" >社会化服务</a></router-link> </span>
+               <router-link :to="{path:'/moreDetils',query: {informationType: 1}}"><a class="btn btn-success" >社会化服务</a></router-link> </span>
              <span style="margin-right: 5px;">
-               <router-link :to="{path:'/moreDetils',query: {informationType: 4,menuName:'农业快讯'}}"><a class="btn btn-success" >农业快讯</a></router-link> </span>
+               <router-link :to="{path:'/moreDetils',query: {informationType: 4}}"><a class="btn btn-success" >农业快讯</a></router-link> </span>
            </div>
          </div>
          <div class="col col-md-2" style="margin-top: 20px">
            <span style="/*margin-right: 30px;*/ float: top">
                <div class="input-group">
-                           <input type="text" class="form-control" PLACEHOLDER="请输入搜索内容" v-model="selectValue">
-                 <router-link :to="{path:'/moreDetils',query: {selectValue:selectValue}}" class="input-group-addon"><i class="glyphicon glyphicon-search" style="color: blue"></i></router-link>
+                           <input type="text" class="form-control" PLACEHOLDER="请输入搜索内容">
+               <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
                  </div>
              </span>
          </div>
@@ -200,16 +200,12 @@
           menu:'',
           apass:'',
           apassdis:'',
-          userName:'admin',
-          selectValue:''//搜索关键词
+          userName:'admin'
         }
       },
       methods: {
         clearName: function () {
           this.name = ''
-        },
-        loginOUt: function () {
-          this.userName = ''
         },
         clearPass: function () {
           this.pass = ''
@@ -272,8 +268,7 @@
         },
         submitLogin:function(){
           service.methods.login(this,this.pass,this.name);
-        },
-
+        }
       }
     }
 </script>
