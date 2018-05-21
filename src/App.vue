@@ -20,4 +20,7 @@ export default {
 #app {
   font-family: '微软雅黑';
 }
+  router-view{
+    min-height: 1000px;
+  }
 </style>
