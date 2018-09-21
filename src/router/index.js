@@ -5,12 +5,12 @@ import moreDetils from '@/components/pages/moreDetils'
 import Detail from '@/components/pages/detail'
 import Map from '@/components/pages/map'
 import VueResource from 'vue-resource'
-import Menu from '@/components/pages/menu'
+import List from '@/components/pages/list'
 /*使用VueResource插件*/
 Vue.use(VueResource);
 Vue.use(Router)
 export default new Router({
- // mode: 'history',
+ mode: 'history',
  // mode:'out-in',
   routes: [
     {
@@ -35,9 +35,9 @@ export default new Router({
       component: Map
     },
     {
-      path:'/Menu',
-      name: 'Menu',
-      component: Menu
+      path:'/List',
+      name: 'List',
+      component: List
     }
   ]
 })
