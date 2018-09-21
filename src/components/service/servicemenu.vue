@@ -42,11 +42,16 @@
           console.log(response.data)
         })
       }*/
-      getAddress(e,id){
-        alert("sdfsdf")
+      getAddress(e,id, flag){
         var user = e.$resource(VueResource.data.url+'/webIndexController/asyncGetNodes?id='+id)
-        user.query().then(function (response) {
-         return response.bodyText;
+        user.query().then(res=>{
+          console.log(res.bodyText)
+            if(flag==0){
+          e.provices=JSON.parse(res.bodyText)
+            }
+          if(flag==1){
+            e.state=JSON.parse(res.bodyText)
+          }
 
         })
     } ,
