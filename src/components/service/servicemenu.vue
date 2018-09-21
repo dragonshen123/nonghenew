@@ -44,13 +44,15 @@
       }*/
       getAddress(e,id){
         alert("sdfsdf")
-        var user = e.$resource(VueResource.data.url+'/web/webIndexController/asyncGetNodes?id='+0)
+        var user = e.$resource(VueResource.data.url+'/webIndexController/asyncGetNodes?id='+id)
         user.query().then(function (response) {
-            alert("sdfsdf")
-          console.log('uesr:'+response)
+         return response.bodyText;
 
         })
-    }
+    } ,
+      getPersonal(){
+
+      }
 
 
     }
