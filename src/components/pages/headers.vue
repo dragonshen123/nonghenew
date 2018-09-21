@@ -249,6 +249,8 @@
             </li></router-link>
 
             <router-link :to="{path:'/List',query:{menuName:'党建合作社',menuItem:[{name:'党建合作社'}]}}"><li class="menu-item">党建合作社</li>  </router-link>
+            <li class="menu-item">生产管理</li>
+            <li class="menu-item">产品预售</li>
             <li class="menu-item">专家库</li>
             <!--<li>-->
               <!--<router-link :to="{path:'/moreDetils',query: {informationType: 1,menuName:'社会化服务'}}">社会化服务</router-link>-->
