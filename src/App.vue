@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <Headers></Headers>
     <div id="bodys">
     <router-view/>
     </div>
-    <Footer></Footer>
+    <Footers></Footers>
   </div>
 </template>
 
@@ -13,8 +13,7 @@ export default {
   name: 'App',
   components: {
     Footers: require('@/components/pages/footers').default,
-    Footer: require('@/components/pages/footer').default,
-    Header: require('@/components/pages/header').default
+    Headers: require('@/components/pages/headers').default
   }
 }
 </script>
