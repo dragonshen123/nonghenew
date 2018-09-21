@@ -1,119 +1,118 @@
 <template>
-    <div class="container" style="margin-top: 50px">
-      <!--福导航横幅图片内容开始-->
-      <div class="row" style="height: 60px;background: url('../../../static/images/m2.jpg');background-size: 100%;background-repeat: no-repeat;width: 100%">
-        <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
-      </div>
-      <!--横幅部分内容结束-->
-      <div class="row" style="margin-top: 5rem">
-        <div class="col col-md-3" id="d_menu">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{title}}</h3>
-            </div>
-            <div class="panel-body">
-              <ul id="d_menu-list">
-                <li :class="index==0?'active':''" v-for="(item,index) in menuList" @click="itemChange(index)">{{item.name}}<i
-                  class="pull-right icon iconfont icon-youjiantou"></i></li>
-              </ul>
-            </div>
+  <div class="container" style="margin-top: 50px">
+    <!--福导航横幅图片内容开始-->
+    <div class="row picture">
+      <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
+    </div>
+    <!--横幅部分内容结束-->
+    <div class="row" style="margin-top: 5rem">
+      <div class="col col-md-3" id="d_menu">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"></h3>
+          </div>
+          <div class="panel-body">
+            <ul id="d_menu-list">
+              <li >
+               <i class="pull-right icon iconfont icon-youjiantou"></i></li>
+            </ul>
           </div>
         </div>
-        <div class="col col-md-9" id="detail">
-          <div class="panel panel-default">
-            <div class="panel-heading" style="display: inline-block">
-              <h3 class="panel-title pull-left" style="width: 30%;line-height: 34px;line-height: 55px">数据列表</h3>
-              <form   class="form-horizontal pull-right" style="width: 100%"  >
-                <div class="form-group" style="margin-bottom: 0px">
-                  <label class="col-sm-1 control-label" style="width: 5%">省</label>
-                  <div class="col-sm-1">
-                    <select  class="form-control" >
-                      <option></option>
-                      <option ></option>
-                    </select>
-                  </div>
-
-                  <label  class="col-sm-1 control-label" style="width: 5%">州</label>
-                  <div class="col-sm-1">
-                    <select type="text" class="form-control" >
-                      <option></option>
-                      <option ></option>
-                    </select>
-                  </div>
-
-                  <label  class="col-sm-1 control-label" style="width: 5%">县</label>
-                  <div class="col-sm-1">
-                    <select type="text" class="form-control"  >
-                      <option></option>
-                      <option ng-repeat="item in county "  ></option>
-                    </select>
-                  </div>
-
-                  <label  class="col-sm-1 control-label" style="width: 5%">镇</label>
-                  <div class="col-sm-1">
-                    <select type="text" class="form-control" >
-                      <option></option>
-                      <option ng-repeat="item in town "  ></option>
-                    </select>
-                  </div>
-
-
-                  <label  class="col-sm-1 control-label" style="width: 9%">村委会</label>
-                  <div class="col-sm-1">
-                    <select type="text" class="form-control"  >
-                      <option></option>
-                      <option ></option>
-                    </select>
-                  </div>
-
-                  <label  class="col-sm-1 control-label" style="width: 9%">村小组</label>
-                  <div class="col-sm-2">
-                    <input  type="text"  class="form-control"  name="groupName"/>
-                  </div>
+      </div>
+      <div class="col col-md-9" id="detail">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="display: inline-block">
+            <h3 class="panel-title pull-left" style="width: 30%;line-height: 34px;line-height: 55px">数据列表</h3>
+            <form class="form-horizontal pull-right" style="width: 100%">
+              <div class="form-group" style="margin-bottom: 0px">
+                <label class="col-sm-1 control-label" >省</label>
+                <div class="col-sm-2">
+                  <select class="form-control"  >
+                    <option v-for="item in provices">{{item.locationName}}</option>
+                  </select>
                 </div>
-              </form>
-            </div>
+
+                <label class="col-sm-1 control-label" style="width: 5%">州</label>
+                <div class="col-sm-3">
+                  <select type="text" class="form-control" >
+                    <option    ></option>
+
+                  </select>
+                </div>
+
+                <label class="col-sm-1 control-label" style="width: 5%">县</label>
+                <div class="col-sm-1">
+                  <select type="text" class="form-control">
+                    <option></option>
+                    <option ng-repeat="item in county "></option>
+                  </select>
+                </div>
+
+                <label class="col-sm-1 control-label" style="width: 5%">镇</label>
+                <div class="col-sm-1">
+                  <select type="text" class="form-control">
+                    <option></option>
+                    <option ng-repeat="item in town "></option>
+                  </select>
+                </div>
 
 
+                <label class="col-sm-1 control-label" style="width: 9%">村委会</label>
+                <div class="col-sm-1">
+                  <select type="text" class="form-control">
+                    <option></option>
+                    <option></option>
+                  </select>
+                </div>
+
+                <label class="col-sm-1 control-label" style="width: 9%">村小组</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" name="groupName"/>
+                </div>
+              </div>
+            </form>
           </div>
 
-            <div class="panel-body">
-              <!--<ul id="detail-list">-->
-                <!--<li class="active">-->
-                  <!--<span class="title">全国农药质量追溯系统生产追溯信息数据对接标准</span>-->
-                  <!--<p><span class="pull-left item-left">全国农药质量追溯系统生产迫溯信息数据对接标准已发布，农药生产企业上报生产数据可参照附件《全</span> <span class="pull-right item-right"> 2018-05-06</span></p>-->
-                <!--</li>-->
 
-              <!--</ul>-->
-              <table class="table table-striped" id="dataList">
-                <thead>
-                <tr>
-                  <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                </tbody>
-              </table>
-              <ul class="pagination pull-right">
-                <li><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li ><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul>
-            </div>
-          </div>
+        </div>
+
+        <div class="panel-body">
+          <!--<ul id="detail-list">-->
+          <!--<li class="active">-->
+          <!--<span class="title">全国农药质量追溯系统生产追溯信息数据对接标准</span>-->
+          <!--<p><span class="pull-left item-left">全国农药质量追溯系统生产迫溯信息数据对接标准已发布，农药生产企业上报生产数据可参照附件《全</span> <span class="pull-right item-right"> 2018-05-06</span></p>-->
+          <!--</li>-->
+
+          <!--</ul>-->
+          <table class="table table-striped" id="dataList">
+            <thead>
+            <tr>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+          <ul class="pagination pull-right">
+            <li><a href="#">&laquo;</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
         </div>
       </div>
-      <!--主体内容部分结束-->
+    </div>
+  </div>
+  <!--主体内容部分结束-->
 
 </template>
 
@@ -125,57 +124,35 @@
   import VueResource from '@/components/resource/index.js'
 
   Vue.use(VueResource)
-    export default {
-        name: "list",
-      data:function () {
-                     return{
-                       title:'',
-                       test :'1111',
-                       menuList:[],
-                       provice: [],      //省
-                       state: [],            //州
-                       county: [],               //县
-                       countyVillageCommittee: [],   //村委会
-                       villageGroup: [], //村小组
-                       id:0
-                     }
-      },
-      watch: {
-        "$route": function (e) {
-          this.title = this.$route.query.menuName,
-            this.menuList =  this.$route.query.menuItem
-        }
-      },
-      created(){
-          this.getprovice()
-          // this.$http.get('http://192.168.0.222:8083/web/webIndexController/asyncGetNodes?id=44').then(function (res) {
-          //     console.log(res.data)
-          // })
-      },
-      mounted(){
-          this.title = this.$route.query.menuName,
-            this.menuList =  this.$route.query.menuItem
-        console.log(this.menuList)
-      },
-      methods:{
-        itemChange(e){
-          console.log(e)
-          if(e=='0'){
-          }
-        },
-        getprovice(){
-          this.provice= service.methods.getAddress(this,0);
-          console.log(this.provice)
-        },
-        getState(e){}
+  export default {
+    name: "list",
+    data: function () {
+      return {
+        provices: this.getProvices()
       }
+    },
+    watch: {
+      "$route": function (e) {
+       /* this.title = this.$route.query.menuName,
+          this.menuList = this.$route.query.menuItem*/
+      }
+    },
+
+    mounted() {
+
+    },
+    methods: {
+      getProvices:function(){
+      service.getAddress(this,0,0)
     }
-    $(function () {
-                $("#d_menu-list li").click(function () {
-                   $("#d_menu-list li").removeClass('active'),
-                     $(this).addClass("active")
-                })
+    }
+  }
+  $(function () {
+    $("#d_menu-list li").click(function () {
+      $("#d_menu-list li").removeClass('active'),
+        $(this).addClass("active")
     })
+  })
 </script>
 
 <style scoped>
@@ -297,14 +274,24 @@
   }
 
   /*列表项内容鼠标滑过样式*/
-  #detail-list li:hover,  #detail-list li:hover p {
+  #detail-list li:hover, #detail-list li:hover p {
     color: #0497ca;
     border-color: #0497ca;
   }
-   .col-md-3{
-     padding-left: 0;
-   }
-  .panel-default{
+
+  .col-md-3 {
+    padding-left: 0;
+  }
+
+  .panel-default {
     border: none;
+  }
+
+  .picture {
+    height: 60px;
+    background: url('../../../static/images/m2.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%
   }
 </style>
