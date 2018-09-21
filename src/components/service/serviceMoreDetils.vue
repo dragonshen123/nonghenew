@@ -8,7 +8,7 @@
     methods:{
       //初始化所有的数据Integer pageSzie,Integer currentPage
       queryPage(e,commentsPageSize,commentsCurrentPage,informationType,selectValue){
-        var resouce= e.$resource(VueResource.data.url+'/informationController/getTypePage?informationType='+informationType+'&currentPage='+commentsCurrentPage+ "&pageSzie="+commentsPageSize+"&selectValue="+selectValue);
+        var resouce= e.$resource(VueResource.data.url+'/informationController/getTypePage?informationType='+informationType+'&currentPage='+commentsCurrentPage+ "&pageSzie="+commentsPageSize+"&selectValue="+encodeURI(selectValue));
         resouce.query().then(function ( response ) {
           e.lists=response.data.result
           e.commentsPageSize=response.data.pageSize

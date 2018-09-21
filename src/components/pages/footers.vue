@@ -1,6 +1,6 @@
 <template>
-  <footer class="footer">
-    <div class="container-fluid">
+  <footer class="footer" >
+    <div class="container-fluid" style="bottom: 0">
       <hr>
       <div class="container">
         <div class="row col-md-12" style="margin-top: 20px">

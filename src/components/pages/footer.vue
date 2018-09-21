@@ -1,11 +1,8 @@
 <template>
     <div class="container-fluid">
-      <div class="container">
-        <h4>法律声明 <span>&nbsp;|&nbsp;</span>隐私保护 <span>&nbsp;|&nbsp;</span>地图 <span>&nbsp;|&nbsp;</span>工作平台 <span>&nbsp;|&nbsp;</span> 联系我们</h4>
-        <hr>
-        <h4>技术支持 <span>&nbsp;|&nbsp;</span>
-          版权所有</h4>
-      </div>
+       <div class="row col-md-12">
+        <h5>地址：云南省昆明市XX区XX路XX号&nbsp;&nbsp;&nbsp;&nbsp; 联系方式：12345678910</h5>
+       </div>
     </div>
 </template>
 
@@ -17,14 +14,17 @@
 
 <style scoped>
 .container-fluid{
-  background-color: #259b24;
+  background-color: #136210;
+  margin-top: 5px;
+  height: 40px;
 }
-  span{
-    color: #f8f8f8;
-    padding: -20px -20px;
-  }
-  h4{
-    padding-top: 10px;
+  h5{
+    line-height: 15px;
+    color: white;
     text-align: center;
   }
+  .row{
+    height: 100%;
+  }
+
 </style>

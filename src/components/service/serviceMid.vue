@@ -11,7 +11,7 @@
         var resouce2 = e.$resource(VueResource.data.url+'/informationController/getJsonDate?informationType='+informationType);
         resouce2.query().then(function ( response ) {
           if(informationType==-1){ //热点
-            e.topics= response.data
+              e.topics= response.data
             console.log(e.topics)
           }
           if(informationType==2){//政策
@@ -46,7 +46,7 @@
       },
 
       getImages(e) {
-          var resouce2 = e.$resource('http://192.168.0.112:8080/informationController/getImages');
+          var resouce2 = e.$resource('http://183.224.16.71:2080/informationController/getImages');
           resouce2.query().then(function (response) {
             e.images
           });

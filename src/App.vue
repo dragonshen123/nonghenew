@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <Header></Header>
+    <div id="bodys">
     <router-view/>
-    <Footers></Footers>
+    </div>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -11,6 +13,7 @@ export default {
   name: 'App',
   components: {
     Footers: require('@/components/pages/footers').default,
+    Footer: require('@/components/pages/footer').default,
     Header: require('@/components/pages/header').default
   }
 }
@@ -19,8 +22,20 @@ export default {
 <style>
 #app {
   font-family: '微软雅黑';
+  min-width: 800px;
+
 }
-  router-view{
-    min-height: 1000px;
-  }
+#bodys{
+  min-height: 600px;
+}
+ *{
+   padding: 0;
+   margin: 0;
+ }
+[v-cloak] {
+  display: none;
+}
+p,h2,h1,h3,h4,h5{
+  white-space: pre-wrap
+}
 </style>
