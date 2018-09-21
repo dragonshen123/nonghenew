@@ -43,20 +43,39 @@
         })
       }*/
       getAddress(e,id, flag){
-        var user = e.$resource(VueResource.data.url+'/webIndexController/asyncGetNodes?id='+id)
-        user.query().then(res=>{
-          console.log(res.bodyText)
+        var _data = e.$resource(VueResource.data.url+'/webIndexController/asyncGetNodes?id='+id)
+        _data.query().then(res=>{
             if(flag==0){
-          e.provices=JSON.parse(res.bodyText)
+              e.provice = JSON.parse(res.bodyText)
             }
           if(flag==1){
             e.state=JSON.parse(res.bodyText)
           }
+          if(flag==2){
+              e.county=JSON.parse(res.bodyText)
+            console.log(  e.county)
+          }
+          if(flag==3){
+            e.town=JSON.parse(res.bodyText)
+            console.log(e.town)
+          }
+          if(flag==4){
+            e.countyVillageCommittee=JSON.parse(res.bodyText)
+            console.log( e.countyVillageCommittee)
+          }
+          if(flag==5){
+            e.villageGroup=JSON.parse(res.bodyText)
+            console.log( e.villageGroup)
+          }
 
         })
     } ,
-      getPersonal(){
-
+      getCensus(e){
+        var _data = e.$resource(VueResource.data.url+'/webIndexController/queryPageCensus')
+        _data.query().then(res=>{
+         console.log(res.bodyText)
+            e.census = JSON.parse(res.bodyText)
+        })
       }
 
 
