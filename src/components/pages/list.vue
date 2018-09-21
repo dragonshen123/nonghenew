@@ -88,15 +88,15 @@
               <table class="table table-striped" id="dataList">
                 <thead>
                 <tr>
-                  <th v-for="thead in thead">{{thead}}</th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="data in dataList">
-                  <td>{{data.name}}</td>
-                  <td>{{data.a}} </td>
-                  <td>10</td>
-                  <td>18</td>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 </tbody>
               </table>
@@ -119,21 +119,25 @@
 
 <script>
   import Vue from 'vue'
-  import service from '@/components/service/serviceDetils.vue'
+  import service from '@/components/service/servicemenu.vue'
 
   Vue.use(service)
   import VueResource from '@/components/resource/index.js'
 
   Vue.use(VueResource)
     export default {
-        name: "menu",
+        name: "list",
       data:function () {
                      return{
                        title:'',
                        test :'1111',
                        menuList:[],
-                       dataList:[{name:'户主名称',a:'1'}],
-                       thead:['户主名称','水田/亩','旱地/亩','林地/亩']
+                       provice: [],      //省
+                       state: [],            //州
+                       county: [],               //县
+                       countyVillageCommittee: [],   //村委会
+                       villageGroup: [], //村小组
+                       id:0
                      }
       },
       watch: {
@@ -143,7 +147,7 @@
         }
       },
       created(){
-          this.getAddress()
+          this.getprovice()
           // this.$http.get('http://192.168.0.222:8083/web/webIndexController/asyncGetNodes?id=44').then(function (res) {
           //     console.log(res.data)
           // })
@@ -157,14 +161,13 @@
         itemChange(e){
           console.log(e)
           if(e=='0'){
-            this.dataList=[]
           }
         },
-        getAddress(e){
-          console.log(this.test+"sdf")//
-          this.dataList= service.methods.getAddress(this,0);
-          console.log(this.test+"sdfsfasdfasfassfsdfas")
-        }
+        getprovice(){
+          this.provice= service.methods.getAddress(this,0);
+          console.log(this.provice)
+        },
+        getState(e){}
       }
     }
     $(function () {

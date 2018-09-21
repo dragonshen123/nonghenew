@@ -237,18 +237,18 @@
             <router-link to="/"><li class="menu-item active">
              首页
             </li> </router-link>
-            <router-link :to="{path:'/Menu',query: {informationType: 2,menuName:'档案管理',menuItem:archives}}"><li class="menu-item">
+            <router-link :to="{path:'/List',query: {informationType: 2,menuName:'档案管理',menuItem:archives}}"><li class="menu-item">
              档案管理
             </li> </router-link>
             <router-link :to="{path:'/Map',query: {menuName:'地图管理',menuItem:[{name:'地图管理'}]}}"><li class="menu-item">
              地图管理
             </li> </router-link>
-            <router-link :to="{path:'/Menu',query: {informationType: 3,menuName:'地块管理',menuItem:[
+            <router-link :to="{path:'/List',query: {informationType: 3,menuName:'地块管理',menuItem:[
               {name:'地块管理'}]}}"> <li class="menu-item">
              地块管理
             </li></router-link>
 
-            <router-link :to="{path:'/Menu',query:{menuName:'党建合作社',menuItem:[{name:'党建合作社'}]}}"><li class="menu-item">党建合作社</li>  </router-link>
+            <router-link :to="{path:'/List',query:{menuName:'党建合作社',menuItem:[{name:'党建合作社'}]}}"><li class="menu-item">党建合作社</li>  </router-link>
             <li class="menu-item">专家库</li>
             <!--<li>-->
               <!--<router-link :to="{path:'/moreDetils',query: {informationType: 1,menuName:'社会化服务'}}">社会化服务</router-link>-->
@@ -268,7 +268,7 @@
 
   Vue.use(service)
   export default {
-    name: "header",
+    name: "headers",
     data: function () {
       return {
         name: '',
