@@ -13,7 +13,7 @@
           </div>
           <div class="panel-body">
             <ul id="d_menu-list">
-              <li class="active">人员档案<i
+              <li class="active">户籍档案<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
               <li>种植档案<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
@@ -102,7 +102,7 @@
           <!--</li>-->
 
           <!--</ul>-->
-          <table class="table table-bordered" id="dataList">
+          <table class="table table-bordered" id="census">
             <thead>
             <tr>
               <th>户主名称</th>
@@ -129,13 +129,17 @@
             </tbody>
           </table>
           <ul class="pagination pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li><a href="#">上一页</a></li>
+            <li class="active"><a href="#">{{census.curPage}}</a></li>
+            <li><select name="" id="">
+              <option value="">10</option>
+              <option value="">20</option>
+              <option value="">50</option>
+              <option value="">100</option>
+            </select></li>
+            <li><a href="#">下一页</a></li>
+            <li><a href="#">第{{census.curPage}}/{{census.totalPage}}页</a></li>
+            <li><a href="#">共{{census.totalCount}}条数据</a></li>
           </ul>
         </div>
       </div>

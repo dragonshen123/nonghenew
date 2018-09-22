@@ -6,6 +6,7 @@ import Detail from '@/components/pages/detail'
 import Map from '@/components/pages/map'
 import VueResource from 'vue-resource'
 import List from '@/components/pages/list'
+import Archives from '@/components/pages/archives'
 /*使用VueResource插件*/
 Vue.use(VueResource);
 Vue.use(Router)
@@ -38,6 +39,11 @@ export default new Router({
       path:'/List',
       name: 'List',
       component: List
+    },
+    {
+      path:'/Archives',
+      name: 'Archives',
+      component: Archives
     }
   ]
 })

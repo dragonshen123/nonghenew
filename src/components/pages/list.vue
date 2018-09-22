@@ -9,12 +9,14 @@
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title"></h3>
+            <h3 class="panel-title">档案管理</h3>
           </div>
           <div class="panel-body">
             <ul id="d_menu-list">
-              <li >
-               <i class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li class="active">人员档案<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li>种植档案<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
             </ul>
           </div>
         </div>
@@ -27,15 +29,15 @@
               <div class="form-group" style="margin-bottom: 0px">
                 <label class="col-sm-1 control-label" >省</label>
                 <div class="col-sm-2">
-                  <select class="form-control"  >
-                    <option v-for="item in provices">{{item.locationName}}</option>
+                  <select class="form-control" >
+                    <option v-for="item in provice">{{item.locationName}}</option>
                   </select>
                 </div>
 
                 <label class="col-sm-1 control-label" style="width: 5%">州</label>
-                <div class="col-sm-3">
+                <div class="col-sm-1">
                   <select type="text" class="form-control" >
-                    <option    ></option>
+                    <option  ></option>
 
                   </select>
                 </div>
@@ -128,23 +130,30 @@
     name: "list",
     data: function () {
       return {
-        provices: this.getProvices()
+        proviceValue:null,
+        provice: [null],      //省
+        state: [null],
+        stateValue:null,//州
+        county: [null],               //县
+        countyVillageCommittee: [null],   //村委会
+        villageGroup: [null], //村小组
+        id: 0
       }
     },
     watch: {
       "$route": function (e) {
-       /* this.title = this.$route.query.menuName,
-          this.menuList = this.$route.query.menuItem*/
+        this.title = this.$route.query.menuName,
+          this.menuList = this.$route.query.menuItem
       }
     },
-
-    mounted() {
-
+    created() {
+      this.getprovice(0)
     },
     methods: {
-      getProvices:function(){
-      service.getAddress(this,0,0)
-    }
+      getprovice(id) {
+        //flag=0
+        service.methods.getAddress(this, id,0);
+      }
     }
   }
   $(function () {

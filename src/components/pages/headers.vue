@@ -237,7 +237,7 @@
             <router-link to="/"><li class="menu-item active">
              首页
             </li> </router-link>
-            <router-link :to="{path:'/List',query: {informationType: 2,menuName:'档案管理',menuItem:archives}}"><li class="menu-item">
+            <router-link :to="{path:'/Archives'}"><li class="menu-item">
              档案管理
             </li> </router-link>
             <router-link :to="{path:'/Map',query: {menuName:'地图管理',menuItem:[{name:'地图管理'}]}}"><li class="menu-item">

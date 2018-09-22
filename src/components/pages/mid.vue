@@ -278,6 +278,9 @@
     width: 100%;
     height: 100%;
   }
+  .redian{
+    min-height: 200px;
+  }
 
   * {
     white-space: nowrap;
@@ -766,5 +769,8 @@
     width: 100%;
     text-align: left;
     margin-right: -30px
+  }
+  .butie,.redian{
+    min-height: 200px;
   }
 </style>
