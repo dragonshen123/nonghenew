@@ -12,21 +12,21 @@
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
           <div class="item active">
-            <img src="../../../static/images/m1.jpg" alt="First slide">
+            <img src="../../../../static/images/m1.jpg" alt="First slide">
             <div class="carousel-caption">
               <h1>标题1</h1>
             </div>
           </div>
           <div class="item">
-            <img src="../../../static/images/m2.jpg" alt="Second slide">
+            <img src="../../../../static/images/m2.jpg" alt="Second slide">
             <div class="carousel-caption"><h1>标题1</h1></div>
           </div>
           <div class="item">
-            <img src="../../../static/images/m3.jpg" alt="Third slide">
+            <img src="../../../../static/images/m3.jpg" alt="Third slide">
             <div class="carousel-caption"><h1>标题1</h1></div>
           </div>
           <div class="item">
-            <img src="../../../static/images/m1.jpg" alt="Fourth slide">
+            <img src="../../../../static/images/m1.jpg" alt="Fourth slide">
             <div class="carousel-caption"><h1>标题1</h1></div>
           </div>
         </div>
@@ -37,17 +37,16 @@
       <div class="row col-md-12 zcbt">
         <div class="col col-md-7">
           <h4 class="bander-title">
-            <strong style="padding-left: 48px">户籍档案</strong><a
+            <strong style="padding-left: 48px">种植档案</strong><a
             href="#" class="pull-right" style="font-size: 10px">
             <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'户籍档案'}}">更多>></router-link>
           </a></h4>
           <ul class="butie" style="line-height: 25px">
-            <li v-for="(cencu,index) in cencus" >
-
+            <li  v-for="(palanting,index) in palantings" >
               <router-link
-                :to="{path:'/Detail',query: {censusId: cencu.censusId}}">
-              <span style="display: inline-block;width: 64%"> {{cencu.censusName}}
-              </span><span class="pull-right " style="display: inline-block;width: 32%">{{cencu.censusDate}}</span>
+                :to="{path:'/Detail',query: {plantingId: palanting.plantingId}}">
+              <span style="display: inline-block;width: 64%"> {{palanting.plantingName}}
+              </span><span class="pull-right " style="display: inline-block;width: 32%">({{palanting.cropsName}}){{palanting.plantingStartDate}}</span>
               </router-link>
             </li>
           </ul>
@@ -55,12 +54,14 @@
 
         <div class="col col-md-5">
           <h4 class="bander-title1">
-            <strong style="padding-left: 47px">  种植档案</strong> <a class="pull-right" style="font-size: 10px">更多>></a></h4>
+            <strong style="padding-left: 47px">  户籍档案 </strong> <a class="pull-right" style="font-size: 10px">更多>></a></h4>
           <ul class="redian">
-            <li v-for="(palanting,index) in palantings" v-if="index<8">
+            <li v-for="(cencu,index) in cencus" >
               <router-link
-                :to="{path:'/detail',query:{plantingId:palanting.plantingId}}">
-                {{palanting.plantingName}}
+                :to="{path:'/detail',query:{censusId:cencu.censusId}}">
+               <span style="display: inline-block;width: 64%"> 户主：{{cencu.censusName}}
+              </span><span class="pull-right " style="display: inline-block;width: 32%">年收入:{{cencu.censusYearInput}}</span>
+
               </router-link>
             </li>
           </ul>
@@ -77,7 +78,7 @@
           <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
         </a></h4>
         <ul class="butie" style="line-height: 25px">
-          <li v-for="(lot,index) in lots" v-if="index<7">
+          <li v-for="(lot,index) in lots" >
             <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
             <router-link
               :to="{path:'/Detail',query: {lotId: lot.lotId}}">
@@ -97,7 +98,9 @@
           <li v-for="(cooperation,index) in cooperations" >
             <router-link
               :to="{path:'/detail',query:{cooperationId:cooperation.cooperationId}}">
-              {{item.cooperationName}}
+
+              <span style="display: inline-block;width: 64%"> {{cooperation.cooperationName}}
+              </span><span class="pull-right " style="display: inline-block;width: 32%">{{cooperation.cooperationDate}}</span>
             </router-link>
           </li>
         </ul>
@@ -111,12 +114,11 @@
             <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
           </a></h4>
           <ul class="butie" style="line-height: 25px">
-            <li v-for="(product,index) in products" v-if="index<7">
-              <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
+            <li v-for="(product,index) in products">
               <router-link
                 :to="{path:'/Detail',query: {informationId: product.informationId}}">
               <span style="display: inline-block;width: 64%"> {{product.informationTtile}}
-              </span><span class="pull-right " style="display: inline-block;width: 32%">{{product.informationDate}}</span>
+              </span><span class="pull-right " style="display: inline-block;width: 32%">({{product.informationType}}){{product.informationDate}}</span>
               </router-link>
             </li>
 
@@ -128,10 +130,12 @@
             <strong style="padding-left: 47px">产品预售</strong> <a class="pull-right" style="font-size: 10px">更多>></a>
           </h4>
           <ul class="redian">
-            <li v-for="(sale,index) in sales" v-if="index<8">
+            <li v-for="(sale,index) in sales" >
               <router-link
                 :to="{path:'/detail',query:{informationId:sale.informationId}}">
-                {{sale.informationTtile}}
+                 <span style="display: inline-block;width: 64%"> {{sale.informationTtile}}
+              </span><span class="pull-right " style="display: inline-block;width: 32%">({{sale.informationType}}){{sale.informationDate}}</span>
+
               </router-link>
             </li>
           </ul>
@@ -154,18 +158,65 @@
         palantings:null,
         lots:null,
         products:null,
-        sales:null
+        sales:null,
+        cooperations:null
       }
     },
+    created(){
+      this.getcencus()
+      this.getpalantings()
+      this.getlots()
+      this.getcooperations()
+      this.getproducts()
+      this.getsales()
+    },
     methods: {
-      getgroups:function(){
+      getcencus:function(){
         var location = this.$resource(VueResource.data.url+'/webIndexController/queryPageCensus?pagenum=1&pageSize=10')
         location.query().then(function (response) {
           console.log(response.bodyText)
-          this.cencus= JSON.parse(response.bodyText)
+          this.cencus= JSON.parse(response.bodyText).result
         })
       },
+      getpalantings:function(){
+        var location = this.$resource(VueResource.data.url+'/webIndexController/queryPagePlantingrecord?pagenum=1&pageSize=10')
+        location.query().then(function (response) {
+          console.log(response.bodyText)
+          this.palantings= JSON.parse(response.bodyText).result
+        })
+      },
+      getlots:function(){
+        var location = this.$resource(VueResource.data.url+'/webIndexController/queryPagelot?curPage=1&pageSize=10')
+        location.query().then(function (response) {
+          console.log(response.bodyText)
+          this.lots= JSON.parse(response.bodyText).result
+        })
+      },
+      getcooperations:function(){
+        var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageCooperation?pagenum=1&pageSize=10')
+        location.query().then(function (response) {
+          console.log(response.bodyText)
+          this.cooperations= JSON.parse(response.bodyText).result
+        })
+      },
+
+      getproducts:function(){
+    var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageproducts?pagenum=1&pageSize=10&flag=1')
+    location.query().then(function (response) {
+      console.log(response.bodyText)
+      this.products= JSON.parse(response.bodyText).result
+    })
+  },
+      getsales:function(){
+        var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPagepSales?pagenum=1&pageSize=10&flag=2')
+        location.query().then(function (response) {
+          console.log(response.bodyText)
+          this.sales= JSON.parse(response.bodyText).result
+        })
+      },
+
     }
+
   };
 
   $(function () {
@@ -289,7 +340,7 @@
     color: white;
     font: 700 18px/37px 'Microsoft Yahei';
     display: block;
-    background: url('../../../static/images/bander.png');
+    background: url('../../../../static/images/bander.png');
     background-size: 30%;
     background-repeat: no-repeat;
     border-bottom: 2px solid #2aabd2
@@ -394,7 +445,7 @@
     color: white;
     font: 700 18px/37px 'Microsoft Yahei';
     display: block;
-    background: url('../../../static/images/bander.png');
+    background: url('../../../..//static/images/bander.png');
     background-size: 34%;
     background-repeat: no-repeat;
     border-bottom: 2px solid #2aabd2
@@ -419,7 +470,7 @@
     color: black;
   }
   .picture{
-    height: 60px;background: url('../../../static/images/m2.jpg');background-size: 100%;background-repeat: no-repeat;width: 100%
+    height: 60px;background: url('../../../..//static/images/m2.jpg');background-size: 100%;background-repeat: no-repeat;width: 100%
   }
 
   .pull-right li {
@@ -451,7 +502,7 @@
     line-height: 30px;
   }
   .bander-title3{
-    color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../static/images/bander.png');background-size: 34%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2
+    color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../..//static/images/bander.png');background-size: 34%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2
   }
 
   /*.butie li{*/
@@ -466,7 +517,7 @@
     color: white;
     font: 700 18px/37px 'Microsoft Yahei';
     display: block;
-    background: url('../../../static/images/bander.png');
+    background: url('../../../..//static/images/bander.png');
     background-size: 40%;
     background-repeat: no-repeat;
     border-bottom: 2px solid #2aabd2
