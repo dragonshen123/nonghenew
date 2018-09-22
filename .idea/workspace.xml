@@ -5,36 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31e72cfc-8e74-4092-ba1a-5a4ad524ac5a" name="Default" comment="Default">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap/fonts/iconfont.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap/fonts/iconfont.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap/fonts/iconfont.svg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap/fonts/iconfont.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap/fonts/iconfont.woff" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.base.conf.js" afterPath="$PROJECT_DIR$/build/webpack.base.conf.js" />
-      <change beforePath="$PROJECT_DIR$/config/index.js" afterPath="$PROJECT_DIR$/config/index.js" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change beforePath="$PROJECT_DIR$/build/utils.js" afterPath="$PROJECT_DIR$/build/utils.js" />
+      <change beforePath="$PROJECT_DIR$/build/webpack.prod.conf.js" afterPath="$PROJECT_DIR$/build/webpack.prod.conf.js" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
       <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" afterPath="$PROJECT_DIR$/src/App.vue" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/detail.vue" afterPath="$PROJECT_DIR$/src/components/pages/detail.vue" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/footer.vue" afterPath="$PROJECT_DIR$/src/components/pages/footer.vue" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/footers.vue" afterPath="$PROJECT_DIR$/src/components/pages/footers.vue" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/header.vue" afterPath="$PROJECT_DIR$/src/components/pages/header.vue" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/archives.vue" afterPath="$PROJECT_DIR$/src/components/pages/archives.vue" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/headers.vue" afterPath="$PROJECT_DIR$/src/components/pages/headers.vue" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/list.vue" afterPath="$PROJECT_DIR$/src/components/pages/list.vue" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/mid.vue" afterPath="$PROJECT_DIR$/src/components/pages/mid.vue" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/moreDetils.vue" afterPath="$PROJECT_DIR$/src/components/pages/moreDetils.vue" />
-      <change beforePath="$PROJECT_DIR$/src/components/resource/index.js" afterPath="$PROJECT_DIR$/src/components/resource/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/service/serviceDetils.vue" afterPath="$PROJECT_DIR$/src/components/service/serviceDetils.vue" />
-      <change beforePath="$PROJECT_DIR$/src/components/service/serviceMid.vue" afterPath="$PROJECT_DIR$/src/components/service/serviceMid.vue" />
-      <change beforePath="$PROJECT_DIR$/src/components/service/serviceMoreDetils.vue" afterPath="$PROJECT_DIR$/src/components/service/serviceMoreDetils.vue" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
       <change beforePath="$PROJECT_DIR$/src/router/index.js" afterPath="$PROJECT_DIR$/src/router/index.js" />
-      <change beforePath="$PROJECT_DIR$/static/images/logo.png" afterPath="$PROJECT_DIR$/static/images/logo.png" />
-      <change beforePath="$PROJECT_DIR$/static/images/m1.jpg" afterPath="$PROJECT_DIR$/static/images/m1.jpg" />
-      <change beforePath="$PROJECT_DIR$/static/images/m2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/images/m3.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/images/m4.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/images/nonghe.jpg" afterPath="$PROJECT_DIR$/static/images/nonghe.jpg" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -48,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            <state relative-caret-position="95">
+              <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -111,45 +91,6 @@
             <state relative-caret-position="1805">
               <caret line="96" column="11" lean-forward="false" selection-start-line="96" selection-start-column="11" selection-end-line="96" selection-end-column="11" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/menu.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#3;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#4;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#4392#4399#1" expanded="true" />
-                <element signature="e#4672#4679#1" expanded="true" />
-                <element signature="e#4820#4841#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="service.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/service/service.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-              <folding>
-                <element signature="e#12#33#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -283,7 +224,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="32" />
     <option name="width" value="1577" />
     <option name="height" value="860" />
@@ -303,62 +244,30 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="nonghe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nonghe" type="462c0819:PsiDirectoryNode" />
+              <item name="nonghenew" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nonghenew" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nonghe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nonghe" type="462c0819:PsiDirectoryNode" />
+              <item name="nonghenew" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nonghenew" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nonghe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nonghe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nonghe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nonghe" type="462c0819:PsiDirectoryNode" />
+              <item name="nonghenew" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nonghenew" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nonghe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nonghe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="resource" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nonghe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nonghe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nonghe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nonghe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nonghe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nonghe" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -445,6 +354,7 @@
       <workItem from="1537331303526" duration="14472000" />
       <workItem from="1537405764533" duration="34348000" />
       <workItem from="1537492061050" duration="295000" />
+      <workItem from="1537580279491" duration="335000" />
     </task>
     <task id="LOCAL-00001" summary="初始化项目">
       <created>1526455420264</created>
@@ -597,13 +507,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="352427000" />
+    <option name="totallyTimeSpent" value="352762000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23257288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23257288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -757,30 +666,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/static/xueyuandetail.json" />
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="4" column="102" lean-forward="false" selection-start-line="4" selection-start-column="102" selection-end-line="4" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html" />
     <entry file="file://$PROJECT_DIR$/dist/static/css/app.d760da1e6024bbc19544e5d4cb18c51e.css" />
     <entry file="file://$PROJECT_DIR$/dist/static/js/app.88f4b7126d87f4bc7db7.js" />
-    <entry file="file://$PROJECT_DIR$/dist/static/js/manifest.c671b31a6294c60d458b.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="94" lean-forward="false" selection-start-line="0" selection-start-column="94" selection-end-line="0" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/static/js/manifest.c671b31a6294c60d458b.js" />
     <entry file="file://$PROJECT_DIR$/dist/static/js/app.18e805b2d7c5a0c6de77.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/pages/footer.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="71" lean-forward="false" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/footer.vue" />
     <entry file="file://$PROJECT_DIR$/src/components/pages/footers.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1083">
@@ -838,13 +729,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/header.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2367">
-          <caret line="370" column="45" lean-forward="false" selection-start-line="370" selection-start-column="45" selection-end-line="370" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/header.vue" />
     <entry file="file://$PROJECT_DIR$/build/webpack.base.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -948,8 +833,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        <state relative-caret-position="95">
+          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -962,16 +847,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/service/service.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-          <folding>
-            <element signature="e#12#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/service/service.vue" />
     <entry file="file://$PROJECT_DIR$/src/components/service/serviceDetils.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1805">
@@ -980,30 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/menu.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#2;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#3;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#4;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#4392#4399#1" expanded="true" />
-            <element signature="e#4672#4679#1" expanded="true" />
-            <element signature="e#4820#4841#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/menu.vue" />
   </component>
 </project>

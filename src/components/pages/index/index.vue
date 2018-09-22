@@ -30,43 +30,24 @@
             <div class="carousel-caption"><h1>标题1</h1></div>
           </div>
         </div>
-        <!-- 轮播（Carousel）导航 -->
-        <!--<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">-->
-        <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
-        <!--<span class="sr-only">Previous</span>-->
-        <!--</a>-->
-        <!--<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">-->
-        <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
-        <!--<span class="sr-only">Next</span>-->
-        <!--</a>-->
       </div>
     </div>
-    <!--<div class="row col-md-12" id="butie-nav">-->
-    <!--<h4 style="color: white;height: 50px;padding-top: -5px;font:28px/30px 'Impact';color: #c0d649" class="col col-md-2" v-on:click="makeActive()">政策补贴</h4>-->
-    <!--<ul class="pull-right" style="line-height: 50px;font-size: 16px">-->
-    <!--<li><a href="#">农机购置补贴政策 </a>&nbsp;&nbsp;|</li>-->
-    <!--<li><a href="#">设施农用地支持政策</a>&nbsp;&nbsp; |</li>-->
-    <!--<li><a href="#">种植业结构调整政策</a>&nbsp;&nbsp; |</li>-->
-    <!--<li><a href="#">畜牧良种补贴政策</a> &nbsp;&nbsp;|</li>-->
-    <!--<li><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>-->
-    <!--</li>-->
-    <!--</ul>-->
-    <!--</div>-->
+
     <div class="container" style="margin-top: 10px">
       <div class="row col-md-12 zcbt">
         <div class="col col-md-7">
           <h4 class="bander-title">
-            <strong style="padding-left: 48px">政策指南</strong><a
+            <strong style="padding-left: 48px">户籍档案</strong><a
             href="#" class="pull-right" style="font-size: 10px">
-            <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
+            <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'户籍档案'}}">更多>></router-link>
           </a></h4>
           <ul class="butie" style="line-height: 25px">
-            <li v-for="(site,index) in policies" v-if="index<7">
-              <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
+            <li v-for="(cencu,index) in cencus" >
+
               <router-link
-                :to="{path:'/Detail',query: {informationId: site.informationId,informationType:site.informationType}}">
-              <span style="display: inline-block;width: 64%"> {{site.informationTtile}}
-              </span><span class="pull-right " style="display: inline-block;width: 32%">{{site.informationDate}}</span>
+                :to="{path:'/Detail',query: {censusId: cencu.censusId}}">
+              <span style="display: inline-block;width: 64%"> {{cencu.censusName}}
+              </span><span class="pull-right " style="display: inline-block;width: 32%">{{cencu.censusDate}}</span>
               </router-link>
             </li>
           </ul>
@@ -74,12 +55,12 @@
 
         <div class="col col-md-5">
           <h4 class="bander-title1">
-            <strong style="padding-left: 47px">档案管理</strong> <a class="pull-right" style="font-size: 10px">更多>></a></h4>
+            <strong style="padding-left: 47px">  种植档案</strong> <a class="pull-right" style="font-size: 10px">更多>></a></h4>
           <ul class="redian">
-            <li v-for="(item,index) in topics" v-if="index<8">
+            <li v-for="(palanting,index) in palantings" v-if="index<8">
               <router-link
-                :to="{path:'/detail',query:{informationId:item.informationId,informationType:item.informationType}}">
-                {{item.informationTtile}}
+                :to="{path:'/detail',query:{plantingId:palanting.plantingId}}">
+                {{palanting.plantingName}}
               </router-link>
             </li>
           </ul>
@@ -96,12 +77,12 @@
           <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
         </a></h4>
         <ul class="butie" style="line-height: 25px">
-          <li v-for="(site,index) in policies" v-if="index<7">
+          <li v-for="(lot,index) in lots" v-if="index<7">
             <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
             <router-link
-              :to="{path:'/Detail',query: {informationId: site.informationId,informationType:site.informationType}}">
-              <span style="display: inline-block;width: 64%"> {{site.informationTtile}}
-              </span><span class="pull-right " style="display: inline-block;width: 32%">{{site.informationDate}}</span>
+              :to="{path:'/Detail',query: {lotId: lot.lotId}}">
+              <span style="display: inline-block;width: 64%"> {{lot.lotName}}
+              </span><span class="pull-right " style="display: inline-block;width: 32%">{{lot.lotDate}}</span>
             </router-link>
           </li>
 
@@ -113,10 +94,10 @@
           <strong style="padding-left: 47px">党建合作社</strong> <a class="pull-right" style="font-size: 10px">更多>></a>
         </h4>
         <ul class="redian">
-          <li v-for="(item,index) in topics" v-if="index<8">
+          <li v-for="(cooperation,index) in cooperations" >
             <router-link
-              :to="{path:'/detail',query:{informationId:item.informationId,informationType:item.informationType}}">
-              {{item.informationTtile}}
+              :to="{path:'/detail',query:{cooperationId:cooperation.cooperationId}}">
+              {{item.cooperationName}}
             </router-link>
           </li>
         </ul>
@@ -130,12 +111,12 @@
             <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
           </a></h4>
           <ul class="butie" style="line-height: 25px">
-            <li v-for="(site,index) in policies" v-if="index<7">
+            <li v-for="(product,index) in products" v-if="index<7">
               <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
               <router-link
-                :to="{path:'/Detail',query: {informationId: site.informationId,informationType:site.informationType}}">
-              <span style="display: inline-block;width: 64%"> {{site.informationTtile}}
-              </span><span class="pull-right " style="display: inline-block;width: 32%">{{site.informationDate}}</span>
+                :to="{path:'/Detail',query: {informationId: product.informationId}}">
+              <span style="display: inline-block;width: 64%"> {{product.informationTtile}}
+              </span><span class="pull-right " style="display: inline-block;width: 32%">{{product.informationDate}}</span>
               </router-link>
             </li>
 
@@ -147,10 +128,10 @@
             <strong style="padding-left: 47px">产品预售</strong> <a class="pull-right" style="font-size: 10px">更多>></a>
           </h4>
           <ul class="redian">
-            <li v-for="(item,index) in topics" v-if="index<8">
+            <li v-for="(sale,index) in sales" v-if="index<8">
               <router-link
-                :to="{path:'/detail',query:{informationId:item.informationId,informationType:item.informationType}}">
-                {{item.informationTtile}}
+                :to="{path:'/detail',query:{informationId:sale.informationId}}">
+                {{sale.informationTtile}}
               </router-link>
             </li>
           </ul>
@@ -163,98 +144,30 @@
 
 <script>
   import Vue from 'vue'
-  import serviceTest from '@/components/service/serviceMid.vue'
-
-  Vue.use(serviceTest)
+  import VueResource from '@/components/resource/index.js'
+  Vue.use(VueResource)
   export default {
-    name: "mid",
+    name: "index",
     data: function () {
       return {
-        //初始化政策补贴
-        policies: serviceTest.methods.defaultData(this, 2),
-        //搜索热点
-        topics: serviceTest.methods.defaultData(this, -1),
-        //合奏设运营和农技
-        cooperation: serviceTest.methods.defaultData(this, 3),
-        //样式设置
-        isActive1: true,
-        isActive2: false,
-        activeClass: 'btn btn-success--1 btn-lg',
-        errorClass: 'btn  btn-lg',
-        //农合观点
-        viewpoint: serviceTest.methods.defaultData(this, 7),
-        //红河学院
-        collage: serviceTest.methods.defaultData(this, 5),
-        //社会化服务
-        service: serviceTest.methods.defaultData(this, 1),
-        //农业跨讯
-        news: serviceTest.methods.defaultData(this, 4),
-        //获取图片
-        images: serviceTest.methods.getImages(this),
-        banderImg: require('../../../static/images/bander.png')
+        cencus:null,
+        palantings:null,
+        lots:null,
+        products:null,
+        sales:null
       }
     },
     methods: {
-      /* 政策补贴*/
-      makeActive: function () {
-        //console.log(serviceTest.methods.detectCats(this,1) )
-        console.log(this.policies)
-        console.log(this.topics)
+      getgroups:function(){
+        var location = this.$resource(VueResource.data.url+'/webIndexController/queryPageCensus?pagenum=1&pageSize=10')
+        location.query().then(function (response) {
+          console.log(response.bodyText)
+          this.cencus= JSON.parse(response.bodyText)
+        })
       },
-      changeDate(e) {
-        this.cooperation = serviceTest.methods.defaultData(this, e.id)
-        if (e.id == 3) {
-          this.isActive1 = true
-          this.isActive2 = false
-        } else {
-          this.isActive1 = false
-          this.isActive2 = true
-        }
-        //设值样式
-      }
     }
   };
-  // $(document).ready(function () {
-  //   var oDiv = document.getElementById('box');
-  //   var oUl = document.getElementById('ul');
-  //   var speed = 2;//初始化速度
-  //
-  //   oUl.innerHTML += oUl.innerHTML;//图片内容*2-----参考图（2）
-  //   var oLi = document.getElementById('ul').getElementsByTagName('li');
-  //   oUl.style.width = oLi.length * 300 + 'px';//设置ul的宽度使图片可以放下
-  //
-  //   // var oBtn1 = document.getElementById('btn1');
-  //   // var oBtn2 = document.getElementById('btn2');
-  //
-  //
-  //   function move() {
-  //     if (oUl.offsetLeft < -(oUl.offsetWidth / 2)) {//向左滚动，当靠左的图4移出边框时
-  //       oUl.style.left = 0;
-  //     }
-  //
-  //     if (oUl.offsetLeft > 0) {//向右滚动，当靠右的图1移出边框时
-  //       oUl.style.left = -(oUl.offsetWidth / 2) + 'px';
-  //     }
-  //
-  //     oUl.style.left = oUl.offsetLeft + speed + 'px';
-  //   }
-  //
-  //   // oBtn1.addEventListener('click',function(){
-  //   //   speed = -2;
-  //   // },false);
-  //   // oBtn2.addEventListener('click',function(){
-  //   //   speed = 2;
-  //   //},false);
-  //
-  //   var timer = setInterval(move, 30);//全局变量 ，保存返回的定时器
-  //
-  //   oDiv.addEventListener('mouseout', function () {
-  //     timer = setInterval(move, 30);
-  //   }, true);
-  //   oDiv.addEventListener('mousemove', function () {
-  //     clearInterval(timer);//鼠标移清入除定时器
-  //   }, true);
-  // });
+
   $(function () {
     $('#myCarousel').carousel({
       interval: 2000
@@ -277,6 +190,9 @@
   .carousel-inner .item img {
     width: 100%;
     height: 100%;
+  }
+  .redian{
+    min-height: 200px;
   }
 
   * {
@@ -766,5 +682,8 @@
     width: 100%;
     text-align: left;
     margin-right: -30px
+  }
+  .butie,.redian{
+    min-height: 200px;
   }
 </style>

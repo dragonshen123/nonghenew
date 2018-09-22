@@ -1,12 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Mid from '@/components/pages/Mid'
 import moreDetils from '@/components/pages/moreDetils'
 import Detail from '@/components/pages/detail'
 import Map from '@/components/pages/map'
 import VueResource from 'vue-resource'
-import Menu from '@/components/pages/menu'
 import lotManager from '@/components/pages/lot/lotManager'
+import index from '@/components/pages/index/index'
+import productManager from '@/components/pages/products/productManager'
+import saleManager from '@//components/pages/sale/saleManager'
+import cooperationManager from '@/components/pages/cooperation/cooperationManager'
+import Archives from '@/components/pages/archives/archives'
+import Household from '@/components/pages/archives/household'
+import Plant from '@/components/pages/archives/plant'
+
 
 /*使用VueResource插件*/
 Vue.use(VueResource);
@@ -22,8 +28,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Mid',
-      component: Mid
+      name: 'index',
+      component: index
     },
     {
       path: '/Detail',
@@ -36,15 +42,44 @@ export default new Router({
       name: 'Map',
       component: Map
     },
-    {
-      path:'/Menu',
-      name: 'Menu',
-      component: Menu
-    },
+
     {
       path:'/lotManager',
       name: 'lotManager',
       component:lotManager
+    },
+    {
+      path:'/productManager',
+      name: 'productManager',
+      component:productManager
+    },
+ {
+    path:'/saleManager',
+     name: 'saleManager',
+   component:saleManager
+ },
+    {
+      path:'/cooperationManager',
+      name: 'cooperationManager',
+      component:cooperationManager
+    },
+    {
+      path:'/Archives',
+      name: 'Archives',
+      component: Archives ,
+      children:[
+        {
+          path: '/',
+          name: 'Household',
+          component: Household
+        },
+        {
+          path: '/Plant',
+          name: 'Plant',
+          component: Plant
+        }
+      ]
     }
+
   ]
 })
