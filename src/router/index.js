@@ -6,6 +6,8 @@ import Detail from '@/components/pages/detail'
 import Map from '@/components/pages/map'
 import VueResource from 'vue-resource'
 import Menu from '@/components/pages/menu'
+import lotManager from '@/components/pages/lot/lotManager'
+
 /*使用VueResource插件*/
 Vue.use(VueResource);
 Vue.use(Router)
@@ -38,6 +40,11 @@ export default new Router({
       path:'/Menu',
       name: 'Menu',
       component: Menu
+    },
+    {
+      path:'/lotManager',
+      name: 'lotManager',
+      component:lotManager
     }
   ]
 })

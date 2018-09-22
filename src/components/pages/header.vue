@@ -243,7 +243,7 @@
             <router-link :to="{path:'/Map',query: {menuName:'地图管理',menuItem:[{name:'地图管理'}]}}"><li class="menu-item">
              地图管理
             </li> </router-link>
-            <router-link :to="{path:'/Menu',query: {informationType: 3,menuName:'地块管理',menuItem:[
+            <router-link :to="{path:'/lotManager',query: {informationType: 3,menuName:'地块管理',menuItem:[
               {name:'地块管理'}]}}"> <li class="menu-item">
              地块管理
             </li></router-link>
