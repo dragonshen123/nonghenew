@@ -9,21 +9,31 @@
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">生产管理</h3>
+            <h3 class="panel-title">产品预售</h3>
           </div>
           <div class="panel-body">
             <ul id="d_menu-list">
               <li  v-on:click="getImformation(10,1,null)">全部分类<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li class="active" v-on:click="getImformation(10,1,'种苗')">种苗<i
+              <li class="active" v-on:click="getImformation(10,1,'产品测量')">产品测量<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li v-on:click="getImformation(10,1,'标准规范')">标准规范<i
+              <li v-on:click="getImformation(10,1,'商品名称')">商品名称<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li v-on:click="getImformation(10,1,'生产计划')">生产计划<i
+              <li v-on:click="getImformation(10,1,'作物种类')">作物种类<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li v-on:click="getImformation(10,1,'农事管理')">农事管理<i
+              <li v-on:click="getImformation(10,1,'作物品种')">作物品种<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li v-on:click="getImformation(10,1,'预报预警')">预报预警<i
+              <li v-on:click="getImformation(10,1,'价格区间')">价格区间<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li v-on:click="getImformation(10,1,'规格')">规格<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li v-on:click="getImformation(10,1,'产品属性')">产品属性<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li v-on:click="getImformation(10,1,'产品标准')">产品标准<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li v-on:click="getImformation(10,1,'产品介绍')">产品介绍<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li v-on:click="getImformation(10,1,'供应商信息')">供应商信息<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
 
             </ul>
@@ -36,7 +46,7 @@
 
             <form class="form-horizontal pull-right" style="width: 100%">
               <div class="form-group" style="margin-bottom: 0px">
-                <label class="col-sm-5 control-label" >生产管理名称</label>
+                <label class="col-sm-5 control-label" >产品预售名称</label>
                 <div class="col-sm-5">
                   <input class="form-control" v-model="informationName" />
 
@@ -93,7 +103,7 @@
   import VueResource from '@/components/resource/index.js'
   Vue.use(VueResource)
   export default {
-    name: "productManager",
+    name: "saleManager",
     data: function () {
       return {
         showPage:[1,2,3,4,5],
@@ -115,7 +125,7 @@
    getImformation(pageSize,curPage,informationType){
      this.curPage=curPage
      this.informationType=informationType
-     var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageproducts?pagenum='+this.curPage+'&pageSize='+pageSize+'&flag=1&informationType='+informationType+'&informationName='+this.informationName)
+     var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageproducts?pagenum='+this.curPage+'&pageSize='+pageSize+'&flag=2&informationType='+informationType+'&informationName='+this.informationName)
      location.query().then(function (response) {
        console.log(response.bodyText)
        this.page= JSON.parse(response.bodyText).result
