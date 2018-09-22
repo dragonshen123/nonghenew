@@ -9,14 +9,23 @@
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">档案管理</h3>
+            <h3 class="panel-title">生产管理</h3>
           </div>
           <div class="panel-body">
             <ul id="d_menu-list">
-              <li class="active">人员档案<i
+              <li  v-on:click="getImformation(10,1,null)">全部分类<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li>种植档案<i
+              <li class="active" v-on:click="getImformation(10,1,'种苗')">种苗<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li v-on:click="getImformation(10,1,'标准规范')">标准规范<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li v-on:click="getImformation(10,1,'生产计划')">生产计划<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li v-on:click="getImformation(10,1,'农事管理')">农事管理<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li v-on:click="getImformation(10,1,'预报预警')">预报预警<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>
+
             </ul>
           </div>
         </div>
@@ -24,53 +33,17 @@
       <div class="col col-md-9" id="detail">
         <div class="panel panel-default">
           <div class="panel-heading" style="display: inline-block">
-            <h3 class="panel-title pull-left" style="width: 30%;line-height: 34px;line-height: 55px">数据列表</h3>
+
             <form class="form-horizontal pull-right" style="width: 100%">
               <div class="form-group" style="margin-bottom: 0px">
-                <label class="col-sm-1 control-label" >省</label>
-                <div class="col-sm-2">
-                  <select class="form-control" >
-                    <option v-for="item in provice">{{item.locationName}}</option>
-                  </select>
-                </div>
+                <label class="col-sm-5 control-label" >生产管理名称</label>
+                <div class="col-sm-5">
+                  <input class="form-control" v-model="informationName" />
 
-                <label class="col-sm-1 control-label" style="width: 5%">州</label>
-                <div class="col-sm-1">
-                  <select type="text" class="form-control" >
-                    <option  ></option>
-
-                  </select>
-                </div>
-
-                <label class="col-sm-1 control-label" style="width: 5%">县</label>
-                <div class="col-sm-1">
-                  <select type="text" class="form-control">
-                    <option></option>
-                    <option ng-repeat="item in county "></option>
-                  </select>
-                </div>
-
-                <label class="col-sm-1 control-label" style="width: 5%">镇</label>
-                <div class="col-sm-1">
-                  <select type="text" class="form-control">
-                    <option></option>
-                    <option ng-repeat="item in town "></option>
-                  </select>
                 </div>
 
 
-                <label class="col-sm-1 control-label" style="width: 9%">村委会</label>
-                <div class="col-sm-1">
-                  <select type="text" class="form-control">
-                    <option></option>
-                    <option></option>
-                  </select>
-                </div>
-
-                <label class="col-sm-1 control-label" style="width: 9%">村小组</label>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" name="groupName"/>
-                </div>
+                <label class="col-sm-5 control-label" v-on:click="getImformation(pageSize,1,null)" >查询</label>
               </div>
             </form>
           </div>
@@ -79,36 +52,30 @@
         </div>
 
         <div class="panel-body">
-          <!--<ul id="detail-list">-->
-          <!--<li class="active">-->
-          <!--<span class="title">全国农药质量追溯系统生产追溯信息数据对接标准</span>-->
-          <!--<p><span class="pull-left item-left">全国农药质量追溯系统生产迫溯信息数据对接标准已发布，农药生产企业上报生产数据可参照附件《全</span> <span class="pull-right item-right"> 2018-05-06</span></p>-->
-          <!--</li>-->
 
-          <!--</ul>-->
           <table class="table table-striped" id="dataList">
             <thead>
             <tr>
-              <th></th>
+              <th>生产管理标题</th>
+              <th>生产管理类型</th>
+              <th>生产管理时间</th>
+              <th>详情</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr v-for=" item in page">
+              <td>{{item.informationTtile}}</td>
+              <td>{{item.informationType}}</td>
+              <td>{{item.informationDate}}</td>
+              <td>跳转详情</td>
             </tr>
             </tbody>
           </table>
           <ul class="pagination pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li><a   v-on:click="getImformation(pageSize,curPage-1,informationType)">&laquo;</a></li>
+            <li class="active"><a href="#">{{curPage}}</a></li>
+            <li  ><a  v-for="itemCount in showPage" v-if="itemCount+curPage <= totalPage" v-on:click="getImformation(pageSize,itemCount+curPage,informationType)">{{itemCount+curPage}}</a></li>
+            <li><a  v-on:click="getImformation(pageSize,curPage+1,informationType)">&raquo;</a></li>
           </ul>
         </div>
       </div>
@@ -124,44 +91,44 @@
 
   Vue.use(service)
   import VueResource from '@/components/resource/index.js'
-
   Vue.use(VueResource)
   export default {
-    name: "list",
+    name: "productManager",
     data: function () {
       return {
-        proviceValue:null,
-        provice: [null],      //省
-        state: [null],
-        stateValue:null,//州
-        county: [null],               //县
-        countyVillageCommittee: [null],   //村委会
-        villageGroup: [null], //村小组
-        id: 0
+        showPage:[1,2,3,4,5],
+        informationName:null,
+        informationType:null,
+        lotValue:null,
+        totalCount:null,
+        totalPage:null,
+        pageSize:15,
+        curPage:1,
+        page:null
       }
     },
-    watch: {
-      "$route": function (e) {
-        this.title = this.$route.query.menuName,
-          this.menuList = this.$route.query.menuItem
-      }
-    },
+
     created() {
-      this.getprovice(0)
+      this.getImformation(10,1,null)
     },
     methods: {
-      getprovice(id) {
-        //flag=0
-        service.methods.getAddress(this, id,0);
-      }
+   getImformation(pageSize,curPage,informationType){
+     this.curPage=curPage
+     this.informationType=informationType
+     var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageproducts?pagenum='+this.curPage+'&pageSize='+pageSize+'&flag=1&informationType='+informationType+'&informationName='+this.informationName)
+     location.query().then(function (response) {
+       console.log(response.bodyText)
+       this.page= JSON.parse(response.bodyText).result
+       this.curPage=JSON.parse(response.bodyText).curPage
+       this.totalCount=JSON.parse(response.bodyText).totalCount
+       //this.pageSize=this.page.pageSize
+       this.totalPage=JSON.parse(response.bodyText).totalPage
+       console.log("当前页"+this.curPage)
+     })
+   }
     }
   }
-  $(function () {
-    $("#d_menu-list li").click(function () {
-      $("#d_menu-list li").removeClass('active'),
-        $(this).addClass("active")
-    })
-  })
+
 </script>
 
 <style scoped>
@@ -298,7 +265,7 @@
 
   .picture {
     height: 60px;
-    background: url('../../../static/images/m2.jpg');
+    background: url('../../../../static/images/m2.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     width: 100%
