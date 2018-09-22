@@ -55,10 +55,11 @@
     <div class="container" style="margin-top: 10px">
       <div class="row col-md-12 zcbt">
         <div class="col col-md-7">
-          <h4 class=""
-              style="color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../static/images/bander.png');background-size: 30%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2">
+          <h4 class="bander-title">
             <strong style="padding-left: 48px">政策指南</strong><a
-            href="#" class="pull-right" style="font-size: 10px"><router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link></a></h4>
+            href="#" class="pull-right" style="font-size: 10px">
+            <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
+          </a></h4>
           <ul class="butie" style="line-height: 25px">
             <li v-for="(site,index) in policies" v-if="index<7">
               <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
@@ -72,8 +73,7 @@
         </div>
 
         <div class="col col-md-5">
-          <h4
-            style="color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../static/images/bander.png');background-size: 40%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2">
+          <h4 class="bander-title1">
             <strong style="padding-left: 47px">档案管理</strong> <a class="pull-right" style="font-size: 10px">更多>></a></h4>
           <ul class="redian">
             <li v-for="(item,index) in topics" v-if="index<8">
@@ -85,15 +85,50 @@
           </ul>
         </div>
       </div>
-      <div class="row" style="height: 60px;background: url('../../../static/images/m2.jpg');background-size: 100%;background-repeat: no-repeat;width: 100%">
+      <div class="row picture">
         <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
       </div>
       <div class="row col-md-12 nonghe">
-        <div class="col col-md-5">
-          <h4 class=""
-              style="color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../static/images/bander.png');background-size: 40%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2">
-            <strong style="padding-left: 48px">地块管理</strong><a
-            href="#" class="pull-right" style="font-size: 10px"><router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link></a></h4>
+      <div class="col col-md-6">
+        <h4 class="bander-title2">
+          <strong style="padding-left: 48px">地块管理</strong><a
+          href="#" class="pull-right" style="font-size: 10px">
+          <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
+        </a></h4>
+        <ul class="butie" style="line-height: 25px">
+          <li v-for="(site,index) in policies" v-if="index<7">
+            <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
+            <router-link
+              :to="{path:'/Detail',query: {informationId: site.informationId,informationType:site.informationType}}">
+              <span style="display: inline-block;width: 64%"> {{site.informationTtile}}
+              </span><span class="pull-right " style="display: inline-block;width: 32%">{{site.informationDate}}</span>
+            </router-link>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="col col-md-6">
+        <h4 class="bander-title3">
+          <strong style="padding-left: 47px">党建合作社</strong> <a class="pull-right" style="font-size: 10px">更多>></a>
+        </h4>
+        <ul class="redian">
+          <li v-for="(item,index) in topics" v-if="index<8">
+            <router-link
+              :to="{path:'/detail',query:{informationId:item.informationId,informationType:item.informationType}}">
+              {{item.informationTtile}}
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
+      <div class="row col-md-12 nonghe">
+        <div class="col col-md-6">
+          <h4 class="bander-title2">
+            <strong style="padding-left: 48px">生产管理</strong><a
+            href="#" class="pull-right" style="font-size: 10px">
+            <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
+          </a></h4>
           <ul class="butie" style="line-height: 25px">
             <li v-for="(site,index) in policies" v-if="index<7">
               <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
@@ -107,23 +142,10 @@
           </ul>
         </div>
 
-        <div class="col col-md-4">
-        <h4
-          style="color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../static/images/bander.png');background-size: 64%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2">
-          <strong style="padding-left: 47px">党建合作社</strong> <a class="pull-right" style="font-size: 10px">更多>></a></h4>
-        <ul class="redian">
-          <li v-for="(item,index) in topics" v-if="index<8">
-            <router-link
-              :to="{path:'/detail',query:{informationId:item.informationId,informationType:item.informationType}}">
-              {{item.informationTtile}}
-            </router-link>
-          </li>
-        </ul>
-      </div>
-        <div class="col col-md-3">
-          <h4
-            style="color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../static/images/bander.png');background-size: 70%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2">
-            <strong style="padding-left: 54px">专家库</strong> <a class="pull-right" style="font-size: 10px">更多>></a></h4>
+        <div class="col col-md-6">
+          <h4 class="bander-title3">
+            <strong style="padding-left: 47px">产品预售</strong> <a class="pull-right" style="font-size: 10px">更多>></a>
+          </h4>
           <ul class="redian">
             <li v-for="(item,index) in topics" v-if="index<8">
               <router-link
@@ -168,7 +190,8 @@
         //农业跨讯
         news: serviceTest.methods.defaultData(this, 4),
         //获取图片
-        images: serviceTest.methods.getImages(this)
+        images: serviceTest.methods.getImages(this),
+        banderImg: require('../../../static/images/bander.png')
       }
     },
     methods: {
@@ -346,6 +369,16 @@
     border-right: 2px inset silver;
   }
 
+  .bander-title {
+    color: white;
+    font: 700 18px/37px 'Microsoft Yahei';
+    display: block;
+    background: url('../../../static/images/bander.png');
+    background-size: 30%;
+    background-repeat: no-repeat;
+    border-bottom: 2px solid #2aabd2
+  }
+
   #ul li {
     width: 300px;
     height: 150px;
@@ -441,6 +474,16 @@
     border-radius: 10px;
   }
 
+  .bander-title2 {
+    color: white;
+    font: 700 18px/37px 'Microsoft Yahei';
+    display: block;
+    background: url('../../../static/images/bander.png');
+    background-size: 34%;
+    background-repeat: no-repeat;
+    border-bottom: 2px solid #2aabd2
+  }
+
   .row {
     margin-left: 0;
     margin-right: 0;
@@ -458,6 +501,9 @@
     margin-top: 20px;
     margin-bottom: 20px;
     color: black;
+  }
+  .picture{
+    height: 60px;background: url('../../../static/images/m2.jpg');background-size: 100%;background-repeat: no-repeat;width: 100%
   }
 
   .pull-right li {
@@ -488,6 +534,9 @@
     padding-left: 10px;
     line-height: 30px;
   }
+  .bander-title3{
+    color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../static/images/bander.png');background-size: 34%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2
+  }
 
   /*.butie li{*/
   /*margin-top: 6px;*/
@@ -495,6 +544,16 @@
   /*}*/
   .butie li a {
     color: black;
+  }
+
+  .bander-title1 {
+    color: white;
+    font: 700 18px/37px 'Microsoft Yahei';
+    display: block;
+    background: url('../../../static/images/bander.png');
+    background-size: 40%;
+    background-repeat: no-repeat;
+    border-bottom: 2px solid #2aabd2
   }
 
   .redian li {
@@ -517,7 +576,6 @@
   .nongji li {
     line-height: 25px;
   }
-
 
   .fuwu li {
     float: left;

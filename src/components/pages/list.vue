@@ -5,18 +5,16 @@
       <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
     </div>
     <!--横幅部分内容结束-->
-    <div class="row" style="margin-top: 5rem;border-bottom: 1px dashed #337ab7">
+    <div class="row" style="margin-top: 5rem">
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">档案管理</h3>
+            <h3 class="panel-title"></h3>
           </div>
           <div class="panel-body">
             <ul id="d_menu-list">
-              <li class="active">人员档案<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li>种植档案<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <li >
+               <i class="pull-right icon iconfont icon-youjiantou"></i></li>
             </ul>
           </div>
         </div>
@@ -27,61 +25,49 @@
             <h3 class="panel-title pull-left" style="width: 30%;line-height: 34px;line-height: 55px">数据列表</h3>
             <form class="form-horizontal pull-right" style="width: 100%">
               <div class="form-group" style="margin-bottom: 0px">
-                <div class="col col-md-12">
-                <label class="col-sm-1 control-label">省</label>
+                <label class="col-sm-1 control-label" >省</label>
                 <div class="col-sm-2">
-                  <select class="form-control" v-model="proviceSelect" v-on:change="getState(proviceSelect)">
-                    <option v-for="item in provice" :value="item.locationId">{{item.locationName}}</option>
-                    <option v-if="provice.length==0">没有更多数据！</option>
+                  <select class="form-control"  >
+                    <option v-for="item in provices">{{item.locationName}}</option>
                   </select>
                 </div>
 
-                <label class="col-sm-1 control-label" >州</label>
-                <div class="col-sm-2">
-                  <select type="text" class="form-control" v-model="stateSelect" v-on:change="getCounty(stateSelect)">
-                    <option v-for="item in state" :value="item.locationId">{{item.locationName}}</option>
-                    <option v-if="state.length==0">没有更多数据！</option>
+                <label class="col-sm-1 control-label" style="width: 5%">州</label>
+                <div class="col-sm-3">
+                  <select type="text" class="form-control" >
+                    <option    ></option>
 
                   </select>
                 </div>
 
-                <label class="col-sm-1 control-label" >县</label>
-                <div class="col-sm-2">
-                  <select type="text" class="form-control" v-model="countySelect"
-                          v-on:change="getCountyVillageCommittee(countySelect)">
-                    <option v-for="item in county" :value="item.locationId">{{item.locationName}}</option>
-                    <option v-if="county.length==0">没有更多数据！</option>
+                <label class="col-sm-1 control-label" style="width: 5%">县</label>
+                <div class="col-sm-1">
+                  <select type="text" class="form-control">
+                    <option></option>
+                    <option ng-repeat="item in county "></option>
                   </select>
                 </div>
 
-                <label class="col-sm-1 control-label" >镇</label>
-                <div class="col-sm-2">
-                  <select type="text" class="form-control" v-model="countyVillageCommitteeSelect"
-                          v-on:change="getTown(countyVillageCommitteeSelect)">
-                    <option v-for="item in countyVillageCommittee" :value="item.locationId">{{item.locationName}}
-                    </option>
-                    <option v-if="countyVillageCommittee.length==0">没有更多数据！</option>
+                <label class="col-sm-1 control-label" style="width: 5%">镇</label>
+                <div class="col-sm-1">
+                  <select type="text" class="form-control">
+                    <option></option>
+                    <option ng-repeat="item in town "></option>
                   </select>
                 </div>
-                </div>
-                <div class="col col-md-12" style="margin-top: 1rem">
+
+
                 <label class="col-sm-1 control-label" style="width: 9%">村委会</label>
-                <div class="col-sm-4">
-                  <select type="text" class="form-control" v-model="townSelect"
-                          v-on:change="getVillageGroup(townSelect)">
-                    <option v-for="item in town" :value="item.locationId">{{item.locationName}}</option>
-                    <option v-if="town.length==0">没有更多数据！</option>
+                <div class="col-sm-1">
+                  <select type="text" class="form-control">
+                    <option></option>
+                    <option></option>
                   </select>
                 </div>
 
                 <label class="col-sm-1 control-label" style="width: 9%">村小组</label>
-                <div class="col-sm-4">
-                  <select type="text" class="form-control" v-model="villageGroupSelect">
-                    <option v-for="item in villageGroup" :value="item.locationId">{{item.locationName}}</option>
-                    <option v-if="villageGroup.length==0">没有更多数据！</option>
-                  </select>
-                </div>
-                  <a  class="btn btn-primary pull-right" style="margin-right: 10px">查询</a>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" name="groupName"/>
                 </div>
               </div>
             </form>
@@ -90,10 +76,6 @@
 
         </div>
 
-
-      </div>
-    </div>
-      <div class="row">
         <div class="panel-body">
           <!--<ul id="detail-list">-->
           <!--<li class="active">-->
@@ -102,29 +84,18 @@
           <!--</li>-->
 
           <!--</ul>-->
-          <table class="table table-bordered" id="dataList">
+          <table class="table table-striped" id="dataList">
             <thead>
             <tr>
-              <th>户主名称</th>
-              <th>户号</th>
-              <th>是否建档立卡户</th>
-              <th>户籍人数</th>
-              <th>主要经济来源</th>
-              <th>预计年收入</th>
-              <th>备注</th>
-              <th>注册日期</th>
+              <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="item in census.result">
-              <td>{{item.censusName}}</td>
-              <td>{{item.censusNumber}}</td>
-              <td>{{item.censusBookbuilding}}</td>
-              <td>{{item.censusPersions}}</td>
-              <td>{{item.censusPocketbook}}</td>
-              <td>{{item.censusYearInput}}</td>
-              <td>{{item.censusNotes}}</td>
-              <td>{{item.censusDate}}</td>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
             </tbody>
           </table>
@@ -139,6 +110,7 @@
           </ul>
         </div>
       </div>
+    </div>
   </div>
   <!--主体内容部分结束-->
 
@@ -153,67 +125,26 @@
 
   Vue.use(VueResource)
   export default {
-    name: "archives",
+    name: "list",
     data: function () {
       return {
-        proviceSelect: '',
-        stateSelect: '',
-        countySelect: '',
-        townSelect: '',
-        countyVillageCommitteeSelect: '',
-        villageGroupSelect: '',
-        proviceValue: '',
-        provice: '',      //省
-        state: '',
-        county: '',               //县
-        town: '',
-        countyVillageCommittee: '',   //村委会
-        villageGroup: '', //村小组
-        id: 0 ,
-        census: '', //户籍,
-         isActive: true,
-        curPage:'',
-        totalCount:'',
-        totalPage:'',
-        pageSize:''
+        provices: this.getProvices()
       }
     },
     watch: {
       "$route": function (e) {
-        this.title = this.$route.query.menuName,
-          this.menuList = this.$route.query.menuItem
+       /* this.title = this.$route.query.menuName,
+          this.menuList = this.$route.query.menuItem*/
       }
     },
-    created() {
-      this.getprovice(0);
-      this.getCensus();
+
+    mounted() {
+
     },
     methods: {
-      getprovice(id) {
-        //flag=0
-        service.methods.getAddress(this, id, 0);
-      },
-      getState(id) {
-        //flag=1
-        service.methods.getAddress(this, id, 1);
-      },
-      getCounty(id) {
-        service.methods.getAddress(this, id, 2);
-      }
-      ,
-      getTown(id) {
-        service.methods.getAddress(this, id, 3);
-      }
-      ,
-      getCountyVillageCommittee(id) {
-        service.methods.getAddress(this, id, 4);
-      },
-      getVillageGroup(id) {
-        service.methods.getAddress(this, id, 5);
-      },
-      getCensus(){
-        service.methods.getCensus(this);
-      }
+      getProvices:function(){
+      service.getAddress(this,0,0)
+    }
     }
   }
   $(function () {
@@ -275,8 +206,7 @@
   /****************************详情页右侧内容************************/
   /*面板头部样式*/
   #detail .panel-heading {
-    /*border-bottom: 2px solid #009bc7;*/
-    border-bottom: none;
+    border-bottom: 2px solid #009bc7;
     color: #0497ca;
 
   }
@@ -364,5 +294,4 @@
     background-repeat: no-repeat;
     width: 100%
   }
-
 </style>
