@@ -243,14 +243,16 @@
             <router-link :to="{path:'/Map',query: {menuName:'地图管理',menuItem:[{name:'地图管理'}]}}"><li class="menu-item">
              地图管理
             </li> </router-link>
-            <router-link :to="{path:'/List',query: {informationType: 3,menuName:'地块管理',menuItem:[
+            <router-link :to="{path:'/lotManager',query: {informationType: 3,menuName:'地块管理',menuItem:[
               {name:'地块管理'}]}}"> <li class="menu-item">
              地块管理
             </li></router-link>
 
-            <router-link :to="{path:'/List',query:{menuName:'党建合作社',menuItem:[{name:'党建合作社'}]}}"><li class="menu-item">党建合作社</li>  </router-link>
-            <li class="menu-item">生产管理</li>
-            <li class="menu-item">产品预售</li>
+            <router-link :to="{path:'/cooperationManager',query:{menuName:'党建合作社',menuItem:[{name:'党建合作社'}]}}"><li class="menu-item">党建合作社</li>  </router-link>
+            <router-link :to="{path:'/productManager',query:{menuName:'生产管理',menuItem:[{name:'生产管理'}]}}"><li class="menu-item">生产管理</li>  </router-link>
+            <!--<li class="menu-item">生产管理</li>-->
+            <router-link :to="{path:'/saleManager',query:{menuName:'产品预售',menuItem:[{name:'产品预售'}]}}"><li class="menu-item">产品预售</li>  </router-link>
+           <!-- <li class="menu-item">产品预售</li>-->
             <li class="menu-item">专家库</li>
             <!--<li>-->
               <!--<router-link :to="{path:'/moreDetils',query: {informationType: 1,menuName:'社会化服务'}}">社会化服务</router-link>-->
