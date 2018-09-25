@@ -18,10 +18,10 @@
             <ul id="myTab" class="nav nav-tabs">
               <li class="active">
                 <a href="#home" data-toggle="tab" >
-                  合作社信息
+                  合作社信息 <i class="pull-right icon iconfont icon-youjiantou"></i>
                 </a>
               </li>
-               <li><a href="#map" data-toggle="tab">地图显示</a></li>
+               <li><a href="#map" data-toggle="tab">地图显示<i class="pull-right icon iconfont icon-youjiantou"></i></a></li>
               <li><a href="#details" data-toggle="tab" id="detailsOnclick" style="display: none">详情</a></li>
             </ul>
           </div>

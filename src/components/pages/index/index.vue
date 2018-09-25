@@ -71,41 +71,41 @@
         <h2 style="color: white;font-weight: 800;text-align: center">着力提高农业信息开发与服务水平</h2>
       </div>
       <div class="row col-md-12 nonghe">
-      <div class="col col-md-6">
-        <h4 class="bander-title2">
-          <strong style="padding-left: 48px">地块管理</strong><a
-          href="#" class="pull-right" style="font-size: 10px">
-          <router-link :to="{path:'/lotManager',query: {menuName:'地块管理'}}">更多>></router-link>
-        </a></h4>
-        <ul class="butie" style="line-height: 25px">
-          <li v-for="(lot,index) in lots" >
-            <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
-            <router-link
-              :to="{path:'/Detail',query: {lotId: lot.lotId}}">
+        <div class="col col-md-6">
+          <h4 class="bander-title2">
+            <strong style="padding-left: 48px">地块管理</strong><a
+            href="#" class="pull-right" style="font-size: 10px">
+            <router-link :to="{path:'/lotManager',query: {menuName:'地块管理'}}">更多>></router-link>
+          </a></h4>
+          <ul class="butie" style="line-height: 25px">
+            <li v-for="(lot,index) in lots" >
+              <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
+              <router-link
+                :to="{path:'/Detail',query: {lotId: lot.lotId}}">
               <span style="display: inline-block;width: 64%"> {{lot.lotName}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">{{lot.lotDate}}</span>
-            </router-link>
-          </li>
+              </router-link>
+            </li>
 
-        </ul>
-      </div>
+          </ul>
+        </div>
 
-      <div class="col col-md-6">
-        <h4 class="bander-title3">
-          <strong style="padding-left: 47px">党建合作社</strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/cooperationManager',query: {menuName:'党建合作社'}}">更多>></router-link>>></a>
-        </h4>
-        <ul class="redian">
-          <li v-for="(cooperation,index) in cooperations" >
-            <router-link
-              :to="{path:'/detail',query:{cooperationId:cooperation.cooperationId}}">
+        <div class="col col-md-6">
+          <h4 class="bander-title3">
+            <strong style="padding-left: 47px">党建合作社</strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/cooperationManager',query: {menuName:'党建合作社'}}">更多>></router-link>>></a>
+          </h4>
+          <ul class="redian">
+            <li v-for="(cooperation,index) in cooperations" >
+              <router-link
+                :to="{path:'/detail',query:{cooperationId:cooperation.cooperationId}}">
 
               <span style="display: inline-block;width: 64%"> {{cooperation.cooperationName}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">{{cooperation.cooperationDate}}</span>
-            </router-link>
-          </li>
-        </ul>
+              </router-link>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
       <div class="row col-md-12 nonghe">
         <div class="col col-md-6">
           <h4 class="bander-title2">
@@ -201,12 +201,12 @@
       },
 
       getproducts:function(){
-    var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageproducts?pagenum=1&pageSize=10&flag=1')
-    location.query().then(function (response) {
-      console.log(response.bodyText)
-      this.products= JSON.parse(response.bodyText).result
-    })
-  },
+        var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageproducts?pagenum=1&pageSize=10&flag=1')
+        location.query().then(function (response) {
+          console.log(response.bodyText)
+          this.products= JSON.parse(response.bodyText).result
+        })
+      },
       getsales:function(){
         var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPagepSales?pagenum=1&pageSize=10&flag=2')
         location.query().then(function (response) {
@@ -445,7 +445,7 @@
     color: white;
     font: 700 18px/37px 'Microsoft Yahei';
     display: block;
-    background: url('../../../..//static/images/bander.png');
+    background: url('../../../../static/images/bander.png');
     background-size: 34%;
     background-repeat: no-repeat;
     border-bottom: 2px solid #2aabd2
@@ -470,7 +470,7 @@
     color: black;
   }
   .picture{
-    height: 60px;background: url('../../../..//static/images/m2.jpg');background-size: 100%;background-repeat: no-repeat;width: 100%
+    height: 60px;background: url('../../../../static/images/m2.jpg');background-size: 100%;background-repeat: no-repeat;width: 100%
   }
 
   .pull-right li {
@@ -502,7 +502,7 @@
     line-height: 30px;
   }
   .bander-title3{
-    color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../..//static/images/bander.png');background-size: 34%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2
+    color:white;font: 700 18px/37px 'Microsoft Yahei';display: block;background: url('../../../../static/images/bander.png');background-size: 34%;background-repeat: no-repeat;border-bottom: 2px solid #2aabd2
   }
 
   /*.butie li{*/
@@ -738,6 +738,6 @@
     min-height: 200px;
   }
   .col-md-7>ul>li:hover>a>span,.col-md-5>ul>li:hover>a>span,.col-md-6>ul>li:hover>a>span{
-      color: #337ab7;
+    color: #337ab7;
   }
 </style>

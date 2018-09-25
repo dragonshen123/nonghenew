@@ -9,7 +9,6 @@
                   <div class="col-sm-2">
                     <select class="form-control" v-model="proviceSelect" v-on:change="getState(proviceSelect)">
                       <option v-for="item in provice" :value="item.locationId">{{item.locationName}}</option>
-                      <option v-if="provice.length==0" disabled>没有更多数据！</option>
                     </select>
                   </div>
 
@@ -17,7 +16,6 @@
                   <div class="col-sm-2">
                     <select type="text" class="form-control" v-model="stateSelect" v-on:change="getCounty(stateSelect)">
                       <option v-for="item in state" :value="item.locationId">{{item.locationName}}</option>
-                      <option v-if="state.length==0" disabled>没有更多数据！</option>
 
                     </select>
                   </div>
@@ -27,7 +25,6 @@
                     <select type="text" class="form-control" v-model="countySelect"
                             v-on:change="getCountyVillageCommittee(countySelect)">
                       <option v-for="item in county" :value="item.locationId">{{item.locationName}}</option>
-                      <option v-if="county.length==0" disabled>没有更多数据！</option>
                     </select>
                   </div>
 
@@ -37,32 +34,28 @@
                             v-on:change="getTown(countyVillageCommitteeSelect)">
                       <option v-for="item in countyVillageCommittee" :value="item.locationId">{{item.locationName}}
                       </option>
-                      <option v-if="countyVillageCommittee.length==0" disabled>没有更多数据！</option>
                     </select>
                   </div>
                 </div>
                 <div class="col col-md-12" style="margin-top: 1rem">
                   <label class="col-sm-1 control-label" style="width: 10%">村委会</label>
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                     <select type="text" class="form-control" v-model="townSelect"
                             v-on:change="getVillageGroup(townSelect)">
                       <option v-for="item in town" :value="item.locationId">{{item.locationName}}</option>
-                      <option v-if="town.length==0" disabled>没有更多数据！</option>
                     </select>
                   </div>
 
                   <label class="col-sm-1 control-label" style="width: 10%">村小组</label>
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                     <select type="text" class="form-control" v-model="villageGroupSelect">
                       <option v-for="item in villageGroup" :value="item.groupId">{{item.groupName}}</option>
-                      <option v-if="villageGroup.length==0" disabled>没有更多数据！</option>
                     </select>
                   </div>
                   <label class="col-sm-1 control-label" style="width: 10%">名称</label>
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                     <select type="text" class="form-control" v-model="villageGroupSelect">
                       <option v-for="item in villageGroup" :value="item.groupId">{{item.groupName}}</option>
-                      <option v-if="villageGroup.length==0" disabled>没有更多数据！</option>
                     </select>
                   </div>
                   <label  class="btn  btn-default pull-right" style="color: #337ab7"  v-on:click="queryPage(pageSize,1)"><i class="glyphicon glyphicon-search"></i></label>
