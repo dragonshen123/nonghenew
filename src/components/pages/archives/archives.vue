@@ -1,30 +1,47 @@
 <template>
-  <div class="container" style="margin-top: 50px">
+  <div class="container" style="margin-top: 50px;padding: 0">
     <!--福导航横幅图片内容开始-->
     <div class="row picture">
-      <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
+      <h2 style="color: white;font-weight: 800;text-align: center">充分实现信息在活动中应有的支持作用</h2>
     </div>
     <!--横幅部分内容结束-->
-    <div class="row" style="margin-top: 5rem;border-bottom: 1px dashed #337ab7">
+    <div class="row" style="margin-top: 1rem;border-bottom: 1px dashed #337ab7">
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">档案管理</h3>
           </div>
           <div class="panel-body">
-            <ul id="d_menu-list">
-              <router-link to="/Archives/">
-              <li class="active">户籍档案<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li> </router-link>
-             <router-link to="/Plant"> <li>种植档案<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li> </router-link>
-            </ul>
+            <!--<ul id="d_menu-list">-->
+              <!--<router-link to="/Archives/">-->
+              <!--<li class="active">户籍档案<i-->
+                <!--class="pull-right icon iconfont icon-youjiantou"></i></li> </router-link>-->
+             <!--<router-link to="/Plant"> <li>种植档案<i-->
+                <!--class="pull-right icon iconfont icon-youjiantou"></i></li> </router-link>-->
+
+              <ul id="myTab" class="nav nav-tabs">
+                <li >
+                  <a href="#home" data-toggle="tab">
+                    户籍档案 <i class="pull-right icon iconfont icon-youjiantou"></i>
+                  </a>
+                </li>
+                <li class="active"><a href="#ios" data-toggle="tab">种植档案<i class="pull-right icon iconfont icon-youjiantou"></i></a></li>
+              </ul>
+
+            <!--</ul>-->
           </div>
         </div>
       </div>
       <div class="col col-md-9" id="detail">
-        <router-view></router-view>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in active" id="home">
+            <Household></Household>
+          </div>
+          <div class="tab-pane fade" id="ios">
+            <Plant></Plant>
+          </div>
 
+        </div>
       </div>
     </div>
 
@@ -36,25 +53,41 @@
 <script>
 
   export default {
-    name: "archives"
-    // watch: {
-    //   "$route": function (e) {
-    //     this.title = this.$route.query.menuName,
-    //       this.menuList = this.$route.query.menuItem
-    //   }
-    // },
-    // created() {
-    //   this.getprovice(0);
-    //   this.getCensus();
-    // },
+    name: "archives" ,
+    components:{
+      Household: require('@/components/pages/archives/household').default ,
+      Plant: require('@/components/pages/archives/plant').default
+    },
+    watch: {
+      "$route": function (e) {
+       console.log(e)
+      }
+    },
+    mounted(){
+      // if(typeof (this.$route.query.plantingId)=='string'){
+      //   alert(typeof (this.$route.query.plantingId))
+      //   $('#home').removeClass('active')
+      //   $("#ios").addClass('active')
+      //   $("#myTab").children('li:first-child').removeClass('active')
+      //   $("#myTab").children('li:last-child').addClass('active')
+      // }
+    }
+
 
   }
   $(function () {
     $("#d_menu-list li").click(function () {
       $("#d_menu-list li").removeClass('active'),
         $(this).addClass("active")
-    })
+    });
+    $.getUrlParam = function (name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return unescape(r[2]); return null;
+    };
+    console.log($.getUrlParam('plantingId'))
   })
+
 </script>
 
 <style scoped>
@@ -75,23 +108,42 @@
     list-style: none;
     padding: 0;
   }
-
+  .nav-tabs > li{
+    float: none;
+  }
+  #myTab li.active{
+    background: #48b5d5;
+    color: white;
+  }
+  #myTab li.active a{
+    background: transparent!important;
+    color: white;
+  }
   /*面板内容列表项样式*/
-  #d_menu-list li {
-    padding-top: 0.8rem;
-    padding-bottom: 0.8rem;
+  #myTab li {
+    /*padding-top: 0.8rem;*/
+    /*padding-bottom: 0.8rem;*/
     font-size: 14px;
     cursor: pointer;
   }
 
-  /*面板列表前菱形图标样式*/
-  #d_menu-list li:before {
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus,.nav-tabs > li > a:hover{
+    border-color: transparent;
+  }
+  #myTab li a{
+    cursor: pointer;
+  }
+    /*面板列表前菱形图标样式*/
+  #myTab li a:before {
     content: "\e609"; /* 图标编码 */
     font-family: iconfont;
     display: inline-block;
     font-size: 10px;
     margin-left: 1.3em;
     width: 1.3em;
+  }
+  .nav > li > a{
+    padding: 0.8rem;
   }
 
   /*鼠标滑过列表项样式*/

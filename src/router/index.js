@@ -10,8 +10,6 @@ import productManager from '@/components/pages/products/productManager'
 import saleManager from '@//components/pages/sale/saleManager'
 import cooperationManager from '@/components/pages/cooperation/cooperationManager'
 import Archives from '@/components/pages/archives/archives'
-import Household from '@/components/pages/archives/household'
-import Plant from '@/components/pages/archives/plant'
 
 
 /*使用VueResource插件*/
@@ -67,18 +65,6 @@ export default new Router({
       path:'/Archives',
       name: 'Archives',
       component: Archives ,
-      children:[
-        {
-          path: '/',
-          name: 'Household',
-          component: Household
-        },
-        {
-          path: '/Plant',
-          name: 'Plant',
-          component: Plant
-        }
-      ]
     }
 
   ]

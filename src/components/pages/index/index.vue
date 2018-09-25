@@ -39,12 +39,12 @@
           <h4 class="bander-title">
             <strong style="padding-left: 48px">种植档案</strong><a
             href="#" class="pull-right" style="font-size: 10px">
-            <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'户籍档案'}}">更多>></router-link>
+            <router-link :to="{path:'/Archives',query: {active: 2,menuName:'种植档案'}}">更多>></router-link>
           </a></h4>
           <ul class="butie" style="line-height: 25px">
             <li  v-for="(palanting,index) in palantings" >
               <router-link
-                :to="{path:'/Detail',query: {plantingId: palanting.plantingId}}">
+                :to="{path:'/Archives',query: {plantingId: palanting.plantingId}}">
               <span style="display: inline-block;width: 64%"> {{palanting.plantingName}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">({{palanting.cropsName}}){{palanting.plantingStartDate}}</span>
               </router-link>
@@ -54,11 +54,11 @@
 
         <div class="col col-md-5">
           <h4 class="bander-title1">
-            <strong style="padding-left: 47px">  户籍档案 </strong> <a class="pull-right" style="font-size: 10px">更多>></a></h4>
+            <strong style="padding-left: 47px">  户籍档案 </strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/Archives',query: {active: 1,menuName:'户籍档案'}}">更多>></router-link></a></h4>
           <ul class="redian">
             <li v-for="(cencu,index) in cencus" >
               <router-link
-                :to="{path:'/detail',query:{censusId:cencu.censusId}}">
+                :to="{path:'/Archives',query:{censusId:cencu.censusId}}">
                <span style="display: inline-block;width: 64%"> 户主：{{cencu.censusName}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">年收入:{{cencu.censusYearInput}}</span>
 
@@ -68,14 +68,14 @@
         </div>
       </div>
       <div class="row picture">
-        <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
+        <h2 style="color: white;font-weight: 800;text-align: center">着力提高农业信息开发与服务水平</h2>
       </div>
       <div class="row col-md-12 nonghe">
       <div class="col col-md-6">
         <h4 class="bander-title2">
           <strong style="padding-left: 48px">地块管理</strong><a
           href="#" class="pull-right" style="font-size: 10px">
-          <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
+          <router-link :to="{path:'/lotManager',query: {menuName:'地块管理'}}">更多>></router-link>
         </a></h4>
         <ul class="butie" style="line-height: 25px">
           <li v-for="(lot,index) in lots" >
@@ -92,7 +92,7 @@
 
       <div class="col col-md-6">
         <h4 class="bander-title3">
-          <strong style="padding-left: 47px">党建合作社</strong> <a class="pull-right" style="font-size: 10px">更多>></a>
+          <strong style="padding-left: 47px">党建合作社</strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/cooperationManager',query: {menuName:'党建合作社'}}">更多>></router-link>>></a>
         </h4>
         <ul class="redian">
           <li v-for="(cooperation,index) in cooperations" >
@@ -111,12 +111,12 @@
           <h4 class="bander-title2">
             <strong style="padding-left: 48px">生产管理</strong><a
             href="#" class="pull-right" style="font-size: 10px">
-            <router-link :to="{path:'/moreDetils',query: {informationType: 2,menuName:'政策补贴'}}">更多>></router-link>
+            <router-link :to="{path:'/productManager',query: {menuName:'生产管理'}}">更多>></router-link>
           </a></h4>
           <ul class="butie" style="line-height: 25px">
             <li v-for="(product,index) in products">
               <router-link
-                :to="{path:'/Detail',query: {informationId: product.informationId}}">
+                :to="{path:'/productManager',query: {informationId: product.informationId}}">
               <span style="display: inline-block;width: 64%"> {{product.informationTtile}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">({{product.informationType}}){{product.informationDate}}</span>
               </router-link>
@@ -127,7 +127,7 @@
 
         <div class="col col-md-6">
           <h4 class="bander-title3">
-            <strong style="padding-left: 47px">产品预售</strong> <a class="pull-right" style="font-size: 10px">更多>></a>
+            <strong style="padding-left: 47px">产品预售</strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/saleManager',query: {menuName:'产品预售'}}">更多>></router-link></a>
           </h4>
           <ul class="redian">
             <li v-for="(sale,index) in sales" >
@@ -736,5 +736,8 @@
   }
   .butie,.redian{
     min-height: 200px;
+  }
+  .col-md-7>ul>li:hover>a>span,.col-md-5>ul>li:hover>a>span,.col-md-6>ul>li:hover>a>span{
+      color: #337ab7;
   }
 </style>

@@ -1,11 +1,11 @@
 <template>
-  <div class="container" style="margin-top: 50px">
+  <div class="container" style="margin-top: 50px;padding: 0">
     <!--福导航横幅图片内容开始-->
     <div class="row picture">
       <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
     </div>
     <!--横幅部分内容结束-->
-    <div class="row" style="margin-top: 5rem">
+    <div class="row" style="margin-top: 1rem">
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -13,18 +13,18 @@
           </div>
           <div class="panel-body">
             <ul id="d_menu-list">
-              <li  v-on:click="getImformation(10,1,null)">全部分类<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li class="active" v-on:click="getImformation(10,1,'种苗')">种苗<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li v-on:click="getImformation(10,1,'标准规范')">标准规范<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li v-on:click="getImformation(10,1,'生产计划')">生产计划<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li v-on:click="getImformation(10,1,'农事管理')">农事管理<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li>
-              <li v-on:click="getImformation(10,1,'预报预警')">预报预警<i
-                class="pull-right icon iconfont icon-youjiantou"></i></li>
+              <a href="#data" data-toggle="tab"> <li class="active" v-on:click="getImformation(10,1,null)">全部分类<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li> </a>
+              <a href="#data" data-toggle="tab"><li  v-on:click="getImformation(10,1,'种苗')">种苗<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>  </a>
+                <a href="#data" data-toggle="tab"><li v-on:click="getImformation(10,1,'标准规范')">标准规范<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>  </a>
+                  <a href="#data" data-toggle="tab"><li v-on:click="getImformation(10,1,'生产计划')">生产计划<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>  </a>
+                    <a href="#data" data-toggle="tab"><li v-on:click="getImformation(10,1,'农事管理')">农事管理<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li> </a>
+                      <a href="#data" data-toggle="tab"><li v-on:click="getImformation(10,1,'预报预警')">预报预警<i
+                class="pull-right icon iconfont icon-youjiantou"></i></li>    </a>
 
             </ul>
           </div>
@@ -32,52 +32,58 @@
       </div>
       <div class="col col-md-9" id="detail">
         <div class="panel panel-default">
-          <div class="panel-heading" style="display: inline-block">
+          <div class="panel-heading" style="display: inline-block;width: 100%">
 
             <form class="form-horizontal pull-right" style="width: 100%">
               <div class="form-group" style="margin-bottom: 0px">
-                <label class="col-sm-5 control-label" >生产管理名称</label>
-                <div class="col-sm-5">
+                <label class="col-sm-2 control-label" >生产管理名称</label>
+                <div class="col-sm-3">
                   <input class="form-control" v-model="informationName" />
 
                 </div>
 
 
-                <label class="col-sm-5 control-label" v-on:click="getImformation(pageSize,1,null)" >查询</label>
+                <label class="btn btn-default pull-right" v-on:click="getImformation(pageSize,1,null)" ><i class="glyphicon glyphicon-search" style="color: #337ab7"></i></label>
               </div>
             </form>
           </div>
+          <div class="panel-body">
+            <div id="myTabContent" class="tab-content">
+            <div id="data" class="tab-pane fade in active">
 
-
+            <table class="table table-striped" id="dataList">
+              <thead>
+              <tr>
+                <th>生产管理标题</th>
+                <th>生产管理类型</th>
+                <th>生产管理时间</th>
+                <th>详情</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for=" item in page">
+                <td>{{item.informationTtile}}</td>
+                <td>{{item.informationType}}</td>
+                <td>{{item.informationDate}}</td>
+                <td><a href="#details" data-toggle="tab">详情</a></td>
+              </tr>
+              </tbody>
+            </table>
+            <ul class="pagination pull-right">
+              <li><a   v-on:click="getImformation(pageSize,curPage-1,informationType)">&laquo;</a></li>
+              <li class="active"><a href="#target">{{curPage}}</a></li>
+              <li  ><a  v-for="itemCount in showPage" v-if="itemCount+curPage <= totalPage" v-on:click="getImformation(pageSize,itemCount+curPage,informationType)">{{itemCount+curPage}}</a></li>
+              <li><a  v-on:click="getImformation(pageSize,curPage+1,informationType)">&raquo;</a></li>
+            </ul>
+          </div>
+            <div id="details" class="tab-pane fade in" >
+                dfsdf
+            </div>
+          </div>
+          </div>
         </div>
 
-        <div class="panel-body">
 
-          <table class="table table-striped" id="dataList">
-            <thead>
-            <tr>
-              <th>生产管理标题</th>
-              <th>生产管理类型</th>
-              <th>生产管理时间</th>
-              <th>详情</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for=" item in page">
-              <td>{{item.informationTtile}}</td>
-              <td>{{item.informationType}}</td>
-              <td>{{item.informationDate}}</td>
-              <td>跳转详情</td>
-            </tr>
-            </tbody>
-          </table>
-          <ul class="pagination pull-right">
-            <li><a   v-on:click="getImformation(pageSize,curPage-1,informationType)">&laquo;</a></li>
-            <li class="active"><a href="#">{{curPage}}</a></li>
-            <li  ><a  v-for="itemCount in showPage" v-if="itemCount+curPage <= totalPage" v-on:click="getImformation(pageSize,itemCount+curPage,informationType)">{{itemCount+curPage}}</a></li>
-            <li><a  v-on:click="getImformation(pageSize,curPage+1,informationType)">&raquo;</a></li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>
@@ -128,7 +134,12 @@
    }
     }
   }
-
+  $(function () {
+    $("#d_menu-list a").click(function () {
+      $("#d_menu-list li").removeClass('active'),
+        $(this).children('li').addClass("active")
+    })
+  })
 </script>
 
 <style scoped>
@@ -137,6 +148,9 @@
     font-size: 30px;
     text-align: center;
     padding-left: 0;
+  }
+  #d_menu-list a {
+    text-decoration: none;
   }
 
   /*面板主体样式*/

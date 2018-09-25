@@ -31,6 +31,10 @@ export default {
    padding: 0;
    margin: 0;
  }
+ .row {
+   padding: 0;
+   margin: 0;
+ }
 [v-cloak] {
   display: none;
 }

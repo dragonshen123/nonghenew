@@ -229,10 +229,10 @@
       </nav>
 
     </div>
-      <div class="container-fluid" style="background: rgba(57, 119, 59, 0.81);height: 50px;position: absolute;z-index: 999;width: 99%;padding: 0">
+      <div class="container-fluid" style="background: rgba(57, 119, 59, 0.81);height: 50px;position: absolute;z-index: 999;width: 100%;padding: 0">
         <!--<div class="col col-md-2 col-xs-2 col-sm-2" style="padding-left: 0"><a href="#">-->
         <!--<img src="../../../static/images/logo.png" class="img-responsive" alt=""></a></div>-->
-        <div class="container">
+        <div class="container" style="padding: 0">
           <ul class="menu">
             <router-link to="/"><li class="menu-item active">
              首页
@@ -302,6 +302,7 @@
       }
     },
     methods: {
+
       clearName: function () {
         this.name = ''
       },
