@@ -2,13 +2,79 @@
 
   <div>
 
-  <div class="container" style="margin-top: 50px">
+  <div class="container" style="margin-top: 50px;padding: 0">
     <!--福导航横幅图片内容开始-->
     <div class="row picture">
       <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
     </div>
     <!--横幅部分内容结束-->
-    <div class="row" style="margin-top: 5rem">
+    <div class="row">
+      <div class="panel panel-default" style="margin-bottom: 0">
+        <div class="panel-heading" style="display: inline-block">
+
+          <form class="form-horizontal pull-right" style="width: 100%">
+            <div class="form-group" style="margin-bottom: 0px">
+              <label class="col-sm-1 control-label" style="width: 1%">省</label>
+              <div class="col-sm-2" style="width: 9%">
+                <select  class="form-control"  v-model="proviceValue" @change="getstate()" >
+                  <option  v-for="item in provices"  v-bind:value="item.locationId">{{item.locationName}}</option>
+
+                </select>
+              </div>
+
+              <label  class="col-sm-1 control-label" style="width: 1%">州</label>
+              <div class="col-sm-2" style="width: 9%">
+                <select type="text" class="form-control" v-model="statesValue" @change="getcounty()" >
+                  <option v-for="state in states" v-bind:value="state.locationId">{{state.locationName}}</option>
+                  <option ></option>
+                </select>
+              </div>
+
+              <label  class="col-sm-1 control-label" style="width: 1%">县</label>
+              <div class="col-sm-2" style="width: 9%">
+                <select type="text" class="form-control"  v-model="countyValue" @change="gettowns()">
+                  <option v-for="county in countys" v-bind:value="county.locationId">{{county.locationName}}</option>
+
+                </select>
+              </div>
+
+              <label  class="col-sm-1 control-label" style="width: 1%">镇</label>
+              <div class="col-sm-2" style="width: 9%">
+                <select type="text" class="form-control" v-model="townValue" @change="getvillages()" >
+                  <option v-for="town in towns" v-bind:value="town.locationId">{{town.locationName}}</option>
+
+                </select>
+              </div>
+
+
+              <label  class="col-sm-2 control-label" style="width: 7%">村委会</label>
+              <div class="col-sm-2" style="width: 9%">
+                <select type="text" class="form-control" v-model="villageValue" @change="getgroups()">
+                  <option v-for="village in villages" v-bind:value="village.locationId">{{village.locationName}}</option>
+
+                </select>
+              </div>
+
+              <label  class="col-sm-2 control-label" style="width: 7%">村小组</label>
+              <div class="col-sm-2" style="width: 9%">
+                <select type="text" class="form-control" v-model="groupValue"  @change="getcencus()">
+                  <option v-for="group in groups" v-bind:value="group.groupId">{{group.groupName}}</option>
+                </select>
+              </div>
+              <label  class="col-sm-2 control-label" style="width: 9%">合作社名称</label>
+              <div class="col-sm-2" style="width: 9%">
+                <input name=" cooperationName" class="form-control" v-model=" cooperationName"/>
+              </div>
+
+              <label  class="btn btn-default pull-right"  v-on:click="queryPage(pageSize,1)"><i class="glyphicon glyphicon-search" style="color: #337ab7"></i></label>
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="row" style="margin-top: 1rem">
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -26,72 +92,12 @@
             </ul>
           </div>
         </div>
-      </div>
-      <div class="col col-md-9" id="detail">
-        <div class="panel panel-default">
-          <div class="panel-heading" style="display: inline-block">
-
-            <form class="form-horizontal pull-right" style="width: 100%">
-              <div class="form-group" style="margin-bottom: 0px">
-                <label class="col-sm-1 control-label" >省</label>
-                <div class="col-sm-2">
-                  <select  class="form-control"  v-model="proviceValue" @change="getstate()" >
-                    <option  v-for="item in provices"  v-bind:value="item.locationId">{{item.locationName}}</option>
-
-                  </select>
-                </div>
-
-                <label  class="col-sm-1 control-label" style="width: 5%">州</label>
-                <div class="col-sm-2">
-                  <select type="text" class="form-control" v-model="statesValue" @change="getcounty()" >
-                    <option v-for="state in states" v-bind:value="state.locationId">{{state.locationName}}</option>
-                    <option ></option>
-                  </select>
-                </div>
-
-                <label  class="col-sm-1 control-label" style="width: 5%">县</label>
-                <div class="col-sm-2">
-                  <select type="text" class="form-control"  v-model="countyValue" @change="gettowns()">
-                    <option v-for="county in countys" v-bind:value="county.locationId">{{county.locationName}}</option>
-
-                  </select>
-                </div>
-
-                <label  class="col-sm-1 control-label" style="width: 5%">镇</label>
-                <div class="col-sm-2">
-                  <select type="text" class="form-control" v-model="townValue" @change="getvillages()" >
-                    <option v-for="town in towns" v-bind:value="town.locationId">{{town.locationName}}</option>
-
-                  </select>
-                </div>
-
-
-                <label  class="col-sm-2 control-label" style="width: 9%">村委会</label>
-                <div class="col-sm-2">
-                  <select type="text" class="form-control" v-model="villageValue" @change="getgroups()">
-                    <option v-for="village in villages" v-bind:value="village.locationId">{{village.locationName}}</option>
-
-                  </select>
-                </div>
-
-                <label  class="col-sm-2 control-label" style="width: 9%">村小组</label>
-                <div class="col-sm-2">
-                  <select type="text" class="form-control" v-model="groupValue"  @change="getcencus()">
-                    <option v-for="group in groups" v-bind:value="group.groupId">{{group.groupName}}</option>
-                  </select>
-                </div>
-                <label  class="col-sm-2 control-label" style="width: 9%">合作社名称</label>
-                <div class="col-sm-2">
-                 <input name=" cooperationName" class="form-control" v-model=" cooperationName"/>
-                </div>
-
-                <label  class="col-sm-2 control-label"  v-on:click="queryPage(pageSize,1)">查询</label>
-              </div>
-            </form>
-          </div>
-
+        <div class="message">
 
         </div>
+      </div>
+      <div class="col col-md-9" id="detail">
+
 
         <div class="panel-body tab-content"  id="myTabContent">
           <div class="tab-pane fade in active" id="home">
@@ -338,7 +344,10 @@
                   click: function(cooperationNameMap) {
                     //点击合作社发生事件
                    // console.log(marker.text)
-                    alert(marker.text);
+                   //  console.log(marker)
+                    // alert(marker.text);
+                    $(".message").empty()
+                    $(".message").append('<h4 style="color: #337ab7">当前选择：</h4><p class="list-group-item"><strong>合作社名称：</strong>'+marker.text+'</p><p class="list-group-item"><strong>合作社精度维度：</strong>['+marker.position[0]+','+marker.position[1]+']</p>')
                   }
                 },
                 visible: true,
@@ -491,13 +500,45 @@
     margin-left: 0rem;
     width: 1.3em;
   }
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus,.nav-tabs > li > a:hover{
+    border-color: transparent;
+  }
+  #myTab li a{
+    cursor: pointer;
+  }
+  .nav-tabs > li {
+    float: none;
+  }
+  .nav-tabs > li > a{
+    border: none;
+  }
+  .nav-tabs > li > a:before{
+    content: "\e609";
+    font-family: iconfont;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 0rem;
+    width: 1.3em;
+  }
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+    border: none;
+  }
+  #myTab li.active{
+    background: #48b5d5;
+  }
+  #myTab li.active a{
+    color: white;
+    background: transparent!important;
+  }
 
   /*列表项标题部分样式*/
   #detail-list li .title {
     font-size: 18px;
     font-weight: 300;
   }
-
+   .control-label{
+     color: #337ab7;
+   }
   /*列表项样式*/
   #detail-list li {
     font-size: 16px;
@@ -548,7 +589,7 @@
   }
 
   .picture {
-    height: 60px;
+    height: 380px;
     background: url('../../../../static/images/m2.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
