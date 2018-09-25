@@ -9,7 +9,11 @@ import Resource from 'vue-resource'
 import '../static/bootstrap/js/bootstrap.js'
 import '../static/bootstrap/css/bootstrap.css'
 import common from './util/service/loginService'
-import '../static/bootstrap/fonts/iconfont.css'
+import  '../static/bootstrap/fonts/iconfont.css'
+import  '../static/bootstrap/upload/css/summernote.css'
+import '../static/bootstrap/upload/js/summernote.js'
+
+
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.http.options.xhr = { withCredentials: true }
