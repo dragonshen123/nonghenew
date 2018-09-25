@@ -26,6 +26,8 @@
                       <a href="#data" data-toggle="tab"><li v-on:click="getImformation(10,1,'预报预警')">预报预警<i
                 class="pull-right icon iconfont icon-youjiantou"></i></li>    </a>
 
+              <a href="#details" id="detailsOnclick" data-toggle="tab" style="display: none">详情</a>
+
             </ul>
           </div>
         </div>
@@ -65,7 +67,7 @@
                 <td>{{item.informationTtile}}</td>
                 <td>{{item.informationType}}</td>
                 <td>{{item.informationDate}}</td>
-                <td><a href="#details" data-toggle="tab">详情</a></td>
+                <td><a  v-on:click="getImformationDetils(item.informationId)" >详情</a></td>
               </tr>
               </tbody>
             </table>
@@ -131,7 +133,19 @@
        this.totalPage=JSON.parse(response.bodyText).totalPage
        console.log("当前页"+this.curPage)
      })
-   }
+   },
+      getImformationDetils(informationId){
+        var location = this.$resource(VueResource.data.url+'/webIndexController/getImformationDetils?informationId='+informationId)
+        location.query().then(function (response) {
+          document.getElementById("details").innerHTML = response.bodyText;
+          console.log(document.getElementsByTagName("textarea")[0])
+          for(var i=0;i<document.getElementsByTagName("textarea").length;i++){
+            document.getElementsByTagName("textarea")[i].style.display="none"
+          }
+          //this.cooperationDetils= response.bodyText
+          document.getElementById("detailsOnclick").click()
+        })
+      }
     }
   }
   $(function () {
