@@ -1,7 +1,5 @@
 <template>
-
   <div>
-
   <div class="container" style="margin-top: 50px">
     <!--福导航横幅图片内容开始-->
     <div class="row picture">
@@ -126,19 +124,17 @@
           </div>
           <div class="tab-pane fade" id="map">
           <!--  地图开始-->
-            <div class="amap-page-container" style="height:600px">
-              <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
-                <el-amap-marker vid="component-marker" :position="componentMarker.position" :content-render="componentMarker.contentRender" ></el-amap-marker>
-                <el-amap-marker v-for="(marker, index) in markers" :position="marker.position" :events="marker.events" :visible="marker.visible" :draggable="marker.draggable" :vid="index"></el-amap-marker>
+            <div class="amap-page-container">
+              <el-amap
+                vid="amapDemo"
+                :center="center"
+                :zoom="zoom"
+                class="amap-demo">
+                <el-amap-marker v-for="marker in markers" :position="marker.position" :events="marker.events"></el-amap-marker>
+                <el-amap-info-window v-if="window" :position="window.position" :visible="window.visible" :content="window.content"></el-amap-info-window>
               </el-amap>
-              <div class="toolbar">
-                <!--<button type="button" name="button" v-on:click="toggleVisible">toggle first marker</button>
-                <button type="button" name="button" v-on:click="changePosition">change position</button>-->
-                <!--<button type="button" name="button" v-on:click="chnageDraggle">change draggle</button>-->
-               <!-- <button type="button" name="button" v-on:click="addMarker">合作社</button>
-                <button type="button" name="button" v-on:click="removeMarker">村小组</button>-->
-              </div>
             </div>
+
            <!-- 地图结束-->
           </div>
           <div class="tab-pane fade" id="details"  style="">
@@ -154,15 +150,14 @@
 
 </div>
 </template>
+
 <script>
   import Vue from 'vue'
-  var map
+  import service from '@/components/service/servicemenu.vue'
+
+  Vue.use(service)
   import VueResource from '@/components/resource/index.js'
   Vue.use(VueResource)
-  const exampleComponents = {
-    props: ['text'],
-    template: `<div>text from  parent: {{text}}</div>`
-  }
   export default {
     name: "cooperationManager",
     data: function () {
@@ -180,76 +175,30 @@
         villageValue: null,
         groups: null,//村小组
         groupValue: null,
-        cooperationName:null,
-        cooperationNameMap:null,
         totalCount: null,
         totalPage: null,
         pageSize: 15,
         curPage: 1,
-        page: this.queryPage(10,1),
-        count: 1,
+        page: null,
+        cooperationDetils: null,
+        cooperationName: null,
+        zoom: 16,
+        center: [121.59996, 31.197646],
+        markers: [],
+        windows: [],
+        mymarkers:[],
+        window: '',
+        tmp: {
+          content:null,
+          position:null,
+          contry:null
+      },
 
-        slotStyle: {
-          padding: '2px 8px',
-          background: '#eee',
-          color: '#333',
-          border: '1px solid #aaa'
-        },
-        zoom: 8,
-        center: [102.778862, 24.982261],
-        markers: [
-          {
-            position: [121.5273285, 31.21515044],
-            events: {
-              click: () => {
-                alert('click marker');
-              },
-              dragend: (e) => {
-                console.log('---event---: dragend')
-                this.markers[0].position = [e.lnglat.lng, e.lnglat.lat];
-              }
-            },
-            visible: true,
-            draggable: false,
-            template: '<span>1</span>',
-          }
-        ],
-        renderMarker: {
-          position: [121.5273285, 31.21715058],
-          contentRender: (h, instance) => {
-            // if use jsx you can write in this
-            // return <div style={{background: '#80cbc4', whiteSpace: 'nowrap', border: 'solid #ddd 1px', color: '#f00'}} onClick={() => ...}>marker inner text</div>
-            return h(
-              'div',
-              {
-                style: {background: '#80cbc4', whiteSpace: 'nowrap', border: 'solid #ddd 1px', color: '#f00'},
-                on: {
-                  click: () => {
-                    const position = this.renderMarker.position;
-                    this.renderMarker.position = [position[0] + 0.002, position[1] - 0.002];
-                  }
-                }
-              },
-              ['marker inner text']
-            )
-          }
-        },
-        componentMarker: {
-          position: [121.5273285, 31.21315058],
-          contentRender: (h, instance) => h(exampleComponents,{style: {backgroundColor: '#fff'}, props: {text: 'father is here'}}, ['xxxxxxx'])
-        },
-        slotMarker: {
-          position: [121.5073285, 31.21715058]
-        }
-    }
-    },
-    beforeCreate(){
-
+      }
     },
     created() {
     //  this.getImformation(10,1,null)
-      //this.queryPage(10,1)
-
+      this.queryPage(10,1)
     },
     methods: {
       getLocation:function(id,flag){
@@ -321,33 +270,18 @@
           this.curPage=JSON.parse(response.bodyText).curPage
           this.totalCount=JSON.parse(response.bodyText).totalCount
           this.totalPage=JSON.parse(response.bodyText).totalPage
-          console.log( JSON.parse(response.bodyText).result)
-          this.markers=[]
-          let lon
-          let lat
-
-          for(var i=0;i<JSON.parse(response.bodyText).result.length;i++){
-           lon= JSON.parse(response.bodyText).result[i].cooperationLongitude
-            lat= JSON.parse(response.bodyText).result[i].cooperationLatitude
-            this.cooperationNameMap=JSON.parse(response.bodyText).result[i].cooperationName
-            console.log(name)
-              let marker ={
-              position:[lon,lat],
-                text: this.cooperationNameMap,
-                events: {
-                  click: function(cooperationNameMap) {
-                    //点击合作社发生事件
-                   // console.log(marker.text)
-                    alert(marker.text);
-                  }
-                },
-                visible: true,
-                draggable: true
-              };
-            this.markers.push(marker);
+          for(var i=0;i<JSON.parse(response.bodyText).otherDate.length;i++){
+            console.log(JSON.parse(response.bodyText).otherDate[i])
+           this.tmp.content=JSON.parse(response.bodyText).otherDate[i].content
+            this.tmp.position=JSON.parse(response.bodyText).otherDate[i].position
+            this.tmp.contry=JSON.parse(response.bodyText).otherDate[i].contry
+            this.mymarkers.push(this.tmp)
           }
+          console.log(this.mymarkers)
         })
       },
+
+      //得到详情
       getDetils(cooperationId){
         var location = this.$resource(VueResource.data.url+'/webIndexController/getCooperationDetils?cooperationId='+cooperationId)
         location.query().then(function (response) {
@@ -359,62 +293,63 @@
           // this.cooperationDetils= response.bodyText
           document.getElementById("detailsOnclick").click()
         })
-      },
-
-      onClick() {
-        this.count += 1;
-      },
-      changePosition() {
-        let position = this.markers[0].position;
-        this.markers[0].position = [position[0] + 0.002, position[1] - 0.002];
-      },
-      chnageDraggle() {
-        let draggable = this.markers[0].draggable;
-        this.markers[0].draggable = !draggable;
-      },
-      toggleVisible() {
-        let visableVar = this.markers[0].visible;
-        this.markers[0].visible = !visableVar;
-      },
-      addMarker() {
-        let marker = {
-          position: [121.5273285 + (Math.random() - 0.5) * 0.02, 31.21515044 + (Math.random() - 0.5) * 0.02]
-        };
-        this.markers.push(marker);
-      },
-      removeMarker() {
-        if (!this.markers.length) return;
-        this.markers.splice(this.markers.length - 1, 1);
       }
-      },
-      //得到详情
+  },
+
+    mounted() {
+      let markers = [];
+      let windows = [];
+      let num = 10;
+      let self = this;
+      console.log("执行1")
+      for(let j=0;j<this.mymarkers.length;j++){
+        console.log("执行2")
+        markers.push({
+          position: [this.mymarkers[j].position[0], this.mymarkers[j].position[1] ],
+          events: {
+            click() {
+              self.windows.forEach(window => {
+                window.visible = false;
+              });
+
+              self.window = self.windows[i];
+              self.$nextTick(() => {
+                self.window.visible = true;
+              });
+            }
+          }
+        });
+
+        windows.push({
+          position: [this.mymarkers[j].position[0], this.mymarkers[j].position[1] ],
+          content: `<div class="prompt">fasfas</div>`,
+          visible: false
+        });
+      }
+
+
+      this.markers = markers;
+      this.windows = windows;
+    },
+
+
+
+
 
   }
 
 </script>
 
 <style scoped>
-  .info-tip {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 12px;
-    background-color: #fff;
-    height: 35px;
-    text-align: left;
+  .amap-demo {
+    height: 300px;
   }
-  .demo-affix{
-    background-color: #f1c40f;
-    padding: 10px 20px;
-    color: white;
-    position: absolute;
-    z-index: 999;
-  }
-    .amap-page-container{
-      height: 100vh;
-    }
-  .toggle-img{
-    width: 80px; height:80px; position: absolute;left: 5px;color: red; z-index: 999;font-size: 40px;
+
+  .prompt {
+    background: white;
+    width: 100px;
+    height: 30px;
+    text-align: center;
   }
   /****************左侧菜单标题部分样式************/
   #d_menu .panel-title {
