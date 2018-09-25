@@ -5,7 +5,7 @@
       <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
     </div>
     <!--横幅部分内容结束-->
-    <div class="row" style="margin-top: 5rem">
+    <div class="row" style="margin-top: 1rem">
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -159,7 +159,7 @@
   }
   $(function () {
     $("#d_menu-list a").click(function () {
-      $("#d_menu-list li").removeClass('active'),
+      $("#d_menu-list a li").removeClass('active'),
         $(this).children('li').addClass("active")
     })
   })
@@ -300,7 +300,7 @@
   }
 
   .picture {
-    height: 60px;
+    height: 380px;
     background: url('../../../../static/images/m2.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
