@@ -20,12 +20,12 @@
                 <!--class="pull-right icon iconfont icon-youjiantou"></i></li> </router-link>-->
 
               <ul id="myTab" class="nav nav-tabs">
-                <li >
+                <li class="active" id="household">
                   <a href="#home" data-toggle="tab">
                     户籍档案 <i class="pull-right icon iconfont icon-youjiantou"></i>
                   </a>
                 </li>
-                <li class="active"><a href="#ios" data-toggle="tab">种植档案<i class="pull-right icon iconfont icon-youjiantou"></i></a></li>
+                <li id="plant"><a href="#ios" data-toggle="tab">种植档案<i class="pull-right icon iconfont icon-youjiantou"></i></a></li>
               </ul>
 
             <!--</ul>-->
@@ -60,7 +60,11 @@
     },
     watch: {
       "$route": function (e) {
-       console.log(e)
+        if(this.$route.query.plantingId){
+          $("#plant").removeClass('active')
+          $("#household").addClass('active')
+          alert($("#household"))
+        }
       }
     },
     mounted(){
@@ -71,6 +75,13 @@
       //   $("#myTab").children('li:first-child').removeClass('active')
       //   $("#myTab").children('li:last-child').addClass('active')
       // }
+      this.$nextTick(function () {
+         if(this.$route.query.plantingId){
+           $("#plant").removeClass('active')
+           $("#household").addClass('active')
+           alert($("#household").innerHTML)
+         }
+      })
     }
 
 
@@ -242,7 +253,7 @@
   }
 
   .picture {
-    height: 60px;
+    height: 380px;
     background: url('../../../../static/images/m2.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
