@@ -354,8 +354,11 @@
           console.log(response.bodyText)
           document.getElementById("details").innerHTML = response.bodyText;
           console.log(document.getElementsByTagName("textarea")[0])
+          for(var i=0;i<document.getElementsByTagName("textarea").length;i++){
+            document.getElementsByTagName("textarea")[i].style.display="none"
+          }
           //document.getElementsByTagName("textarea")[0].setAttribute("display",'none')
-          document.getElementsByTagName("textarea")[0].style.display="none"
+
           // this.cooperationDetils= response.bodyText
           document.getElementById("detailsOnclick").click()
         })
