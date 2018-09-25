@@ -8,29 +8,28 @@
     <div class="row" style="margin-top: 1rem">
 
       <div class="col " id="detail">
-        <div class="panel panel-default">
-          <div class="panel-heading" style="display: inline-block">
-            <form class="form-horizontal pull-right">
+        <div class="panel panel-default" style="margin-bottom: 0">
+          <div class="panel-heading" style="display: inline-block;width: 100%;padding-left: 0;padding-right: 0;margin-bottom:0 ">
+            <form class="form-horizontal pull-right" style="width: 100%;margin-left: 0;margin-right: 0">
               <div class="form-group" style="margin-bottom: 0px">
-                <div class="col col-md-12">
-                  <label class="col-sm-1 control-label">省</label>
-                  <div class="col-sm-2">
+                  <label class="col-sm-1 control-label" style="width: 1%">省</label>
+                  <div class="col-sm-2" style="width: 9%">
                     <select class="form-control" v-model="proviceValue" @change="getstate()">
                       <option v-for="item in provices" v-bind:value="item.locationId">{{item.locationName}}</option>
 
                     </select>
                   </div>
 
-                  <label class="col-sm-1 control-label">州</label>
-                  <div class="col-sm-2">
+                  <label class="col-sm-1 control-label" style="width: 1%">州</label>
+                  <div class="col-sm-2" style="width: 9%">
                     <select type="text" class="form-control" v-model="statesValue" @change="getcounty()">
                       <option v-for="state in states" v-bind:value="state.locationId">{{state.locationName}}</option>
                       <option></option>
                     </select>
                   </div>
 
-                  <label class="col-sm-1 control-label">县</label>
-                  <div class="col-sm-2">
+                  <label class="col-sm-1 control-label" style="width: 1%">县</label>
+                  <div class="col-sm-2" style="width: 9%">
                     <select type="text" class="form-control" v-model="countyValue" @change="gettowns()">
                       <option v-for="county in countys" v-bind:value="county.locationId">{{county.locationName}}
                       </option>
@@ -38,18 +37,17 @@
                     </select>
                   </div>
 
-                  <label class="col-sm-1 control-label">镇</label>
-                  <div class="col-sm-2">
+                  <label class="col-sm-1 control-label" style="width: 1%">镇</label>
+                  <div class="col-sm-2" style="width: 9%">
                     <select type="text" class="form-control" v-model="townValue" @change="getvillages()">
                       <option v-for="town in towns" v-bind:value="town.locationId">{{town.locationName}}</option>
 
                     </select>
                   </div>
 
-                </div>
-                <div class="col col-md-12" style="margin-top: 1rem">
-                  <label class="col-sm-1 control-label" style="width: 10%">村委会</label>
-                  <div class="col-sm-2">
+
+                  <label class="col-sm-1 control-label" style="width: 5%">村委会</label>
+                  <div class="col-sm-2" style="width: 9%">
                     <select type="text" class="form-control" v-model="villageValue" @change="getgroups()">
                       <option v-for="village in villages" v-bind:value="village.locationId">{{village.locationName}}
                       </option>
@@ -57,24 +55,24 @@
                     </select>
                   </div>
 
-                  <label class="col-sm-1 control-label" style="width: 7%">村小组</label>
-                  <div class="col-sm-2">
+                  <label class="col-sm-1 control-label" style="width: 5%">村小组</label>
+                  <div class="col-sm-2" style="width: 9%">
                     <select type="text" class="form-control" v-model="groupValue" @change="getcencus()">
                       <option v-for="group in groups" v-bind:value="group.groupId">{{group.groupName}}</option>
 
                     </select>
                   </div>
 
-                  <label class="col-sm-1 control-label" style="width: 6%">户主</label>
-                  <div class="col-sm-2">
+                  <label class="col-sm-1 control-label" style="width: 4%">户主</label>
+                  <div class="col-sm-2" style="width: 9%">
                     <select type="text" class="form-control" v-model="cencuValue" @change="getlots()">
                       <option v-for="cencu in cencus" v-bind:value="cencu.censusId">{{cencu.censusName}}</option>
 
                     </select>
                   </div>
 
-                  <label class="col-sm-1 control-label" style="width: 6%">地块</label>
-                  <div class="col-sm-2">
+                  <label class="col-sm-1 control-label" style="width: 4%">地块</label>
+                  <div class="col-sm-2"style="width: 9%">
                     <select type="text" class="form-control" v-model="lotValue" @change="getlots()">
                       <option v-for="lot in lots" v-bind:value="lot.lotId">{{lot.lotName}}</option>
                     </select>
@@ -82,7 +80,6 @@
 
                   <label class="btn btn-default pull-right" v-on:click="queryPage(pageSize,1)"><i
                     class="glyphicon glyphicon-search" style="color: #337ab7"></i></label>
-                </div>
               </div>
             </form>
           </div>
@@ -91,20 +88,17 @@
         </div>
 
         <div class="panel-body">
-          <table class="table table-striped col col-md-15" id="dataList">
+          <table class="table table-bordered col col-md-15" id="dataList">
             <thead>
             <tr>
-              <th></th>
+              <th>地块名称</th>
+              <th>地块面积</th>
+              <th>单位</th>
+              <th>地块属性</th>
+              <th>日期</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>地块名称</td>
-              <td>地块面积</td>
-              <td>单位</td>
-              <td>地块属性</td>
-              <td>日期</td>
-            </tr>
             <tr v-for="pageitem in page">
               <td>{{pageitem.lotName}}</td>
               <td>{{pageitem.lotArea}}</td>
@@ -273,7 +267,7 @@
 
 <style scoped>
   #picture {
-    height: 60px;
+    height: 380px;
     background: url('../../../../static/images/m2.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
@@ -298,6 +292,10 @@
     padding: 0;
   }
 
+  .control-label{
+    padding-left: 0;
+    padding-right: 0;
+  }
   /*面板内容列表项样式*/
   #d_menu-list li {
     padding-top: 0.8rem;
