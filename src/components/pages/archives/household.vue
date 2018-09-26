@@ -54,11 +54,9 @@
                   </div>
                   <label class="col-sm-1 control-label" style="width: 10%">名称</label>
                   <div class="col-sm-2">
-                    <select type="text" class="form-control" v-model="villageGroupSelect">
-                      <option v-for="item in villageGroup" :value="item.groupId">{{item.groupName}}</option>
-                    </select>
+                    <input type="text" class="form-control" v-model="censusVal" placeholder="请输入名称">
                   </div>
-                  <label  class="btn  btn-default pull-right" style="color: #337ab7"  v-on:click="queryPage(pageSize,1)"><i class="glyphicon glyphicon-search"></i></label>
+                  <label  class="btn  btn-default pull-right" style="color: #337ab7"  v-on:click="queryPage(pageSize,1,censusVal)"><i class="glyphicon glyphicon-search"></i></label>
                 </div>
               </div>
             </form>
@@ -121,8 +119,10 @@
   Vue.use(VueResource)
   export default {
     name: "household",
+    props: ['censusName'],
     data: function () {
       return {
+        censusVal:null,
         showPage:[1,2,3,4,5],
         proviceSelect: null,
         stateSelect: null,
@@ -142,20 +142,31 @@
         isActive: true,
         totalCount:null,
         totalPage:null,
-        pageSize:15,
+        pageSize:10,
         curPage:1,
         page:null
       }
     },
     watch: {
       "$route": function (e) {
-        this.title = this.$route.query.menuName,
-          this.menuList = this.$route.query.menuItem
+
       }
     },
     created() {
+      if(this.$parent.censusName){
+        this.censusVal= this.$parent.censusName
+        this.queryPage('10','1',this.censusVal)
+      } else {
+        this.getCensus();
+      }
       this.getprovice(0);
-      this.getCensus();
+
+    },
+    mounted(){
+      $("#d_menu-list li").click(function () {
+        $("#d_menu-list li").removeClass('active'),
+          $(this).addClass("active")
+      })
     },
     methods: {
       //联动查询
@@ -205,32 +216,27 @@
           alert(this.proviceSelect)
         }
       },
-      queryPage:function(pageSize,curPage){
+      queryPage:function(pageSize,curPage,censusVal){
         var queryPage = this.$resource(VueResource.data.url+'/webIndexController/queryPageCensus?' +
           'locationCode='+ this.getLocationCode()+
           '&pageSize='+ pageSize+
-          '&curPage='+ curPage
+          '&pagenum='+ curPage+
+          '&censusName='+ censusVal
         )
         queryPage.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.census= JSON.parse(response.bodyText)
-          console.log("查询结果"+response.bodyText)
+          // console.log("查询结果"+response.bodyText)
           this.curPage=JSON.parse(response.bodyText).curPage
           this.totalCount=JSON.parse(response.bodyText).totalCount
           //this.pageSize=this.page.pageSize
           this.totalPage=JSON.parse(response.bodyText).totalPage
-          console.log("当前页"+this.curPage)
-          console.log("地区ID值："+this.getLocationCode())
+          // console.log("当前页"+this.curPage)
+          // console.log("地区ID值："+this.getLocationCode())
         })
       }
     }
   }
-  $(function () {
-    $("#d_menu-list li").click(function () {
-      $("#d_menu-list li").removeClass('active'),
-        $(this).addClass("active")
-    })
-  })
 </script>
 
 <style scoped>

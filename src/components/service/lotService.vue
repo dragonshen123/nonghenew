@@ -10,7 +10,7 @@
       getLocation(e,id,flag){
         var location = e.$resource(VueResource.data.url+'/web/webIndexController/asyncGetNodes?id='+0)
         location.query().then(function (response) {
-          console.log(response)
+          // console.log(response)
          e.provices=JSON.parse(response)
         })
       }

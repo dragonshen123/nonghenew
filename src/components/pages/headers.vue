@@ -371,15 +371,15 @@
       },
       validactorNameCkeckPass: function () {
         if (this.checkPass.length == 0) {
-          console.log("验证码长度：" + this.checkPass.length)
+          // console.log("验证码长度：" + this.checkPass.length)
           this.codedis = '请输入验证码！'
         } else {
-          console.log(this.checkCode + ":" + this.checkPass)
+          // console.log(this.checkCode + ":" + this.checkPass)
           //this.checkCode=this.checkCode.trim()
-          console.log((this.checkCode).replace(/\s+/g, "").toLocaleLowerCase() + ":" + (this.checkPass).replace(/\s+/g, "").toLocaleLowerCase())
+          // console.log((this.checkCode).replace(/\s+/g, "").toLocaleLowerCase() + ":" + (this.checkPass).replace(/\s+/g, "").toLocaleLowerCase())
           if (((this.checkCode).replace(/\s+/g, "").toLocaleLowerCase()) != ((this.checkPass).replace(/\s+/g, "").toLocaleLowerCase())) {
             this.codedis = '验证码不正确！'
-            console.log()
+            // console.log()
             this.$options.methods.creatCode()
           } else {
             this.codedis = ''
@@ -402,7 +402,7 @@
       submitLogin: function () {
         if ((this.namedis == '') && (this.passdis == '') && (this.apassdis == '') && (this.codedis == '') && (this.name != '')) {
           service.methods.login(this, this.pass, this.name, this.statuCode, this.userName, this.headPic);
-          console.log("状态代码" + this.statuCode)
+          // console.log("状态代码" + this.statuCode)
         } else {
           alert("请按要求将字段填写完整")
         }

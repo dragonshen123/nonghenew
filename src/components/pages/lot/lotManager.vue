@@ -2,7 +2,7 @@
   <div class="container" style="margin-top: 50px;padding: 0">
     <!--福导航横幅图片内容开始-->
     <div class="row" id="picture">
-      <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
+      <h2 style="color: #337ab7;font-weight: 800;text-align: center">对土地便捷化的管理</h2>
     </div>
     <!--横幅部分内容结束-->
     <div class="row" style="margin-top: 1rem">
@@ -164,14 +164,11 @@
     created() {
       this.queryPage(15, 1)
     },
-    mounted() {
-
-    },
     methods: {
       getLocation: function (id, flag) {
         var location = this.$resource(VueResource.data.url + '/webIndexController/asyncGetNodes?id=' + id)
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           if (flag == 0) {
             this.provices = JSON.parse(response.bodyText)
           }
@@ -207,7 +204,7 @@
       getgroups: function () {
         var location = this.$resource(VueResource.data.url + '/webIndexController/asyncGetgroup?locationCode=' + this.villageValue)
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.groups = JSON.parse(response.bodyText)
         })
       },
@@ -215,7 +212,7 @@
       getcencus: function () {
         var location = this.$resource(VueResource.data.url + '/webIndexController/asyncGetCenes?id=' + this.groupValue)
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.cencus = JSON.parse(response.bodyText)
         })
       },
@@ -223,7 +220,7 @@
       getlots: function () {
         var location = this.$resource(VueResource.data.url + '/webIndexController/asyncGetlots?id=' + this.cencuValue)
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.lots = JSON.parse(response.bodyText)
         })
       },
@@ -242,6 +239,14 @@
         }
       },
       queryPage: function (pageSize, curPage) {
+        if(this.$route.query.lotId){
+          var queryPage = this.$resource(VueResource.data.url + '/webIndexController/queryPagelot?' +
+            '&pageSize=' + pageSize +
+            '&curPage=' + curPage +
+            '&lotValue=' + this.$route.query.lotId
+          )
+        }
+        else{
         var queryPage = this.$resource(VueResource.data.url + '/webIndexController/queryPagelot?' +
           'locationCode=' + this.getLocationCode() +
           '&pageSize=' + pageSize +
@@ -249,32 +254,29 @@
           '&groupValue=' + this.groupValue +
           '&cencuValue=' + this.cencuValue +
           '&lotValue=' + this.lotValue
-        )
+        )}
         queryPage.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.page = JSON.parse(response.bodyText).result
           this.curPage = JSON.parse(response.bodyText).curPage
           this.totalCount = JSON.parse(response.bodyText).totalCount
           //this.pageSize=this.page.pageSize
           this.totalPage = JSON.parse(response.bodyText).totalPage
-          console.log("当前页" + this.curPage)
+          // console.log("当前页" + this.curPage)
         })
       }
     }
   }
-  $(function () {
-    // $(".menu .router-link-active li").removeClass('active');
-    // $(".router-link-exact-active").addClass('active')
-  })
 </script>
 
 <style scoped>
   #picture {
-    height: 380px;
-    background: url('../../../../static/images/m2.jpg');
+    height: 300px;
+    background: url('../../../../static/images/m22.png');
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 100%
+    width: 100%;
+    background-position: center;
   }
 
   /****************左侧菜单标题部分样式************/
@@ -410,5 +412,15 @@
 
   .panel-default {
     border: none;
+  }
+  #picture h2{
+    font-family: "微软雅黑", "Dosis", sans-serif;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 200px;
+    text-transform: uppercase;
+    position: relative;
+    line-height: 200px;
   }
 </style>

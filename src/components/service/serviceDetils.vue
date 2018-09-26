@@ -16,7 +16,7 @@
           var resouce = e.$resource(VueResource.data.url+'/informationController/getDetilsImages?informationId='+informationId);
           resouce.query().then(function ( response ) {
             e.images=response.data
-            console.log(e.images)
+            // console.log(e.images)
           });
         },
         correlationQuery(e,informationType){
@@ -41,8 +41,8 @@
           var resouce = e.$resource(VueResource.data.url+'/informationController/checkUserLoin');
            resouce.query().then(function ( response ) {
            e.message=response.data
-             console.log( response.data)
-             console.log( e.message)
+             // console.log( response.data)
+             // console.log( e.message)
              if (response.data==0){
              $('#myModal').modal('show')
              }
@@ -66,9 +66,9 @@
           var resouce = e.$resource(VueResource.data.url+'/sysUserControler/login?userName='+userName+'&userPassword='+userPassword);
           resouce.query().then(function ( response ) {
            alert(response.data["message"])
-            console.log(response.data)
+            // console.log(response.data)
             e.status = response.data['code']
-            console.log("12122213"+e.status)
+            // console.log("12122213"+e.status)
             localStorage.setItem("statu",e.status)
             if(response.data["code"]=='202'){
             $("#myModal").modal('hide')
@@ -81,8 +81,8 @@
       getUserName(e,userName,headPic){
         var user = e.$resource(VueResource.data.url+'/informationController/getUser')
          user.query().then(function (response) {
-             console.log('uesr:'+response.data["userName"])
-           console.log('uesr:'+response.data)
+             // console.log('uesr:'+response.data["userName"])
+           // console.log('uesr:'+response.data)
            // console.log("用户信息"+response.data.t)
          e.userName = response.data["userName"]
           e.headPic =VueResource.data.url+ response.data["userPictureUri"]
@@ -94,7 +94,7 @@
           var user = e.$resource(VueResource.data.url+'/webIndexController/asyncGetNodes?id='+0)
           user.query().then(function (response) {
 
-            console.log('uesr:'+response.bodyText)
+            // console.log('uesr:'+response.bodyText)
 
           })
         }

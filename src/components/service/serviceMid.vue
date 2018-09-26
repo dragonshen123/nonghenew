@@ -12,7 +12,7 @@
         resouce2.query().then(function ( response ) {
           if(informationType==-1){ //热点
               e.topics= response.data
-            console.log(e.topics)
+            // console.log(e.topics)
           }
           if(informationType==2){//政策
             e.policies= response.data
@@ -20,27 +20,27 @@
           }
           if(informationType==3||informationType==6){//农技
             e.cooperation= response.data
-            console.log(e.cooperation)
+            // console.log(e.cooperation)
           }
           //农合观点viewpoint
           if(informationType==7){//政策
             e.viewpoint= response.data
-            console.log(e.viewpoint)
+            // console.log(e.viewpoint)
           }
           //农合 学院collage=5
           if(informationType==5){//政策
             e.collage= response.data
-            console.log(e.collage)
+            // console.log(e.collage)
           }
           //社会服务service=1
           if(informationType==1){//政策
             e.service= response.data
-            console.log(e.service)
+            // console.log(e.service)
           }
           //农业快讯news=4
           if(informationType==4){//政策
             e.news= response.data
-            console.log(e.news)
+            // console.log(e.news)
           }
         });
       },

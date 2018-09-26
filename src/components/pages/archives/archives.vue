@@ -5,7 +5,7 @@
       <h2 style="color: white;font-weight: 800;text-align: center">充分实现信息在活动中应有的支持作用</h2>
     </div>
     <!--横幅部分内容结束-->
-    <div class="row" style="margin-top: 1rem;border-bottom: 1px dashed #337ab7">
+    <div class="row" style="margin-top: 1rem;">
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -35,10 +35,10 @@
       <div class="col col-md-9" id="detail">
         <div id="myTabContent" class="tab-content">
           <div class="tab-pane fade in active" id="home">
-            <Household></Household>
+            <Household :censusName="censusName"></Household>
           </div>
           <div class="tab-pane fade " id="ios">
-            <Plant></Plant>
+            <Plant :plantingName="plantingName"></Plant>
           </div>
 
         </div>
@@ -61,6 +61,8 @@
     data(){
       return{
         isAActive:true,
+        plantingName:this.$route.query.plantingName,
+        censusName: this.$route.query.censusName,
       }
     },
     mounted() {
@@ -68,7 +70,7 @@
     },
     methods:{
       getParamas () {
-      if(this.$route.query.plantingId){
+      if(this.$route.query.plantingName){
       $("#household").removeClass('active');
       $("#plant a").tab('show')
       }           else {
@@ -194,12 +196,11 @@
     font-size: 18px;
     font-weight: 300;
   }
-
   /*列表项样式*/
   #detail-list li {
     font-size: 16px;
     line-height: 30px;
-    border-bottom: 1px dashed silver;
+    /*border-bottom: 1px dashed silver;*/
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -245,11 +246,20 @@
   }
 
   .picture {
-    height: 380px;
+    height: 300px;
     background: url('../../../../static/images/m2.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     width: 100%
   }
-
+  .picture h2{
+    font-family: "微软雅黑", "Dosis", sans-serif;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 200px;
+    text-transform: uppercase;
+    position: relative;
+    line-height: 200px;
+  }
 </style>

@@ -5,7 +5,7 @@
   <div class="container" style="margin-top: 50px;padding: 0">
     <!--福导航横幅图片内容开始-->
     <div class="row picture">
-      <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
+      <h2 style="color: white;font-weight: 800;text-align: center">以党建引领“助力”合作社又快又好发展</h2>
     </div>
     <!--横幅部分内容结束-->
     <div class="row">
@@ -78,7 +78,7 @@
       <div class="col col-md-3" id="d_menu">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">合作社信息</h3>
+            <h3 class="panel-title">党建合作社</h3>
           </div>
           <div class="panel-body">
             <ul id="myTab" class="nav nav-tabs">
@@ -87,13 +87,12 @@
                   合作社信息 <i class="pull-right icon iconfont icon-youjiantou"></i>
                 </a>
               </li>
-               <li><a href="#map" data-toggle="tab">地图显示<i class="pull-right icon iconfont icon-youjiantou"></i></a></li>
+               <li><a href="#map" data-toggle="tab">合作社地图<i class="pull-right icon iconfont icon-youjiantou"></i></a></li>
               <li><a href="#details" data-toggle="tab" id="detailsOnclick" style="display: none">详情</a></li>
             </ul>
           </div>
         </div>
-        <div class="message">
-
+        <div class="message" >
         </div>
       </div>
       <div class="col col-md-9" id="detail">
@@ -211,7 +210,7 @@
                 alert('click marker');
               },
               dragend: (e) => {
-                console.log('---event---: dragend')
+                // console.log('---event---: dragend')
                 this.markers[0].position = [e.lnglat.lng, e.lnglat.lat];
               }
             },
@@ -252,11 +251,17 @@
     beforeCreate(){
 
     },
-    created() {
-    //  this.getImformation(10,1,null)
-      //this.queryPage(10,1)
+    watch:{
+      "display":function(e) {
+          alert(e)
+      }
 
     },
+    created(){
+     this.cooperationName=this.$route.query.cooperationName
+    },
+      mounted(){
+      },
     methods: {
       getLocation:function(id,flag){
         var location = this.$resource(VueResource.data.url+'/webIndexController/asyncGetNodes?id='+id)
@@ -297,7 +302,7 @@
       getgroups:function(){
         var location = this.$resource(VueResource.data.url+'/webIndexController/asyncGetgroup?locationCode='+this.villageValue)
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.groups= JSON.parse(response.bodyText)
         })
       },
@@ -315,6 +320,14 @@
         }
       },
       queryPage:function(pageSize,curPage){
+        if(this.$route.query.cooperationName){
+          var queryPage = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageCooperation?' +
+            '&pageSize='+ pageSize+
+            '&curPage='+ curPage+
+            '&cooperationName='+ this.$route.query.cooperationName
+          )
+        }
+        else{
         var queryPage = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageCooperation?' +
           'code='+ this.getLocationCode()+
           '&pageSize='+ pageSize+
@@ -322,12 +335,13 @@
           '&groupValue='+ this.groupValue+
           '&cooperationName='+ this.cooperationName
         )
+        }
         queryPage.query().then(function (response) {
           this.page= JSON.parse(response.bodyText).result
           this.curPage=JSON.parse(response.bodyText).curPage
           this.totalCount=JSON.parse(response.bodyText).totalCount
           this.totalPage=JSON.parse(response.bodyText).totalPage
-          console.log( JSON.parse(response.bodyText).result)
+          // console.log( JSON.parse(response.bodyText).result)
           this.markers=[]
           let lon
           let lat
@@ -336,7 +350,7 @@
            lon= JSON.parse(response.bodyText).result[i].cooperationLongitude
             lat= JSON.parse(response.bodyText).result[i].cooperationLatitude
             this.cooperationNameMap=JSON.parse(response.bodyText).result[i].cooperationName
-            console.log(name)
+            // console.log(name)
               let marker ={
               position:[lon,lat],
                 text: this.cooperationNameMap,
@@ -360,9 +374,9 @@
       getDetils(cooperationId){
         var location = this.$resource(VueResource.data.url+'/webIndexController/getCooperationDetils?cooperationId='+cooperationId)
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           document.getElementById("details").innerHTML = response.bodyText;
-          console.log(document.getElementsByTagName("textarea")[0])
+          // console.log(document.getElementsByTagName("textarea")[0])
           for(var i=0;i<document.getElementsByTagName("textarea").length;i++){
             document.getElementsByTagName("textarea")[i].style.display="none"
           }
@@ -402,7 +416,18 @@
       //得到详情
 
   }
-
+  $(function () {
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      // 获取已激活的标签页的名称
+      var activeTab = $(e.target).text();
+      // 获取前一个激活的标签页的名称
+      if(activeTab!='合作社地图'){
+         $('.message').css('display','none')
+      } else{
+        $('.message').css('display','block')
+      }
+    });
+  })
 </script>
 
 <style scoped>
@@ -594,10 +619,21 @@
   }
 
   .picture {
-    height: 380px;
-    background: url('../../../../static/images/m2.jpg');
+    height: 300px;
+    background: url('../../../../static/images/m33.png');
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 100%
+    width: 100% ;
+    background-position: bottom;
+  }
+  .picture h2{
+    font-family: "微软雅黑", "Dosis", sans-serif;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 200px;
+    text-transform: uppercase;
+    position: relative;
+    line-height: 200px;
   }
 </style>

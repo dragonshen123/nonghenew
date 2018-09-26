@@ -9,7 +9,6 @@
             <div class="col-sm-2">
               <select class="form-control" v-model="proviceSelect" v-on:change="getState(proviceSelect)">
                 <option v-for="item in provice" :value="item.locationId">{{item.locationName}}</option>
-                <option v-if="provice.length==0" disabled>没有更多数据！</option>
               </select>
             </div>
 
@@ -17,7 +16,6 @@
             <div class="col-sm-2">
               <select type="text" class="form-control" v-model="stateSelect" v-on:change="getCounty(stateSelect)">
                 <option v-for="item in state" :value="item.locationId">{{item.locationName}}</option>
-                <option v-if="state.length==0" disabled>没有更多数据！</option>
 
               </select>
             </div>
@@ -27,7 +25,6 @@
               <select type="text" class="form-control" v-model="countySelect"
                       v-on:change="getCountyVillageCommittee(countySelect)">
                 <option v-for="item in county" :value="item.locationId">{{item.locationName}}</option>
-                <option v-if="county.length==0" disabled>没有更多数据！</option>
               </select>
             </div>
 
@@ -37,33 +34,33 @@
                       v-on:change="getTown(countyVillageCommitteeSelect)">
                 <option v-for="item in countyVillageCommittee" :value="item.locationId">{{item.locationName}}
                 </option>
-                <option v-if="countyVillageCommittee.length==0" disabled>没有更多数据！</option>
               </select>
             </div>
           </div>
           <div class="col col-md-12" style="margin-top: 1rem">
-            <label class="col-sm-1 control-label" style="width: 10%">村委会</label>
+            <label class="col-sm-1 control-label" style="width: 9%">村委会</label>
             <div class="col-sm-2">
               <select type="text" class="form-control" v-model="townSelect"
                       v-on:change="getVillageGroup(townSelect)">
                 <option v-for="item in town" :value="item.locationId">{{item.locationName}}</option>
-                <option v-if="town.length==0" disabled>没有更多数据！</option>
               </select>
             </div>
 
-            <label class="col-sm-1 control-label" style="width: 10%">村小组</label>
+            <label class="col-sm-1 control-label" style="width: 9%">村小组</label>
             <div class="col-sm-2">
               <select type="text" class="form-control" v-model="villageGroupSelect"   v-on:change="getPersonal(villageGroupSelect)">
                 <option v-for="item in villageGroup" :value="item.groupId">{{item.groupName}}</option>
-                <option v-if="villageGroup.length==0" disabled>没有更多数据！</option>
               </select>
             </div>
-            <label class="col-sm-1 control-label" style="width: 10%">户</label>
+            <label class="col-sm-1 control-label" style="width: 1%">户</label>
             <div class="col-sm-2">
               <select type="text" class="form-control" v-model="personalSelect">
                 <option v-for="item in personal.result" :value="item.censusId">{{item.censusName}}</option>
-                <option v-if="personal.length==0" disabled>没有更多数据！</option>
               </select>
+            </div>
+            <label class="col-sm-1 control-label" style="width: 8%">名称</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" placeholder="请输入名称" v-model="plantingVal">
             </div>
             <label  class="btn btn-default pull-right" style="color: #337ab7"  v-on:click="queryPage(pageSize,1)"><i class="glyphicon glyphicon-search"></i></label>
           </div>
@@ -123,8 +120,10 @@
   Vue.use(VueResource)
   export default {
     name: "plant",
+    props: ['plantingId'],
     data: function () {
       return {
+        plantingVal:null,
         personal:'',
         personalSelect: null,
         showPage:[1,2,3,4,5],
@@ -146,20 +145,31 @@
         isActive: true,
         totalCount:null,
         totalPage:null,
-        pageSize:15,
+        pageSize:10,
         curPage:1,
-        page:null
+        page:null ,
       }
     },
     watch: {
       "$route": function (e) {
-        this.title = this.$route.query.menuName,
-          this.menuList = this.$route.query.menuItem
+       // alert(this.$route.query.plantingId)
       }
     },
+    mounted(){
+      $("#d_menu-list li").click(function () {
+        $("#d_menu-list li").removeClass('active'),
+          $(this).addClass("active")
+      })
+    },
     created() {
+      if(this.$parent.plantingName){
+        this.plantingVal= this.$parent.plantingName
+        this.queryPage('10','1',this.plantingName)
+      } else {
+        this.getplant();
+      }
       this.getprovice(0);
-      this.getplant();
+
     },
     methods: {
       //联动查询
@@ -215,32 +225,33 @@
           alert(this.proviceSelect)
         }
       },
-      queryPage:function(pageSize,curPage){
-        var queryPage = this.$resource(VueResource.data.url+'/webIndexController/queryPageplantingrecord?' +
+      queryPage:function(pageSize,curPage,plantingName){
+        if(this.$parent.plantingName){
+          var queryPage = this.$resource(VueResource.data.url+'/webIndexController/queryPagePlantingrecord?' +
+            'plantingName='+ this.$parent.plantingName+
+            '&pageSize='+ pageSize+
+            '&pagenum='+ curPage
+          )
+        }else{
+        var queryPage = this.$resource(VueResource.data.url+'/webIndexController/queryPagePlantingrecord?' +
           'locationCode='+ this.getLocationCode()+
           '&pageSize='+ pageSize+
-          '&curPage='+ curPage
-        )
+          '&pagenum='+ curPage
+        ) }
         queryPage.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.plant= JSON.parse(response.bodyText)
-          console.log("查询结果"+response.bodyText)
+          // console.log("查询结果"+response.bodyText)
           this.curPage=JSON.parse(response.bodyText).curPage
           this.totalCount=JSON.parse(response.bodyText).totalCount
           //this.pageSize=this.page.pageSize
           this.totalPage=JSON.parse(response.bodyText).totalPage
-          console.log("当前页"+this.curPage)
-          console.log("地区ID值："+this.getLocationCode())
+          // console.log("当前页"+this.curPage)
+          // console.log("地区ID值："+this.getLocationCode())
         })
       }
     }
   }
-  $(function () {
-    $("#d_menu-list li").click(function () {
-      $("#d_menu-list li").removeClass('active'),
-        $(this).addClass("active")
-    })
-  })
 </script>
 
 <style scoped>
@@ -382,5 +393,8 @@
     background-repeat: no-repeat;
     width: 100%
   }
-
+  .col-sm-1{
+    padding-left:0;
+    padding-right: 0;
+  }
 </style>

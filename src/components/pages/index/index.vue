@@ -19,15 +19,21 @@
           </div>
           <div class="item">
             <img src="../../../../static/images/m2.jpg" alt="Second slide">
-            <div class="carousel-caption"><h1>标题1</h1></div>
+            <div class="carousel-caption">
+              <!--<h1>标题1</h1>-->
+            </div>
           </div>
           <div class="item">
             <img src="../../../../static/images/m3.jpg" alt="Third slide">
-            <div class="carousel-caption"><h1>标题1</h1></div>
+            <div class="carousel-caption">
+              <!--<h1>标题1</h1>-->
+            </div>
           </div>
           <div class="item">
             <img src="../../../../static/images/m1.jpg" alt="Fourth slide">
-            <div class="carousel-caption"><h1>标题1</h1></div>
+            <div class="carousel-caption">
+              <!--<h1>标题1</h1>-->
+            </div>
           </div>
         </div>
       </div>
@@ -39,12 +45,12 @@
           <h4 class="bander-title">
             <strong style="padding-left: 48px">种植档案</strong><a
             href="#" class="pull-right" style="font-size: 10px">
-            <router-link :to="{path:'/Archives',query: {active: 2,menuName:'种植档案'}}">更多>></router-link>
+            <router-link :to="{path:'/Archives'}">更多>></router-link>
           </a></h4>
           <ul class="butie" style="line-height: 25px">
             <li  v-for="(palanting,index) in palantings" >
               <router-link
-                :to="{path:'/Archives',query: {plantingId: palanting.plantingId}}">
+                :to="{path:'/Archives',query: {plantingName: palanting.plantingName}}">
               <span style="display: inline-block;width: 64%"> {{palanting.plantingName}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">({{palanting.cropsName}}){{palanting.plantingStartDate}}</span>
               </router-link>
@@ -54,11 +60,11 @@
 
         <div class="col col-md-5">
           <h4 class="bander-title1">
-            <strong style="padding-left: 47px">  户籍档案 </strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/Archives',query: {active: 1,menuName:'户籍档案'}}">更多>></router-link></a></h4>
+            <strong style="padding-left: 47px">  户籍档案 </strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/Archives'}">更多>></router-link></a></h4>
           <ul class="redian">
             <li v-for="(cencu,index) in cencus" >
               <router-link
-                :to="{path:'/Archives',query:{censusId:cencu.censusId}}">
+                :to="{path:'/Archives',query:{censusName:cencu.censusName}}">
                <span style="display: inline-block;width: 64%"> 户主：{{cencu.censusName}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">年收入:{{cencu.censusYearInput}}</span>
 
@@ -75,7 +81,7 @@
           <h4 class="bander-title2">
             <strong style="padding-left: 48px">地块管理</strong><a
             href="#" class="pull-right" style="font-size: 10px">
-            <router-link :to="{path:'/lotManager',query: {menuName:'地块管理'}}">更多>></router-link>
+            <router-link :to="{path:'/lotManager'}">更多>></router-link>
           </a></h4>
           <ul class="butie" style="line-height: 25px">
             <li v-for="(lot,index) in lots" >
@@ -92,12 +98,12 @@
 
         <div class="col col-md-6">
           <h4 class="bander-title3">
-            <strong style="padding-left: 47px">党建合作社</strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/cooperationManager',query: {menuName:'党建合作社'}}">更多>></router-link>>></a>
+            <strong style="padding-left: 47px">党建合作社</strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/cooperationManager'}">更多>></router-link></a>
           </h4>
           <ul class="redian">
             <li v-for="(cooperation,index) in cooperations" >
               <router-link
-                :to="{path:'/detail',query:{cooperationId:cooperation.cooperationId}}">
+                :to="{path:'/cooperationManager',query:{cooperationName:cooperation.cooperationName}}">
 
               <span style="display: inline-block;width: 64%"> {{cooperation.cooperationName}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">{{cooperation.cooperationDate}}</span>
@@ -111,12 +117,12 @@
           <h4 class="bander-title2">
             <strong style="padding-left: 48px">生产管理</strong><a
             href="#" class="pull-right" style="font-size: 10px">
-            <router-link :to="{path:'/productManager',query: {menuName:'生产管理'}}">更多>></router-link>
+            <router-link :to="{path:'/productManager'}">更多>></router-link>
           </a></h4>
           <ul class="butie" style="line-height: 25px">
             <li v-for="(product,index) in products">
               <router-link
-                :to="{path:'/productManager',query: {informationId: product.informationId}}">
+                :to="{path:'/productManager',query: {informationTtile: product.informationTtile}}">
               <span style="display: inline-block;width: 64%"> {{product.informationTtile}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">({{product.informationType}}){{product.informationDate}}</span>
               </router-link>
@@ -127,12 +133,12 @@
 
         <div class="col col-md-6">
           <h4 class="bander-title3">
-            <strong style="padding-left: 47px">产品预售</strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/saleManager',query: {menuName:'产品预售'}}">更多>></router-link></a>
+            <strong style="padding-left: 47px">产品预售</strong> <a class="pull-right" style="font-size: 10px"> <router-link :to="{path:'/saleManager'}">更多>></router-link></a>
           </h4>
           <ul class="redian">
             <li v-for="(sale,index) in sales" >
               <router-link
-                :to="{path:'/detail',query:{informationId:sale.informationId}}">
+                :to="{path:'/saleManager',query:{informationTtile:sale.informationTtile}}">
                  <span style="display: inline-block;width: 64%"> {{sale.informationTtile}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">({{sale.informationType}}){{sale.informationDate}}</span>
 
@@ -162,6 +168,11 @@
         cooperations:null
       }
     },
+    mounted(){
+      $('#myCarousel').carousel({
+        interval: 2000
+      })
+    },
     created(){
       this.getcencus()
       this.getpalantings()
@@ -174,28 +185,28 @@
       getcencus:function(){
         var location = this.$resource(VueResource.data.url+'/webIndexController/queryPageCensus?pagenum=1&pageSize=10')
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.cencus= JSON.parse(response.bodyText).result
         })
       },
       getpalantings:function(){
         var location = this.$resource(VueResource.data.url+'/webIndexController/queryPagePlantingrecord?pagenum=1&pageSize=10')
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.palantings= JSON.parse(response.bodyText).result
         })
       },
       getlots:function(){
         var location = this.$resource(VueResource.data.url+'/webIndexController/queryPagelot?curPage=1&pageSize=10')
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.lots= JSON.parse(response.bodyText).result
         })
       },
       getcooperations:function(){
         var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageCooperation?pagenum=1&pageSize=10')
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.cooperations= JSON.parse(response.bodyText).result
         })
       },
@@ -203,14 +214,14 @@
       getproducts:function(){
         var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageproducts?pagenum=1&pageSize=10&flag=1')
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.products= JSON.parse(response.bodyText).result
         })
       },
       getsales:function(){
         var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPagepSales?pagenum=1&pageSize=10&flag=2')
         location.query().then(function (response) {
-          console.log(response.bodyText)
+          // console.log(response.bodyText)
           this.sales= JSON.parse(response.bodyText).result
         })
       },
@@ -219,12 +230,6 @@
 
   };
 
-  $(function () {
-    $('#myCarousel').carousel({
-      interval: 2000
-    })
-
-  })
 </script>
 
 <style scoped>
@@ -742,5 +747,8 @@
   }
   .col-md-7>ul>li:hover>a>span,.col-md-5>ul>li:hover>a>span,.col-md-6>ul>li:hover>a>span{
     color: #337ab7;
+  }
+  .picture h2{
+    line-height: 27px;
   }
 </style>

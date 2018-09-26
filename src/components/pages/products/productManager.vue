@@ -2,7 +2,7 @@
   <div class="container" style="margin-top: 50px;padding: 0">
     <!--福导航横幅图片内容开始-->
     <div class="row picture">
-      <h2 style="color: white;font-weight: 800;text-align: center">农村社会化公共服务平台</h2>
+      <h2 style="color: white;font-weight: 800;text-align: center">信息化生产  智能化服务</h2>
     </div>
     <!--横幅部分内容结束-->
     <div class="row" style="margin-top: 1rem">
@@ -115,8 +115,18 @@
         page:null
       }
     },
-
+    mounted(){
+      $("#d_menu-list a").click(function () {
+        $("#d_menu-list li").removeClass('active'),
+          $(this).children('li').addClass("active")
+      });
+      $("#d_menu-list a li").click(function () {
+        $("#d_menu-list a").find('li').removeClass('active'),
+          $(this).addClass("active")
+      })
+    },
     created() {
+      this.informationName=this.$route.query.informationTtile
       this.getImformation(10,1,null)
     },
     methods: {
@@ -125,20 +135,20 @@
      this.informationType=informationType
      var location = this.$resource(VueResource.data.url+'/webIndexController/asyncQueryPageproducts?pagenum='+this.curPage+'&pageSize='+pageSize+'&flag=1&informationType='+informationType+'&informationName='+this.informationName)
      location.query().then(function (response) {
-       console.log(response.bodyText)
+       // console.log(response.bodyText)
        this.page= JSON.parse(response.bodyText).result
        this.curPage=JSON.parse(response.bodyText).curPage
        this.totalCount=JSON.parse(response.bodyText).totalCount
        //this.pageSize=this.page.pageSize
        this.totalPage=JSON.parse(response.bodyText).totalPage
-       console.log("当前页"+this.curPage)
+       // console.log("当前页"+this.curPage)
      })
    },
       getImformationDetils(informationId){
         var location = this.$resource(VueResource.data.url+'/webIndexController/getImformationDetils?informationId='+informationId)
         location.query().then(function (response) {
           document.getElementById("details").innerHTML = response.bodyText;
-          console.log(document.getElementsByTagName("textarea")[0])
+          // console.log(document.getElementsByTagName("textarea")[0])
           for(var i=0;i<document.getElementsByTagName("textarea").length;i++){
             document.getElementsByTagName("textarea")[i].style.display="none"
           }
@@ -148,16 +158,9 @@
       }
     }
   }
-  $(function () {
-    $("#d_menu-list a").click(function () {
-      $("#d_menu-list li").removeClass('active'),
-        $(this).children('li').addClass("active")
-    });
-    $("#d_menu-list a li").click(function () {
-      $("#d_menu-list a").find('li').removeClass('active'),
-        $(this).addClass("active")
-    })
-  })
+  // $(function () {
+  //
+  // })
 </script>
 
 <style scoped>
@@ -296,10 +299,21 @@
   }
 
   .picture {
-    height: 60px;
-    background: url('../../../../static/images/m2.jpg');
+    height: 300px;
+    background: url('../../../../static/images/m11.png');
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 100%
+    width: 100%;
+    background-position: bottom;
+  }
+  .picture h2{
+    font-family: "微软雅黑", "Dosis", sans-serif;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 200px;
+    text-transform: uppercase;
+    position: relative;
+    line-height: 200px;
   }
 </style>
