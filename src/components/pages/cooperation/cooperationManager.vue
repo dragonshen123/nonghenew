@@ -463,7 +463,9 @@
     margin-left: 1.3em;
     width: 1.3em;
   }
-
+  .panel-default > .panel-heading{
+    border-bottom: 2px solid #337ab7;
+  }
   /*鼠标滑过列表项样式*/
   #d_menu-list li.active, #d_menu-list li:hover {
     background: #48b5d5;

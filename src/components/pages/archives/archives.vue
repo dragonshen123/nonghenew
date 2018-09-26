@@ -37,7 +37,7 @@
           <div class="tab-pane fade in active" id="home">
             <Household></Household>
           </div>
-          <div class="tab-pane fade" id="ios">
+          <div class="tab-pane fade " id="ios">
             <Plant></Plant>
           </div>
 
@@ -58,45 +58,37 @@
       Household: require('@/components/pages/archives/household').default ,
       Plant: require('@/components/pages/archives/plant').default
     },
-    watch: {
-      "$route": function (e) {
-        if(this.$route.query.plantingId){
-          $("#plant").removeClass('active')
-          $("#household").addClass('active')
-          alert($("#household"))
-        }
+    data(){
+      return{
+        isAActive:true,
       }
     },
-    mounted(){
-      // if(typeof (this.$route.query.plantingId)=='string'){
-      //   alert(typeof (this.$route.query.plantingId))
-      //   $('#home').removeClass('active')
-      //   $("#ios").addClass('active')
-      //   $("#myTab").children('li:first-child').removeClass('active')
-      //   $("#myTab").children('li:last-child').addClass('active')
-      // }
-      this.$nextTick(function () {
-         if(this.$route.query.plantingId){
-           $("#plant").removeClass('active')
-           $("#household").addClass('active')
-           alert($("#household").innerHTML)
-         }
-      })
+    mounted() {
+        this.getParamas()
+    },
+    methods:{
+      getParamas () {
+      if(this.$route.query.plantingId){
+      $("#household").removeClass('active');
+      $("#plant a").tab('show')
+      }           else {
+      }
+      }
     }
+
 
 
   }
   $(function () {
     $("#d_menu-list li").click(function () {
       $("#d_menu-list li").removeClass('active'),
-        $(this).addClass("active")
+
+        $(this).addClass("active") ;
+
     });
-    $.getUrlParam = function (name) {
-      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-      var r = window.location.search.substr(1).match(reg);
-      if (r != null) return unescape(r[2]); return null;
-    };
-    console.log($.getUrlParam('plantingId'))
+    // $(".menu a li").removeClass('active');
+    // $("#archives").addClass('active')
+    // $(".router-link-exact-active a").addClass('active')
   })
 
 </script>

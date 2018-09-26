@@ -11,7 +11,7 @@
         <div class="panel panel-default" style="margin-bottom: 0">
           <div class="panel-heading" style="display: inline-block;width: 100%;padding-left: 0;padding-right: 0;margin-bottom:0 ">
             <form class="form-horizontal pull-right" style="width: 100%;margin-left: 0;margin-right: 0">
-              <div class="form-group" style="margin-bottom: 0px">
+              <div class="form-group" style="margin-bottom: 0px;margin-right: 0;margin-left: 0">
                   <label class="col-sm-1 control-label" style="width: 1%">省</label>
                   <div class="col-sm-2" style="width: 9%">
                     <select class="form-control" v-model="proviceValue" @change="getstate()">
@@ -262,7 +262,10 @@
       }
     }
   }
-
+  $(function () {
+    // $(".menu .router-link-active li").removeClass('active');
+    // $(".router-link-exact-active").addClass('active')
+  })
 </script>
 
 <style scoped>

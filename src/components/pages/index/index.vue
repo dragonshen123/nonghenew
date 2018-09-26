@@ -81,7 +81,7 @@
             <li v-for="(lot,index) in lots" >
               <!--<router-link  v- to="/Butie" v-bind="">{{site.informationTtile}}<span class="pull-right " style="color: black">{{site.informationDate}}</span></router-link>-->
               <router-link
-                :to="{path:'/Detail',query: {lotId: lot.lotId}}">
+                :to="{path:'/lotManager',query: {lotId: lot.lotId}}">
               <span style="display: inline-block;width: 64%"> {{lot.lotName}}
               </span><span class="pull-right " style="display: inline-block;width: 32%">{{lot.lotDate}}</span>
               </router-link>
@@ -478,6 +478,9 @@
     color: #f8f8f8;
     margin-right: 20px;
     padding-top: 10px;
+  }
+  a:hover, a:focus{
+    text-decoration: none;
   }
 
   h3 {

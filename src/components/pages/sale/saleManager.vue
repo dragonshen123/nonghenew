@@ -161,6 +161,10 @@
     $("#d_menu-list a").click(function () {
       $("#d_menu-list a li").removeClass('active'),
         $(this).children('li').addClass("active")
+    });
+    $("#d_menu-list a li").click(function () {
+      $("#d_menu-list a li").removeClass('active'),
+        $(this).addClass("active")
     })
   })
 </script>

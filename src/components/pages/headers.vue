@@ -234,22 +234,21 @@
         <!--<img src="../../../static/images/logo.png" class="img-responsive" alt=""></a></div>-->
         <div class="container" style="padding: 0">
           <ul class="menu">
-            <router-link to="/"><li class="menu-item active">
+            <router-link to="/"><li class="menu-item active" id="1">
              首页
             </li> </router-link>
-            <router-link :to="{path:'/Archives'}"><li class="menu-item">
+            <router-link :to="{path:'/Archives'}"><li class="menu-item" id="archives">
              档案管理
             </li> </router-link>
 
-            <router-link :to="{path:'/lotManager',query: {informationType: 3,menuName:'地块管理',menuItem:[
-              {name:'地块管理'}]}}"> <li class="menu-item">
+            <router-link :to="{path:'/lotManager'}"> <li class="menu-item" id="lotmanager">
              地块管理
             </li></router-link>
 
-            <router-link :to="{path:'/cooperationManager',query:{menuName:'党建合作社',menuItem:[{name:'党建合作社'}]}}"><li class="menu-item">党建合作社</li>  </router-link>
-            <router-link :to="{path:'/productManager',query:{menuName:'生产管理',menuItem:[{name:'生产管理'}]}}"><li class="menu-item">生产管理</li>  </router-link>
+            <router-link :to="{path:'/cooperationManager'}"><li class="menu-item" id="cooperationmanager">党建合作社</li>  </router-link>
+            <router-link :to="{path:'/productManager'}"><li class="menu-item" id="productmanager">生产管理</li>  </router-link>
             <!--<li class="menu-item">生产管理</li>-->
-            <router-link :to="{path:'/saleManager',query:{menuName:'产品预售',menuItem:[{name:'产品预售'}]}}"><li class="menu-item">产品预售</li>  </router-link>
+            <router-link :to="{path:'/saleManager'}"><li class="menu-item" id="salemanager" >产品预售</li>  </router-link>
            <!-- <li class="menu-item">产品预售</li>-->
             <li class="menu-item">专家库</li>
             <!--<li>-->
@@ -298,6 +297,36 @@
           this.headPic = localStorage.getItem("headPic")
         }
       }
+    },
+    watch:{
+      '$route': function (e) {
+        if(this.$route.path=='/Archives'){
+          $(".menu a li").removeClass('active')
+          $('#archives').addClass('active')
+        }
+        if(this.$route.path=='/lotManager'){
+          $(".menu a li").removeClass('active')
+          $('#lotmanager').addClass('active')
+        }
+        if(this.$route.path=='/cooperationManager'){
+          $(".menu a li").removeClass('active')
+          $('#cooperationmanager').addClass('active')
+        }
+        if(this.$route.path=='/productManager'){
+          $(".menu a li").removeClass('active')
+          $('#productmanager').addClass('active')
+        }
+        if(this.$route.path=='/saleManager'){
+          $(".menu a li").removeClass('active')
+          $('#salemanager').addClass('active')
+        }
+        if(this.$route.path=='/'){
+          $(".menu a li").removeClass('active')
+          $('#1').addClass('active')
+        }
+      }
+    },
+    created(){
     },
     methods: {
 
@@ -390,7 +419,9 @@
     $(".menu a").click(function () {
       $(".menu a li").removeClass('active'),
         $(this).children("li").addClass("active")
-    })
+    }) ;
+    $(".menu").children('a').children('li').removeClass('active');
+    $(".router-link-exact-active").children('li').addClass('active')
   })
 </script>
 
